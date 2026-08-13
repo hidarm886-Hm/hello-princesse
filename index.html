@@ -64,17 +64,13 @@ body{
     opacity:0;
     transform:translateY(8px);
   }
-
   to{
     opacity:1;
     transform:none;
   }
 }
 
-
-/* =========================
-   PAGE 1
-========================= */
+/* PAGE 1 + PAGE 7 */
 
 .page1,
 .page7{
@@ -102,22 +98,12 @@ body{
   letter-spacing:.5px;
 }
 
-
-/* =========================
-   TITLES
-========================= */
-
 .title{
   color:var(--sage-dark);
   font-size:clamp(1.8rem,5vw,3rem);
   font-weight:normal;
   margin:0 0 24px;
 }
-
-
-/* =========================
-   CARD
-========================= */
 
 .card{
   width:min(92%,700px);
@@ -128,10 +114,7 @@ body{
   box-shadow:var(--shadow);
 }
 
-
-/* =========================
-   PAGE 2
-========================= */
+/* PAGE 2 */
 
 .calendar-row{
   display:flex;
@@ -165,10 +148,7 @@ body{
   margin-bottom:0;
 }
 
-
-/* =========================
-   PHOTO PAGES
-========================= */
+/* PAGES 3 + 4 */
 
 .photo-grid{
   width:min(92%,760px);
@@ -225,10 +205,7 @@ body{
   font-size:.9rem;
 }
 
-
-/* =========================
-   PAGE 5
-========================= */
+/* PAGE 5 */
 
 .wish-page{
   justify-content:flex-start;
@@ -251,11 +228,6 @@ body{
   width:min(94%,760px);
   text-align:center;
 }
-
-
-/* =========================
-   BOTTLE
-========================= */
 
 .real-wish-bottle{
   width:150px;
@@ -483,36 +455,30 @@ body{
   font-size:1rem;
 }
 
+.wish-instruction{
+  margin:-4px 0 14px;
+  color:#7a877c;
+  font-size:.95rem;
+  line-height:1.8;
+}
+
 .wish-grid{
   width:100%;
-
   display:grid;
-
-  grid-template-columns:
-    repeat(5,1fr);
-
+  grid-template-columns:repeat(5,1fr);
   gap:12px;
 }
 
 .wish-btn{
   min-height:64px;
-
   border:0;
-
   border-radius:18px;
-
   background:var(--sage);
-
   color:white;
-
   font-size:1.15rem;
   font-weight:bold;
-
   cursor:pointer;
-
-  box-shadow:
-    0 5px 14px rgba(71,88,75,.14);
-
+  box-shadow:0 5px 14px rgba(71,88,75,.14);
   transition:.2s;
 }
 
@@ -521,27 +487,17 @@ body{
   background:var(--sage-dark);
 }
 
-
-/* =========================
-   WISH MODAL
-========================= */
+/* MODAL */
 
 .wish-modal{
   position:fixed;
-
   inset:0;
-
   z-index:100;
-
   display:none;
-
   align-items:center;
   justify-content:center;
-
   padding:24px;
-
   background:rgba(53,66,57,.48);
-
   backdrop-filter:blur(7px);
 }
 
@@ -552,17 +508,13 @@ body{
 
 .wish-modal-card{
   width:min(88vw,700px);
-
   min-height:240px;
-
   max-height:80vh;
-
   overflow:auto;
 
   background:#fffdf8;
 
-  border:
-    2px solid rgba(168,185,163,.65);
+  border:2px solid rgba(168,185,163,.65);
 
   border-radius:30px;
 
@@ -572,7 +524,6 @@ body{
     0 25px 70px rgba(30,45,35,.28);
 
   display:flex;
-
   align-items:center;
   justify-content:center;
 
@@ -580,8 +531,7 @@ body{
 
   line-height:2;
 
-  font-size:
-    clamp(1.15rem,3.5vw,1.65rem);
+  font-size:clamp(1.15rem,3.5vw,1.65rem);
 
   color:#465248;
 
@@ -590,7 +540,6 @@ body{
 
 .wish-close{
   position:absolute;
-
   top:12px;
   left:15px;
 
@@ -598,7 +547,6 @@ body{
   height:38px;
 
   border:0;
-
   border-radius:50%;
 
   background:#a8b9a3;
@@ -610,10 +558,7 @@ body{
   cursor:pointer;
 }
 
-
-/* =========================
-   PAGE 6
-========================= */
+/* PAGE 6 */
 
 .playlist{
   text-align:center;
@@ -622,9 +567,7 @@ body{
 
 .youtube-btn{
   display:inline-block;
-
   margin-top:18px;
-
   padding:15px 25px;
 
   border-radius:999px;
@@ -647,10 +590,7 @@ body{
   background:#f3f7f2;
 }
 
-
-/* =========================
-   PAGE 7
-========================= */
+/* PAGE 7 */
 
 .final{
   direction:ltr;
@@ -667,7 +607,6 @@ body{
 
 .princess-final{
   width:min(70vw,260px);
-
   max-height:300px;
 
   object-fit:contain;
@@ -683,44 +622,31 @@ body{
 }
 
 .final h1{
-  font-size:
-    clamp(2.2rem,7vw,4.5rem);
-
+  font-size:clamp(2.2rem,7vw,4.5rem);
   font-weight:normal;
-
   color:var(--sage-dark);
-
   margin:0;
 }
 
 .final-message{
   font-size:1.25rem;
-
   color:#71836d;
-
   margin-top:16px;
-
   line-height:1.8;
 }
 
-
-/* =========================
-   NAVIGATION
-========================= */
+/* NAVIGATION */
 
 .nav{
   position:fixed;
-
   z-index:20;
 
   bottom:15px;
-
   left:50%;
 
   transform:translateX(-50%);
 
   display:flex;
-
   gap:8px;
 
   background:rgba(255,255,255,.92);
@@ -737,7 +663,6 @@ body{
 
 .nav button{
   border:0;
-
   background:transparent;
 
   color:var(--sage-dark);
@@ -759,19 +684,14 @@ body{
 
 .page-number{
   position:absolute;
-
   top:18px;
   right:22px;
 
   color:#94a193;
-
   font-size:.85rem;
 }
 
-
-/* =========================
-   MOBILE
-========================= */
+/* MOBILE */
 
 @media(max-width:600px){
 
@@ -781,8 +701,7 @@ body{
   }
 
   .wish-grid{
-    grid-template-columns:
-      repeat(4,1fr);
+    grid-template-columns:repeat(4,1fr);
   }
 
   .wish-btn{
@@ -803,9 +722,7 @@ body{
   }
 
   .photo-grid{
-    grid-template-columns:
-      repeat(2,1fr);
-
+    grid-template-columns:repeat(2,1fr);
     gap:12px;
   }
 
@@ -827,8 +744,7 @@ body{
   }
 
   .final h1{
-    font-size:
-      clamp(2rem,9vw,3rem);
+    font-size:clamp(2rem,9vw,3rem);
   }
 
   .final-message{
@@ -840,20 +756,13 @@ body{
 </style>
 </head>
 
-
 <body>
 
 <div class="book">
 
+<!-- PAGE 1 -->
 
-<!-- =========================
-     PAGE 1
-========================= -->
-
-<section
-  class="page page1 active"
-  id="page1"
->
+<section class="page page1 active" id="page1">
 
   <h1>
     Hello princesse 🤍
@@ -862,14 +771,9 @@ body{
 </section>
 
 
-<!-- =========================
-     PAGE 2
-========================= -->
+<!-- PAGE 2 -->
 
-<section
-  class="page"
-  id="page2"
->
+<section class="page" id="page2">
 
   <span class="page-number">
     2 / 7
@@ -909,7 +813,6 @@ body{
 
     </div>
 
-
     <div class="greeting">
 
       <p>
@@ -934,26 +837,17 @@ body{
 </section>
 
 
-<!-- =========================
-     PAGE 3
-========================= -->
+<!-- PAGE 3 -->
 
-<section
-  class="page"
-  id="page3"
->
+<section class="page" id="page3">
 
   <span class="page-number">
     3 / 7
   </span>
 
-  <h2
-    class="title"
-    dir="rtl"
-  >
+  <h2 class="title" dir="rtl">
     كرتوناتي الحبيبة 🙂
   </h2>
-
 
   <div class="photo-grid">
 
@@ -1009,34 +903,27 @@ body{
 
   </div>
 
-
-  <p class="photo-note">
-    اضغطي على كل صورة لتظهر 🤍
+  <p
+    class="photo-note"
+    dir="ltr"
+  >
+    Clique... je te laisse découvrir 🤍
   </p>
 
 </section>
 
 
-<!-- =========================
-     PAGE 4
-========================= -->
+<!-- PAGE 4 -->
 
-<section
-  class="page"
-  id="page4"
->
+<section class="page" id="page4">
 
   <span class="page-number">
     4 / 7
   </span>
 
-  <h2
-    class="title"
-    dir="rtl"
-  >
+  <h2 class="title" dir="rtl">
     اشياء احبها 😍
   </h2>
-
 
   <div class="photo-grid">
 
@@ -1092,32 +979,25 @@ body{
 
   </div>
 
-
-  <p class="photo-note">
-    اضغطي على كل صورة لتظهر 🤍
+  <p
+    class="photo-note"
+    dir="ltr"
+  >
+    Chaque image cache une petite surprise ✨
   </p>
 
 </section>
 
 
-<!-- =========================
-     PAGE 5
-========================= -->
+<!-- PAGE 5 -->
 
-<section
-  class="page wish-page"
-  id="page5"
->
+<section class="page wish-page" id="page5">
 
   <span class="page-number">
     5 / 7
   </span>
 
-
-  <div
-    class="prayer"
-    dir="rtl"
-  >
+  <div class="prayer" dir="rtl">
 
     أن تقودكِ الأيام إلى المسرّات التي تنتظرينها،
     وأن يملأ الله قلبكِ طمأنينةً وسكينة،
@@ -1125,11 +1005,7 @@ body{
 
   </div>
 
-
   <div class="wish-bottle">
-
-
-    <!-- BOTTLE -->
 
     <div
       class="real-wish-bottle"
@@ -1137,16 +1013,12 @@ body{
     >
 
       <div class="rw-cork"></div>
-
       <div class="rw-lip"></div>
-
       <div class="rw-neck"></div>
-
 
       <div class="rw-body">
 
         <div class="rw-shine"></div>
-
 
         <div class="rw-note rw-note-1">
           <span></span>
@@ -1164,7 +1036,6 @@ body{
           <span></span>
         </div>
 
-
         <div class="rw-label">
           قارورة أمنيات
         </div>
@@ -1173,22 +1044,16 @@ body{
 
     </div>
 
-
     <p class="subtitle">
       20 petits vœux pour toi.. 🤍🫶
     </p>
 
-
     <div
-      style="
-        margin:-4px 0 14px;
-        color:#7a877c;
-        font-size:.95rem;
-      "
+      class="wish-instruction"
+      dir="rtl"
     >
-      اختاري رقمًا 🤍
+      20 أمنية بانتظارك... اختاريها واحدةً تلو الأخرى، فهي كلها لكِ 🤍🫶
     </div>
-
 
     <div
       class="wish-grid"
@@ -1200,26 +1065,19 @@ body{
 </section>
 
 
-<!-- =========================
-     PAGE 6
-========================= -->
+<!-- PAGE 6 -->
 
-<section
-  class="page"
-  id="page6"
->
+<section class="page" id="page6">
 
   <span class="page-number">
     6 / 7
   </span>
-
 
   <div class="playlist">
 
     <h2 class="title">
       🎵 Une petite playlist pour toi
     </h2>
-
 
     <a
       class="youtube-btn"
@@ -1235,19 +1093,13 @@ body{
 </section>
 
 
-<!-- =========================
-     PAGE 7
-========================= -->
+<!-- PAGE 7 -->
 
-<section
-  class="page page7 final"
-  id="page7"
->
+<section class="page page7 final" id="page7">
 
   <span class="page-number">
     7 / 7
   </span>
-
 
   <img
     class="princess-final"
@@ -1255,11 +1107,9 @@ body{
     alt="Princesse"
   >
 
-
   <h1>
     Et maintenant... souris 🫶😊
   </h1>
-
 
   <p
     class="final-message"
@@ -1270,13 +1120,10 @@ body{
 
 </section>
 
-
 </div>
 
 
-<!-- =========================
-     WISH MODAL
-========================= -->
+<!-- WISH MODAL -->
 
 <div
   class="wish-modal"
@@ -1303,48 +1150,25 @@ body{
 </div>
 
 
-<!-- =========================
-     NAVIGATION
-========================= -->
+<!-- NAVIGATION -->
 
 <nav
   class="nav"
   aria-label="Navigation"
 >
 
-  <button onclick="goTo(1)">
-    1
-  </button>
-
-  <button onclick="goTo(2)">
-    2
-  </button>
-
-  <button onclick="goTo(3)">
-    3
-  </button>
-
-  <button onclick="goTo(4)">
-    4
-  </button>
-
-  <button onclick="goTo(5)">
-    5
-  </button>
-
-  <button onclick="goTo(6)">
-    6
-  </button>
-
-  <button onclick="goTo(7)">
-    7
-  </button>
+  <button onclick="goTo(1)">1</button>
+  <button onclick="goTo(2)">2</button>
+  <button onclick="goTo(3)">3</button>
+  <button onclick="goTo(4)">4</button>
+  <button onclick="goTo(5)">5</button>
+  <button onclick="goTo(6)">6</button>
+  <button onclick="goTo(7)">7</button>
 
 </nav>
 
 
 <script>
-
 
 /* =========================
    20 WISHES
@@ -1395,15 +1219,12 @@ const wishes = [
 ];
 
 
-/* =========================
-   SHUFFLE WISHES
-========================= */
+/* SHUFFLE */
 
 const shuffled =
   [...wishes].sort(
     () => Math.random() - 0.5
   );
-
 
 const grid =
   document.getElementById("wishGrid");
@@ -1442,9 +1263,7 @@ shuffled.forEach(
 );
 
 
-/* =========================
-   CLOSE WISH
-========================= */
+/* CLOSE WISH */
 
 function closeWish(event){
 
@@ -1456,7 +1275,6 @@ function closeWish(event){
   }
 
   modal.classList.remove("open");
-
 }
 
 
@@ -1472,9 +1290,7 @@ document.addEventListener(
 );
 
 
-/* =========================
-   PAGE NAVIGATION
-========================= */
+/* PAGE NAVIGATION */
 
 function goTo(n){
 
@@ -1486,11 +1302,9 @@ function goTo(n){
       }
     );
 
-
   document
     .getElementById("page"+n)
     .classList.add("active");
-
 
   document
     .querySelectorAll(".nav button")
@@ -1505,7 +1319,6 @@ function goTo(n){
       }
     );
 
-
   window.scrollTo({
     top:0,
     behavior:"smooth"
@@ -1513,11 +1326,9 @@ function goTo(n){
 
 }
 
-
 goTo(1);
 
 </script>
 
 </body>
 </html>
-```
