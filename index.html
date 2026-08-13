@@ -183,7 +183,7 @@ body{
 }
 
 .photo-slot::after{
-  content:"Clique .. et Découvre 🙂";
+  content:"Clique.. et Découvre 🙂";
 
   position:absolute;
   inset:0;
@@ -224,6 +224,7 @@ body{
   color:#7b877d;
   font-size:.9rem;
   direction:ltr;
+  text-align:center;
 }
 
 /* =========================
@@ -266,7 +267,6 @@ body{
 
 .rw-body{
   position:absolute;
-
   left:12px;
   bottom:0;
 
@@ -1074,8 +1074,8 @@ body{
   </div>
 
 
-  <p class="photo-note">
-    Clique .. et Découvre 🙂
+  <p class="photo-note" dir="ltr">
+    Clique... je te laisse découvrir 🤍
   </p>
 
 </section>
@@ -1161,8 +1161,8 @@ body{
   </div>
 
 
-  <p class="photo-note">
-    Clique .. et Découvre 🙂
+  <p class="photo-note" dir="ltr">
+    Chaque image cache une petite surprise ✨
   </p>
 
 </section>
@@ -1384,17 +1384,11 @@ body{
 >
 
   <button onclick="goTo(1)">1</button>
-
   <button onclick="goTo(2)">2</button>
-
   <button onclick="goTo(3)">3</button>
-
   <button onclick="goTo(4)">4</button>
-
   <button onclick="goTo(5)">5</button>
-
   <button onclick="goTo(6)">6</button>
-
   <button onclick="goTo(7)">7</button>
 
 </nav>
@@ -1452,7 +1446,7 @@ const wishes = [
 
 
 /* =========================
-   SHUFFLE WISHES
+   SHUFFLE
 ========================= */
 
 const shuffled =
@@ -1462,30 +1456,20 @@ const shuffled =
 
 
 const grid =
-  document.getElementById(
-    "wishGrid"
-  );
-
+  document.getElementById("wishGrid");
 
 const modal =
-  document.getElementById(
-    "wishModal"
-  );
-
+  document.getElementById("wishModal");
 
 const modalText =
-  document.getElementById(
-    "wishModalText"
-  );
+  document.getElementById("wishModalText");
 
 
 shuffled.forEach(
   (wish,index)=>{
 
     const btn =
-      document.createElement(
-        "button"
-      );
+      document.createElement("button");
 
     btn.className =
       "wish-btn";
@@ -1499,9 +1483,7 @@ shuffled.forEach(
       modalText.textContent =
         wish;
 
-      modal.classList.add(
-        "open"
-      );
+      modal.classList.add("open");
 
     };
 
@@ -1513,7 +1495,7 @@ shuffled.forEach(
 
 
 /* =========================
-   CLOSE WISH MODAL
+   CLOSE MODAL
 ========================= */
 
 function closeWish(event){
@@ -1525,9 +1507,7 @@ function closeWish(event){
     return;
   }
 
-  modal.classList.remove(
-    "open"
-  );
+  modal.classList.remove("open");
 }
 
 
@@ -1535,14 +1515,8 @@ document.addEventListener(
   "keydown",
   e=>{
 
-    if(
-      e.key === "Escape"
-    ){
-
-      modal.classList.remove(
-        "open"
-      );
-
+    if(e.key === "Escape"){
+      modal.classList.remove("open");
     }
 
   }
@@ -1559,26 +1533,18 @@ function goTo(n){
     .querySelectorAll(".page")
     .forEach(
       page=>{
-        page.classList.remove(
-          "active"
-        );
+        page.classList.remove("active");
       }
     );
 
 
   document
-    .getElementById(
-      "page"+n
-    )
-    .classList.add(
-      "active"
-    );
+    .getElementById("page"+n)
+    .classList.add("active");
 
 
   document
-    .querySelectorAll(
-      ".nav button"
-    )
+    .querySelectorAll(".nav button")
     .forEach(
       (button,index)=>{
 
