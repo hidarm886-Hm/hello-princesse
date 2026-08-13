@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hello princesse 🤍</title>
+<style>
+  :root{
+    --sage:#a8b9a3;
+    --sage-dark:#71836d;
+    --cream:#fbf8f0;
+    --white:#fff;
+    --blue:#dce9f5;
+    --gold:#c9a96b;
+    --text:#465248;
+    --shadow:0 12px 35px rgba(71,88,75,.12);
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    background:linear-gradient(135deg,#f7faf6,#eef3ed);
+    color:var(--text);
+    font-family:Georgia,"Times New Roman",serif;
+  }
+  .book{
+    width:min(100%,900px);
+    margin:auto;
+    min-height:100vh;
+    position:relative;
+    overflow:hidden;
+  }
+  .page{
+    min-height:100vh;
+    padding:38px 24px 90px;
+    display:none;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    background:var(--cream);
+  }
+  .page.active{display:flex;animation:fade .5s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .page1,.page7{
+    direction:ltr;
+    text-align:center;
+    background:
+      radial-gradient(circle at 20% 15%,rgba(168,185,163,.24),transparent 25%),
+      radial-gradient(circle at 80% 80%,rgba(220,233,245,.35),transparent 28%),
+      var(--cream);
+  }
+  .page1 h1{
+    font-size:clamp(2.5rem,8vw,5rem);
+    font-weight:normal;
+    color:var(--sage-dark);
+    letter-spacing:.5px;
+  }
+  .title{
+    color:var(--sage-dark);
+    font-size:clamp(1.8rem,5vw,3rem);
+    font-weight:normal;
+    margin:0 0 24px;
+  }
+  .card{
+    width:min(92%,700px);
+    background:rgba(255,255,255,.82);
+    border:1px solid rgba(168,185,163,.45);
+    border-radius:25px;
+    padding:26px;
+    box-shadow:var(--shadow);
+  }
+  .stickers{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:14px;
+    flex-wrap:wrap;
+    margin-bottom:20px;
+  }
+  .sticker{
+    width:82px;height:82px;
+    object-fit:contain;
+    border-radius:16px;
+    background:#fff;
+    border:1px dashed #b8c5b3;
+    padding:5px;
+  }
+  .greeting p{margin:0 0 20px}.greeting p:last-child{margin-bottom:0}.greeting{
+    font-size:1.08rem;
+    line-height:1.9;
+    text-align:center;
+  }
+  .calendar-row{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:16px;
+    margin-bottom:22px;
+  }
+  .fixed-sticker{
+    width:110px;height:80px;
+    object-fit:contain;
+    border-radius:14px;
+    background:white;
+    border:1px dashed #b8c5b3;
+    padding:4px;
+  }
+  .photo-grid{
+    width:min(92%,760px);
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+    gap:18px;
+  }
+  .photo-slot{
+    aspect-ratio:1/1;
+    border-radius:22px;
+    overflow:hidden;
+    background:#fff;
+    box-shadow:var(--shadow);
+    cursor:pointer;
+    position:relative;
+    border:1px solid rgba(168,185,163,.45);
+  }
+  .photo-slot img{
+    width:100%;height:100%;object-fit:cover;
+    opacity:0;
+    transition:.35s ease;
+  }
+  .photo-slot::after{
+    content:"اضغطي لرؤية الصورة 🤍";
+    position:absolute;
+    inset:0;
+    display:grid;
+    place-items:center;
+    text-align:center;
+    padding:10px;
+    color:var(--sage-dark);
+    background:linear-gradient(135deg,#fff,#eef3ed);
+    transition:.35s ease;
+    font-size:.9rem;
+  }
+  .photo-slot.show img{opacity:1}
+  .photo-slot.show::after{opacity:0;pointer-events:none}
+  .photo-note{
+    margin:16px 0 0;
+    color:#7b877d;
+    font-size:.9rem;
+  }
+  .wish-page{justify-content:flex-start;padding-top:28px}
+  .prayer{
+    width:min(94%,760px);
+    text-align:center;
+    background:white;
+    border-radius:24px;
+    padding:22px;
+    box-shadow:var(--shadow);
+    line-height:2;
+    font-size:1.05rem;
+    margin-bottom:20px;
+  }
+  .wish-bottle{
+    width:min(94%,760px);
+    text-align:center;
+  }
+  .real-wish-bottle{
+    width:150px;
+    height:205px;
+    margin:2px auto 14px;
+    position:relative;
+    filter:drop-shadow(0 12px 18px rgba(71,88,75,.14));
+  }
+  .rw-body{
+    position:absolute;
+    left:12px;
+    bottom:0;
+    width:126px;
+    height:148px;
+    border:2px solid rgba(137,163,143,.72);
+    border-radius:25px 25px 34px 34px / 20px 20px 28px 28px;
+    background:
+      linear-gradient(105deg,
+        rgba(255,255,255,.88) 0%,
+        rgba(232,244,234,.35) 24%,
+        rgba(203,222,207,.18) 56%,
+        rgba(255,255,255,.66) 100%);
+    box-shadow:
+      inset 8px 0 12px rgba(255,255,255,.72),
+      inset -8px 0 14px rgba(125,151,130,.10);
+    overflow:hidden;
+  }
+  .rw-neck{
+    position:absolute;
+    z-index:2;
+    left:50px;
+    top:28px;
+    width:50px;
+    height:45px;
+    border:2px solid rgba(137,163,143,.72);
+    border-bottom:0;
+    border-radius:11px 11px 0 0;
+    background:linear-gradient(90deg,rgba(255,255,255,.65),rgba(215,231,218,.20),rgba(255,255,255,.65));
+  }
+  .rw-lip{
+    position:absolute;
+    z-index:4;
+    left:46px;
+    top:24px;
+    width:58px;
+    height:10px;
+    border:2px solid rgba(137,163,143,.78);
+    border-radius:7px;
+    background:rgba(255,255,255,.72);
+  }
+  .rw-cork{
+    position:absolute;
+    z-index:5;
+    left:51px;
+    top:8px;
+    width:48px;
+    height:24px;
+    border-radius:6px 6px 5px 5px;
+    background:
+      repeating-linear-gradient(
+        90deg,
+        #c59d69 0,#c59d69 4px,
+        #b88d59 4px,#b88d59 7px
+      );
+    box-shadow:inset 0 2px 2px rgba(255,255,255,.28);
+  }
+  .rw-shine{
+    position:absolute;
+    left:13px;
+    top:13px;
+    width:10px;
+    height:112px;
+    border-radius:50%;
+    background:rgba(255,255,255,.58);
+    transform:rotate(4deg);
+  }
+  .rw-note{
+    position:absolute;
+    width:24px;
+    height:13px;
+    border-radius:3px;
+    background:linear-gradient(180deg,#fff8e9,#ead7b5);
+    border:1px solid rgba(166,139,96,.28);
+    box-shadow:0 2px 3px rgba(70,70,50,.10);
+  }
+  .rw-note span{
+    position:absolute;
+    left:3px;
+    right:3px;
+    top:5px;
+    height:2px;
+    border-radius:2px;
+    background:rgba(178,145,99,.38);
+  }
+  .rw-note::after{
+    content:"";
+    position:absolute;
+    right:-2px;
+    top:2px;
+    width:5px;
+    height:8px;
+    border-radius:50%;
+    border:1px solid rgba(166,139,96,.28);
+    background:#f1dfbd;
+  }
+  .rw-note-1{left:22px;bottom:22px;transform:rotate(-17deg)}
+  .rw-note-2{left:54px;bottom:31px;transform:rotate(24deg)}
+  .rw-note-3{right:20px;bottom:19px;transform:rotate(-8deg)}
+  .rw-note-4{right:36px;bottom:52px;transform:rotate(29deg)}
+  .rw-label{
+    position:absolute;
+    z-index:2;
+    left:50%;
+    top:56%;
+    transform:translate(-50%,-50%);
+    width:82px;
+    padding:7px 5px;
+    border-radius:10px;
+    background:rgba(250,249,239,.88);
+    border:1px solid rgba(168,185,163,.58);
+    color:var(--sage-dark);
+    font-family:"Noto Naskh Arabic","Amiri",serif;
+    font-size:13px;
+    line-height:1.45;
+    text-align:center;
+    white-space:nowrap;
+    box-shadow:0 3px 8px rgba(55,70,58,.08);
+  }
+  .subtitle{margin:0 0 18px;color:#7a877c;font-size:1rem}
+  .wish-grid{
+    width:100%;
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:12px;
+  }
+  .wish-btn{
+    min-height:64px;
+    border:0;
+    border-radius:18px;
+    background:var(--sage);
+    color:white;
+    font-size:1.15rem;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow:0 5px 14px rgba(71,88,75,.14);
+    transition:.2s;
+  }
+  .wish-btn:hover{transform:translateY(-3px);background:var(--sage-dark)}
+  .wish-box{
+    width:min(92%,680px);
+    min-height:110px;
+    margin-top:20px;
+    padding:22px;
+    border-radius:22px;
+    background:white;
+    border:1px solid rgba(168,185,163,.4);
+    box-shadow:var(--shadow);
+    text-align:center;
+    line-height:1.9;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:1.05rem;
+  }
+  .wish-modal{
+    position:fixed;
+    inset:0;
+    z-index:100;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+    background:rgba(53,66,57,.48);
+    backdrop-filter:blur(7px);
+  }
+  .wish-modal.open{display:flex;animation:fade .25s ease}
+  .wish-modal-card{
+    width:min(88vw,700px);
+    min-height:240px;
+    max-height:80vh;
+    overflow:auto;
+    background:#fffdf8;
+    border:2px solid rgba(168,185,163,.65);
+    border-radius:30px;
+    padding:38px 30px;
+    box-shadow:0 25px 70px rgba(30,45,35,.28);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    line-height:2;
+    font-size:clamp(1.15rem,3.5vw,1.65rem);
+    color:#465248;
+    position:relative;
+  }
+  .wish-close{
+    position:absolute;
+    top:12px;
+    left:15px;
+    width:38px;height:38px;
+    border:0;
+    border-radius:50%;
+    background:#a8b9a3;
+    color:white;
+    font-size:1.25rem;
+    cursor:pointer;
+  }
+  .wish-box{display:none}
+  .playlist{
+    text-align:center;
+    direction:ltr;
+  }
+  .youtube-btn{
+    display:inline-block;
+    margin-top:18px;
+    padding:15px 25px;
+    border-radius:999px;
+    background:#fff;
+    color:#71836d;
+    text-decoration:none;
+    border:1px solid #b8c5b3;
+    box-shadow:var(--shadow);
+    transition:.2s;
+  }
+  .youtube-btn:hover{transform:translateY(-2px);background:#f3f7f2}
+  .final{
+    direction:ltr;
+    text-align:center;
+    background:linear-gradient(145deg,#f8fbf7,#eaf0e8 55%,#dce9f5);
+  }
+  .final h1{
+    font-size:clamp(2.2rem,7vw,4.5rem);
+    font-weight:normal;
+    color:var(--sage-dark);
+  }
+  .nav{
+    position:fixed;
+    z-index:20;
+    bottom:15px;
+    left:50%;
+    transform:translateX(-50%);
+    display:flex;
+    gap:8px;
+    background:rgba(255,255,255,.92);
+    padding:8px;
+    border-radius:999px;
+    box-shadow:0 8px 28px rgba(71,88,75,.16);
+    backdrop-filter:blur(8px);
+  }
+  .nav button{
+    border:0;
+    background:transparent;
+    color:var(--sage-dark);
+    cursor:pointer;
+    border-radius:50%;
+    width:40px;height:40px;
+    font-size:1rem;
+  }
+  .nav button.active{background:var(--sage);color:white}
+  .page-number{
+    position:absolute;
+    top:18px;
+    right:22px;
+    color:#94a193;
+    font-size:.85rem;
+  }
+  @media(max-width:600px){
+    .page{padding-left:15px;padding-right:15px}
+    .wish-grid{grid-template-columns:repeat(4,1fr)}
+    .wish-btn{min-height:58px}
+    .card{padding:19px}
+  }
+</style>
+</head>
+<body>
+<div class="book">
+
+  <!-- PAGE 1 -->
+  <section class="page page1 active" id="page1">
+    <h1>Hello princesse 🤍</h1>
+  </section>
+
+  <!-- PAGE 2 -->
+  <section class="page" id="page2">
+    <span class="page-number">2 / 7</span>
+    <h2 class="title">Joyeux anniversaire! 🎂</h2>
+    <div style="font-size:clamp(2rem,6vw,3.4rem);font-weight:bold;letter-spacing:4px;color:#71836d;margin:-10px 0 24px;">BEDDIAR</div>
+    <div class="card">
+      <!-- ثابتة: استبدلي src باسم صورة التقويم -->
+      <div class="calendar-row">
+        <img class="fixed-sticker" src="calendar.png" alt="27 août">
+        <!-- ثابتة: استبدلي src باسم صورة Chapitre 20 -->
+        <img class="fixed-sticker" src="chapitre20.png" alt="Chapitre 20">
+      </div>
+      <div class="greeting">
+        <p>Que cette nouvelle année t'apporte autant de bonheur, de réussite,
+        de joie et de belles surprises que tu en diffuses autour de toi.</p>
+        <p>Avoir une amie comme toi est un magnifique cadeau.
+        Que la vie te gâte comme tu le mérites.</p>
+        <p>Reste toujours aussi brillante! ✨</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PAGE 3 -->
+  <section class="page" id="page3">
+    <span class="page-number">3 / 7</span>
+    <h2 class="title" dir="rtl">كرتوناتي الحبيبة 🙂</h2>
+    <div class="photo-grid">
+      <div class="photo-slot" onclick="this.classList.toggle('show')"><img src="cartoon1.jpg" alt=""></div>
+      <div class="photo-slot" onclick="this.classList.toggle('show')"><img src="cartoon2.jpg" alt=""></div>
+      <div class="photo-slot" onclick="this.classList.toggle('show')"><img src="cartoon3.jpg" alt=""></div>
+      <div class="photo-slot" onclick="this.classList.toggle('show')"><img src="cartoon4.jpg" alt=""></div>
+      <div class="photo-slot" onclick="this.classList.toggle('show')"><img src="cartoon5.jpg" alt=""></div>
+    </div>
+    <p class="photo-note">اضغطي على كل صورة لتظهر 🤍</p>
+  </section>
+
+  <!-- PAGE 4 -->
+  <section class="page" id="page4">
+    <span class="page-number">4 / 7</span>
+    <h2 class="title" dir="rtl">اشياء احبها 😍</h2>
+    <div class="photo-grid">
+      <div class="photo-slot" onclick="this.classList.toggle('show')"><img src="things1.jpg" alt=""></div>
+      <div class="photo-slot" onclick="this.classList.toggle('show')"><img src="things2.jpg" alt=""></div>
+      <div class="photo-slot" onclick="this.classList.toggle('show')"><img src="things3.jpg" alt=""></div>
+      <div class="photo-slot" onclick="this.classList.toggle('show')"><img src="things4.jpg" alt=""></div>
+      <div class="photo-slot" onclick="this.classList.toggle('show')"><img src="things5.jpg" alt=""></div>
+    </div>
+    <p class="photo-note">اضغطي على كل صورة لتظهر 🤍</p>
+  </section>
+
+  <!-- PAGE 5 -->
+  <section class="page wish-page" id="page5">
+    <span class="page-number">5 / 7</span>
+    <div class="prayer" dir="rtl">
+      أن تقودكِ الأيام إلى المسرّات التي تنتظرينها، وأن يملأ الله قلبكِ طمأنينةً،
+      وسكينة، وأن تبقي دائمًا سالمةً، آمنةً... يا رب. 🤍
+    </div>
+
+    <div class="wish-bottle">
+      <div class="real-wish-bottle" aria-label="قارورة أمنيات">
+        <div class="rw-cork"></div>
+        <div class="rw-lip"></div>
+        <div class="rw-neck"></div>
+        <div class="rw-body">
+          <div class="rw-shine"></div>
+          <div class="rw-note rw-note-1"><span></span></div>
+          <div class="rw-note rw-note-2"><span></span></div>
+          <div class="rw-note rw-note-3"><span></span></div>
+          <div class="rw-note rw-note-4"><span></span></div>
+          <div class="rw-label">قارورة أمنيات</div>
+        </div>
+      </div>
+      <p class="subtitle">20 petits vœux pour toi.. 🤍🫶</p>
+      <div style="margin:-4px 0 14px;color:#7a877c;font-size:.95rem;">اختاري رقمًا 🤍</div>
+
+      <div class="wish-grid" id="wishGrid"></div>
+      <div class="wish-box" id="wishBox" dir="rtl"></div>
+    </div>
+  </section>
+
+  <!-- PAGE 6 -->
+  <section class="page" id="page6">
+    <span class="page-number">6 / 7</span>
+    <div class="playlist">
+      <h2 class="title">🎵 Une petite playlist pour toi</h2>
+      <a class="youtube-btn"
+         href="https://youtube.com/playlist?list=PLD04eF7aAOu0&si=PxK83m0N-ZerUSHS"
+         target="_blank" rel="noopener noreferrer">
+        Ouvrir la playlist sur YouTube ▶
+      </a>
+    </div>
+  </section>
+
+  <!-- PAGE 7 -->
+  <section class="page page7 final" id="page7">
+    <span class="page-number">7 / 7</span>
+    <h1>Et maintenant... souris 🫶😊</h1>
+    <p style="font-size:1.25rem;color:#71836d;margin-top:8px;">كل عام و انت بالف خير يا افضل صديقة في العالم 😊😄</p>
+  </section>
+
+
+  <div class="wish-modal" id="wishModal" onclick="closeWish(event)">
+    <div class="wish-modal-card" dir="rtl">
+      <button class="wish-close" onclick="closeWish()">×</button>
+      <div id="wishModalText"></div>
+    </div>
+  </div>
+
+</div>
+
+<nav class="nav" aria-label="Navigation">
+  <button onclick="goTo(1)">1</button>
+  <button onclick="goTo(2)">2</button>
+  <button onclick="goTo(3)">3</button>
+  <button onclick="goTo(4)">4</button>
+  <button onclick="goTo(5)">5</button>
+  <button onclick="goTo(6)">6</button>
+  <button onclick="goTo(7)">7</button>
+</nav>
+
+<script>
+const wishes = [
+  "ما كُتب لكِ سيجد طريقه إليكِ. 🌿",
+  "ربما أجمل أيامكِ سيكون يومًا عاديًا جدًا. ✨",
+  "لا أحد يعرف ما يخبئه الغد... وهذه أجمل مفاجآته. 🌙",
+  "أتمنى أن تحققي أمنية لم تخبري بها أحدًا. 🤍",
+  "أتمنى أن يبقى فيكِ دائمًا شيءٌ لا يكبر. 🦋",
+  "لا تكبري كثيرًا... بعض الأشياء الجميلة تحتاج قليلًا من الطفولة. 🙂",
+  "أتمنى لكِ مالًا لا ينتهي... ولا تعرفين أين تضعينه. 😂💸",
+  "أتمنى لكِ نومًا طويلًا، هادئًا، بلا منبّه. 😴🤍",
+  "WOOOOOY 😂😂 ما زلتِ تفتحين؟!",
+  "أتمنى دومًا أن تعرفي أن صديقكِ هنا موجود ليسمعكِ دون ملل... حتى الصوتيات ×1 😂😂🎧",
+  "﴿إِنَّ رَبِّي لَطِيفٌ لِّمَا يَشَاءُ﴾ 🤍",
+  "﴿لَا تَدْرِي لَعَلَّ اللَّهَ يُحْدِثُ بَعْدَ ذَٰلِكَ أَمْرًا﴾ 🌿🤍",
+  "أتمنى أن تكوني بخير .. جدًا جدًاااااا 🤍",
+  "يُرسِلُنا الله بَعضَنا لِبَعضٍ رَحمَات.. 🦋",
+  "بعض الأشياء لا تحتاج سببًا، يكفي أنها أسعدتكِ. ✨",
+  "أتمنى لكِ أيامًا تشبه قلبكِ الجميل. 🤍🌷",
+  "فارغة",
+  "أتمنى أن يجبركِ الله جبرًا يُنسيكِ كل تعب، وكأنكِ لم تذوقي مشقةً قط. 🤍",
+  "أتمنى أن تدركي دائمًا كم أن وجودكِ بين من يحبونكِ يصنع فارقًا كبيرًا.",
+  "﴿وَمَن يَتَوَكَّلْ عَلَى اللَّهِ فَهُوَ حَسْبُهُ﴾ 🤍"
+];
+
+// ترتيب عشوائي ثابت عند فتح الصفحة
+const shuffled = [...wishes].sort(() => Math.random() - 0.5);
+const grid = document.getElementById("wishGrid");
+const modal = document.getElementById("wishModal");
+const modalText = document.getElementById("wishModalText");
+
+shuffled.forEach((wish, index) => {
+  const btn = document.createElement("button");
+  btn.className = "wish-btn";
+  btn.textContent = index + 1;
+  btn.onclick = () => {
+    modalText.textContent = wish;
+    modal.classList.add("open");
+  };
+  grid.appendChild(btn);
+});
+
+function closeWish(event){
+  if(event && event.target !== modal) return;
+  modal.classList.remove("open");
+}
+document.addEventListener("keydown", e => {
+  if(e.key === "Escape") modal.classList.remove("open");
+});
+
+function goTo(n){
+  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+  document.getElementById("page"+n).classList.add("active");
+  document.querySelectorAll(".nav button").forEach((b,i)=>b.classList.toggle("active",i===n-1));
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+goTo(1);
+</script>
+</body>
+</html>
