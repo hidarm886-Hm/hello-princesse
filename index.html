@@ -59,7 +59,6 @@ textarea{
   overflow:hidden;
 }
 
-
 /* =========================
    PAGES
 ========================= */
@@ -91,7 +90,6 @@ textarea{
     transform:none;
   }
 }
-
 
 /* =========================
    OPENING & PASSCODE
@@ -187,17 +185,12 @@ textarea{
   text-align:center;
 }
 
-.open-btn{
-  display:none;
-}
-
-
 /* =========================
    PAGE 1
 ========================= */
 
 .page1,
-.page7{
+.page8{
   direction:ltr;
   text-align:center;
 
@@ -226,7 +219,6 @@ textarea{
   color:var(--sage-dark);
 }
 
-
 /* =========================
    TITLES
 ========================= */
@@ -244,17 +236,16 @@ textarea{
   margin:0 0 24px;
 }
 
-
 /* =========================
-   PAGE 2
+   PAGE 2 (BIRTHDAY CAKE & CANDLES)
 ========================= */
 
-#page2{
-  justify-content:flex-start;
-  padding-top:78px;
+#page2 {
+  justify-content: flex-start;
+  padding-top: 60px;
+  text-align: center;
 }
 
-/* إزالة الفلاش الأزرق والتحديد لجميع عناصر الصفحة 2 */
 #page2 * {
   -webkit-tap-highlight-color: transparent !important;
   outline: none !important;
@@ -262,7 +253,100 @@ textarea{
   -webkit-user-select: none;
 }
 
-#page2 > .title{
+.cake-hint {
+  font-family: "Noto Naskh Arabic", "Amiri", Georgia, serif;
+  direction: rtl;
+  text-align: center;
+  font-size: 1.25rem;
+  color: var(--sage-dark);
+  margin-bottom: 10px;
+  line-height: 1.8;
+  transition: color 0.5s ease;
+}
+
+.cake-wrapper {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  margin-top: 55px;
+}
+
+.cake-img {
+  width: min(50vw, 170px);
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
+}
+
+.candles-group {
+  position: absolute;
+  top: 10%; 
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 20px;
+  z-index: 5;
+}
+
+.mini-candle {
+  width: 16px;
+  height: 48px;
+  background: linear-gradient(to bottom, #fff, #f3d5db);
+  border-radius: 4px;
+  position: relative;
+}
+
+.mini-wick {
+  width: 3px;
+  height: 9px;
+  background: #444;
+  position: absolute;
+  top: -9px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.mini-flame {
+  width: 18px;
+  height: 28px;
+  background: orange;
+  border-radius: 50% 50% 35% 35%;
+  position: absolute;
+  top: -34px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 12px orange, 0 0 20px yellow;
+  animation: flicker .15s infinite alternate;
+  transition: opacity .4s ease, transform .4s ease;
+}
+
+.mini-flame.out {
+  opacity: 0;
+  transform: translateX(-50%) scale(0.2);
+}
+
+@keyframes flicker {
+  0% { transform: translateX(-50%) scale(1); }
+  100% { transform: translateX(-50%) scale(1.08); }
+}
+
+/* =========================
+   PAGE 3 (CALENDAR & CARD)
+========================= */
+
+#page3{
+  justify-content:flex-start;
+  padding-top:78px;
+}
+
+#page3 * {
+  -webkit-tap-highlight-color: transparent !important;
+  outline: none !important;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+#page3 > .title{
   margin-top:4px;
   margin-bottom:4px;
   font-family:Georgia,"Times New Roman",serif;
@@ -275,88 +359,9 @@ textarea{
   font-weight:bold;
   letter-spacing:4px;
   color:#71836d;
-  margin:8px 0 0;
+  margin:8px 0 20px;
   line-height:1.1;
 }
-
-
-/* الشمعة */
-
-.candle-container{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  margin-top:38px;
-  margin-bottom:20px;
-  cursor:pointer;
-  -webkit-tap-highlight-color: transparent;
-  outline: none;
-  user-select: none;
-  -webkit-user-select: none;
-}
-
-.candle-hint{
-  order:2;
-  font-family:"Noto Naskh Arabic","Amiri",Georgia,serif;
-  direction:rtl;
-  text-align:center;
-  font-size:.95rem;
-  color:var(--sage-dark);
-  margin-top:16px;
-  opacity:.9;
-  line-height:1.8;
-  transition:color .5s ease;
-}
-
-.candle{
-  order:1;
-  width:24px;
-  height:60px;
-  background:linear-gradient(to bottom,#fffdf8,#eae4d3);
-  border-radius:4px;
-  position:relative;
-  box-shadow:inset -3px 0 5px rgba(0,0,0,.05);
-}
-
-.wick{
-  width:2px;
-  height:10px;
-  background:#555;
-  position:absolute;
-  top:-10px;
-  left:50%;
-  transform:translateX(-50%);
-}
-
-.flame{
-  width:14px;
-  height:22px;
-  background:orange;
-  border-radius:50% 50% 35% 35%;
-  position:absolute;
-  top:-30px;
-  left:50%;
-  transform:translateX(-50%);
-  box-shadow:0 0 12px orange,0 0 20px yellow;
-  animation:flicker .1s infinite alternate;
-  transition:opacity .4s ease,transform .4s ease;
-}
-
-.flame.out{
-  opacity:0;
-  transform:translateX(-50%) scale(.2);
-}
-
-@keyframes flicker{
-  0%{
-    transform:translateX(-50%) scale(1);
-  }
-
-  100%{
-    transform:translateX(-50%) scale(1.08) rotate(2deg);
-  }
-}
-
 
 /* CARD */
 
@@ -387,7 +392,6 @@ textarea{
   border:1px dashed #b8c5b3;
   padding:4px;
 }
-
 
 /* =========================
    ENVELOPE
@@ -488,9 +492,8 @@ textarea{
   }
 }
 
-
 /* =========================
-   PAGE 3 + 4
+   PAGE 4 + 5 (PHOTOS)
 ========================= */
 
 .photo-grid{
@@ -551,9 +554,8 @@ textarea{
   text-align:center;
 }
 
-
 /* =========================
-   PAGE 5
+   PAGE 6 (WISHES)
 ========================= */
 
 .wish-page{
@@ -698,29 +700,10 @@ textarea{
   background:#f1dfbd;
 }
 
-.rw-note-1{
-  left:22px;
-  bottom:22px;
-  transform:rotate(-17deg);
-}
-
-.rw-note-2{
-  left:54px;
-  bottom:31px;
-  transform:rotate(24deg);
-}
-
-.rw-note-3{
-  right:20px;
-  bottom:19px;
-  transform:rotate(-8deg);
-}
-
-.rw-note-4{
-  right:36px;
-  bottom:52px;
-  transform:rotate(29deg);
-}
+.rw-note-1{ left:22px; bottom:22px; transform:rotate(-17deg); }
+.rw-note-2{ left:54px; bottom:31px; transform:rotate(24deg); }
+.rw-note-3{ right:20px; bottom:19px; transform:rotate(-8deg); }
+.rw-note-4{ right:36px; bottom:52px; transform:rotate(29deg); }
 
 .rw-label{
   position:absolute;
@@ -776,20 +759,15 @@ textarea{
   cursor:pointer;
   box-shadow:0 5px 14px rgba(71,88,75,.14);
   transition:.2s;
-
   -webkit-tap-highlight-color: transparent;
   outline: none;
   user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
 }
 
 .wish-btn:hover{
   transform:translateY(-3px);
   background:var(--sage-dark);
 }
-
 
 /* =========================
    WISH MODAL
@@ -846,9 +824,8 @@ textarea{
   cursor:pointer;
 }
 
-
 /* =========================
-   PAGE 6
+   PAGE 7 (PLAYLIST)
 ========================= */
 
 .playlist{
@@ -885,12 +862,11 @@ textarea{
   background:#f3f7f2;
 }
 
-
 /* =========================
-   PAGE 7 FINAL
+   PAGE 8 FINAL
 ========================= */
 
-.page7{
+.page8{
   overflow:hidden;
 }
 
@@ -913,7 +889,7 @@ textarea{
   filter:drop-shadow(0 12px 18px rgba(71,88,75,.16));
 }
 
-.page7.final-animation .princess-final{
+.page8.final-animation .princess-final{
   animation:princessAppear 1.1s cubic-bezier(.22,1,.36,1) .4s forwards;
 }
 
@@ -922,7 +898,6 @@ textarea{
     opacity:0;
     transform:translateY(25px) scale(.94);
   }
-
   100%{
     opacity:1;
     transform:translateY(0) scale(1);
@@ -944,7 +919,7 @@ textarea{
   display:block;
 }
 
-.page7.final-animation .final-title{
+.page8.final-animation .final-title{
   animation:finalTitleAppear .85s ease 1.2s forwards;
 }
 
@@ -953,7 +928,6 @@ textarea{
     opacity:0;
     transform:translateY(15px);
   }
-
   to{
     opacity:1;
     transform:translateY(0);
@@ -971,7 +945,7 @@ textarea{
   transform:translateY(12px);
 }
 
-.page7.final-animation .final-message{
+.page8.final-animation .final-message{
   animation:finalMessageAppear .85s ease 2.5s forwards;
 }
 
@@ -980,13 +954,11 @@ textarea{
     opacity:0;
     transform:translateY(12px);
   }
-
   to{
     opacity:1;
     transform:translateY(0);
   }
 }
-
 
 /* =========================
    MUSIC BUTTON
@@ -1009,18 +981,14 @@ textarea{
   font-size:1rem;
   transition:.2s;
   font-family:Georgia,"Times New Roman",serif;
-  
-  /* إزالة الفلاش الأزرق عند الضغط */
   -webkit-tap-highlight-color: transparent;
   outline: none;
   user-select: none;
-  -webkit-user-select: none;
 }
 
 .music-btn:hover{
   transform:scale(1.05);
 }
-
 
 /* =========================
    NAVIGATION
@@ -1051,12 +1019,9 @@ textarea{
   height:40px;
   font-size:1rem;
   font-family:Georgia,"Times New Roman",serif;
-  
-  /* إزالة الفلاش الأزرق عند الضغط على أرقام الصفحات */
   -webkit-tap-highlight-color: transparent;
   outline: none;
   user-select: none;
-  -webkit-user-select: none;
 }
 
 .nav button.active{
@@ -1073,7 +1038,6 @@ textarea{
   font-family:Georgia,"Times New Roman",serif;
 }
 
-
 /* =========================
    MOBILE
 ========================= */
@@ -1085,11 +1049,11 @@ textarea{
     padding-right:15px;
   }
 
-  #page2{
+  #page3{
     padding-top:72px;
   }
 
-  #page2 > .title{
+  #page3 > .title{
     margin-bottom:4px;
     font-size:clamp(1.8rem,7vw,2.5rem);
   }
@@ -1098,16 +1062,6 @@ textarea{
     font-size:clamp(2rem,9vw,3.2rem);
     margin-top:8px;
     letter-spacing:3px;
-  }
-
-  .candle-container{
-    margin-top:36px;
-    margin-bottom:18px;
-  }
-
-  .candle-hint{
-    margin-top:15px;
-    font-size:.9rem;
   }
 
   .wish-grid{
@@ -1191,9 +1145,7 @@ textarea{
 </style>
 </head>
 
-
 <body>
-
 
 <!-- =========================
      OPTIONAL MUSIC
@@ -1207,9 +1159,7 @@ textarea{
   🎧
 </button>
 
-
 <div class="book">
-
 
 <!-- =========================
      OPENING SCREEN
@@ -1249,7 +1199,6 @@ textarea{
 
 </section>
 
-
 <!-- =========================
      PAGE 1
 ========================= -->
@@ -1262,15 +1211,59 @@ textarea{
 
 </section>
 
-
 <!-- =========================
-     PAGE 2
+     PAGE 2 (CAKE & CANDLES)
 ========================= -->
 
 <section class="page" id="page2">
 
   <span class="page-number">
-    2 / 7
+    2 / 8
+  </span>
+
+  <div class="cake-hint" id="cakeHint" dir="rtl">
+    تمني أمنية ثم إطفئي الشموع ✨️
+  </div>
+
+  <div class="cake-wrapper" onclick="blowCakeCandles()">
+    
+    <div class="candles-group">
+
+      <div class="mini-candle">
+        <div class="mini-wick"></div>
+        <div class="mini-flame"></div>
+      </div>
+
+      <div class="mini-candle">
+        <div class="mini-wick"></div>
+        <div class="mini-flame"></div>
+      </div>
+
+      <div class="mini-candle">
+        <div class="mini-wick"></div>
+        <div class="mini-flame"></div>
+      </div>
+
+    </div>
+
+    <img 
+      class="cake-img" 
+      src="images/cake.png" 
+      alt="كعكة عيد الميلاد"
+    >
+
+  </div>
+
+</section>
+
+<!-- =========================
+     PAGE 3
+========================= -->
+
+<section class="page" id="page3">
+
+  <span class="page-number">
+    3 / 8
   </span>
 
   <h2 class="title">
@@ -1280,20 +1273,6 @@ textarea{
   <div class="beddiar-title">
     BEDDIAR
   </div>
-
-  <div class="candle-container" onclick="blowCandle()">
-
-    <span class="candle-hint" id="candleHint" dir="rtl">
-      تمني أمنية ثم إطفئي الشمعة ✨️
-    </span>
-
-    <div class="candle">
-      <div class="wick"></div>
-      <div class="flame" id="flame"></div>
-    </div>
-
-  </div>
-
 
   <div class="card">
 
@@ -1313,7 +1292,6 @@ textarea{
 
     </div>
 
-
     <div
       class="envelope-wrapper"
       id="envelopeWrapper"
@@ -1329,7 +1307,6 @@ textarea{
         </div>
 
       </div>
-
 
       <div class="greeting">
 
@@ -1356,15 +1333,14 @@ textarea{
 
 </section>
 
-
 <!-- =========================
-     PAGE 3
+     PAGE 4
 ========================= -->
 
-<section class="page" id="page3">
+<section class="page" id="page4">
 
   <span class="page-number">
-    3 / 7
+    4 / 8
   </span>
 
   <h2 class="title" dir="rtl">
@@ -1401,15 +1377,14 @@ textarea{
 
 </section>
 
-
 <!-- =========================
-     PAGE 4
+     PAGE 5
 ========================= -->
 
-<section class="page" id="page4">
+<section class="page" id="page5">
 
   <span class="page-number">
-    4 / 7
+    5 / 8
   </span>
 
   <h2 class="title" dir="rtl">
@@ -1446,15 +1421,14 @@ textarea{
 
 </section>
 
-
 <!-- =========================
-     PAGE 5
+     PAGE 6
 ========================= -->
 
-<section class="page wish-page" id="page5">
+<section class="page wish-page" id="page6">
 
   <span class="page-number">
-    5 / 7
+    6 / 8
   </span>
 
   <div class="prayer" dir="rtl">
@@ -1515,15 +1489,14 @@ textarea{
 
 </section>
 
-
 <!-- =========================
-     PAGE 6
+     PAGE 7
 ========================= -->
 
-<section class="page" id="page6">
+<section class="page" id="page7">
 
   <span class="page-number">
-    6 / 7
+    7 / 8
   </span>
 
   <div class="playlist">
@@ -1546,15 +1519,14 @@ textarea{
 
 </section>
 
-
 <!-- =========================
-     PAGE 7
+     PAGE 8 FINAL
 ========================= -->
 
-<section class="page page7 final" id="page7">
+<section class="page page8 final" id="page8">
 
   <span class="page-number">
-    7 / 7
+    8 / 8
   </span>
 
   <div class="final-content">
@@ -1585,7 +1557,6 @@ textarea{
 
 </section>
 
-
 <!-- =========================
      WISH MODAL
 ========================= -->
@@ -1613,7 +1584,6 @@ textarea{
 
 </div>
 
-
 <!-- =========================
      NAVIGATION
 ========================= -->
@@ -1632,12 +1602,11 @@ textarea{
   <button onclick="goTo(5)">5</button>
   <button onclick="goTo(6)">6</button>
   <button onclick="goTo(7)">7</button>
+  <button onclick="goTo(8)">8</button>
 
 </nav>
 
-
 <script>
-
 
 /* =========================
    CODE & OPEN BOOK
@@ -1675,6 +1644,47 @@ function checkCode(number){
 
 }
 
+/* =========================
+   BLOW CAKE CANDLES (PAGE 2)
+========================= */
+
+function blowCakeCandles(){
+
+  const flames = document.querySelectorAll(".mini-flame");
+
+  const hint = document.getElementById("cakeHint");
+
+  let isAnyLit = false;
+
+  flames.forEach(f => {
+    if(!f.classList.contains("out")) isAnyLit = true;
+  });
+
+  if(isAnyLit){
+
+    flames.forEach(f => f.classList.add("out"));
+
+    document.body.classList.add("lights-off");
+
+    setTimeout(()=>{
+
+      hint.textContent = "إن شاء الله.. ❤️‍🩹";
+
+      hint.setAttribute("dir","rtl");
+
+      document.body.classList.remove("lights-off");
+
+      confetti({
+        particleCount:70,
+        spread:70,
+        origin:{ y:0.5 }
+      });
+
+    }, 700);
+
+  }
+
+}
 
 /* =========================
    20 WISHES
@@ -1724,7 +1734,6 @@ const wishes = [
 
 ];
 
-
 /* =========================
    SHUFFLE & RENDER
 ========================= */
@@ -1738,7 +1747,6 @@ const grid = document.getElementById("wishGrid");
 const modal = document.getElementById("wishModal");
 
 const modalText = document.getElementById("wishModalText");
-
 
 shuffled.forEach((wish,index)=>{
 
@@ -1760,7 +1768,6 @@ shuffled.forEach((wish,index)=>{
 
 });
 
-
 /* =========================
    CLOSE MODAL
 ========================= */
@@ -1775,7 +1782,6 @@ function closeWish(event){
 
 }
 
-
 document.addEventListener("keydown",e=>{
 
   if(e.key === "Escape"){
@@ -1785,49 +1791,6 @@ document.addEventListener("keydown",e=>{
   }
 
 });
-
-
-/* =========================
-   BLOW CANDLE
-========================= */
-
-function blowCandle(){
-
-  const flame = document.getElementById("flame");
-
-  const hint = document.getElementById("candleHint");
-
-
-  if(!flame.classList.contains("out")){
-
-    flame.classList.add("out");
-
-    document.body.classList.add("lights-off");
-
-
-    setTimeout(()=>{
-
-      hint.textContent =
-        "إن شاء الله .. ❤️‍🩹";
-
-      hint.setAttribute("dir","rtl");
-
-
-      document.body.classList.remove("lights-off");
-
-
-      confetti({
-        particleCount:50,
-        spread:65,
-        origin:{ y:0.4 }
-      });
-
-    },700);
-
-  }
-
-}
-
 
 /* =========================
    OPEN ENVELOPE
@@ -1841,7 +1804,6 @@ function openEnvelope(){
   wrapper.classList.add("open");
 
 }
-
 
 /* =========================
    PAGE NAVIGATION
@@ -1857,16 +1819,12 @@ function goTo(n){
 
   });
 
-
   const target =
     document.getElementById("page"+n);
 
-
   target.classList.add("active");
 
-
   updateNav(n);
-
 
   window.scrollTo({
 
@@ -1876,11 +1834,9 @@ function goTo(n){
 
   });
 
-
-  if(n === 7){
+  if(n === 8){
 
     target.classList.add("final-animation");
-
 
     setTimeout(()=>{
 
@@ -1907,7 +1863,6 @@ function goTo(n){
 
 }
 
-
 /* =========================
    NAVIGATION ACTIVE STATE
 ========================= */
@@ -1927,7 +1882,6 @@ function updateNav(n){
 
 }
 
-
 /* =========================
    OPTIONAL MUSIC
 ========================= */
@@ -1939,7 +1893,6 @@ const musicBtn =
   document.getElementById("musicBtn");
 
 let musicPlaying = false;
-
 
 function toggleMusic(){
 
@@ -1976,4 +1929,4 @@ function toggleMusic(){
 </script>
 
 </body>
-</html>
+  </html>
