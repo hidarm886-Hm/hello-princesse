@@ -254,6 +254,14 @@ textarea{
   padding-top:78px;
 }
 
+/* إزالة الفلاش الأزرق والتحديد لجميع عناصر الصفحة 2 */
+#page2 * {
+  -webkit-tap-highlight-color: transparent !important;
+  outline: none !important;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
 #page2 > .title{
   margin-top:4px;
   margin-bottom:4px;
@@ -281,6 +289,10 @@ textarea{
   margin-top:38px;
   margin-bottom:20px;
   cursor:pointer;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .candle-hint{
@@ -385,6 +397,10 @@ textarea{
   margin:20px auto 0;
   cursor:pointer;
   perspective:1000px;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .envelope{
@@ -993,6 +1009,12 @@ textarea{
   font-size:1rem;
   transition:.2s;
   font-family:Georgia,"Times New Roman",serif;
+  
+  /* إزالة الفلاش الأزرق عند الضغط */
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .music-btn:hover{
@@ -1029,6 +1051,12 @@ textarea{
   height:40px;
   font-size:1rem;
   font-family:Georgia,"Times New Roman",serif;
+  
+  /* إزالة الفلاش الأزرق عند الضغط على أرقام الصفحات */
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .nav button.active{
@@ -1948,4 +1976,4 @@ function toggleMusic(){
 </script>
 
 </body>
-      </html>
+</html>
