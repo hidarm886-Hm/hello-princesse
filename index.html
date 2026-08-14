@@ -43,7 +43,6 @@ body{
   overflow:hidden;
 }
 
-
 /* =========================
    PAGES
 ========================= */
@@ -65,7 +64,6 @@ body{
 }
 
 @keyframes pageEnter{
-
   from{
     opacity:0;
     transform:translateY(18px) scale(.985);
@@ -75,9 +73,7 @@ body{
     opacity:1;
     transform:none;
   }
-
 }
-
 
 /* =========================
    OPENING
@@ -85,7 +81,6 @@ body{
 
 .opening{
   min-height:100vh;
-
   background:
     radial-gradient(
       circle at 20% 15%,
@@ -102,45 +97,34 @@ body{
   text-align:center;
 }
 
+.opening-title{
+  display:none;
+}
+
 .open-btn{
-
   border:0;
-
   padding:17px 30px;
-
   border-radius:999px;
-
   background:var(--sage);
-
   color:white;
-
   font-family:inherit;
-
   font-size:1.05rem;
-
   cursor:pointer;
 
   box-shadow:
-    0 10px 25px
-    rgba(71,88,75,.18);
+    0 10px 25px rgba(71,88,75,.18);
 
   transition:.25s ease;
 }
 
 .open-btn:hover{
-
   transform:translateY(-3px);
-
   background:var(--sage-dark);
-
 }
 
 .open-btn:active{
-
   transform:scale(.96);
-
 }
-
 
 /* =========================
    PAGE 1
@@ -148,9 +132,7 @@ body{
 
 .page1,
 .page7{
-
   direction:ltr;
-
   text-align:center;
 
   background:
@@ -168,194 +150,107 @@ body{
 }
 
 .page1 h1{
-
-  font-size:
-    clamp(
-      2.5rem,
-      8vw,
-      5rem
-    );
-
+  font-size:clamp(2.5rem,8vw,5rem);
   font-weight:normal;
-
   color:var(--sage-dark);
-
 }
-
 
 /* =========================
    TITLES
 ========================= */
 
 .title{
-
   color:var(--sage-dark);
-
-  font-size:
-    clamp(
-      1.8rem,
-      5vw,
-      3rem
-    );
-
+  font-size:clamp(1.8rem,5vw,3rem);
   font-weight:normal;
-
-  margin:
-    0 0 24px;
+  margin:0 0 24px;
 }
-
 
 /* =========================
    PAGE 2
 ========================= */
 
 .card{
-
   width:min(92%,700px);
-
-  background:
-    rgba(255,255,255,.82);
-
-  border:
-    1px solid
-    rgba(168,185,163,.45);
-
+  background:rgba(255,255,255,.82);
+  border:1px solid rgba(168,185,163,.45);
   border-radius:25px;
-
   padding:26px;
-
   box-shadow:var(--shadow);
-
 }
 
 .calendar-row{
-
   display:flex;
-
   align-items:center;
-
   justify-content:center;
-
   gap:16px;
-
   margin-bottom:22px;
-
 }
 
 .fixed-sticker{
-
   width:110px;
-
   height:80px;
-
   object-fit:contain;
-
   border-radius:14px;
-
   background:white;
-
-  border:
-    1px dashed
-    #b8c5b3;
-
+  border:1px dashed #b8c5b3;
   padding:4px;
-
 }
 
 .greeting{
-
   font-size:1.08rem;
-
   line-height:1.9;
-
   text-align:center;
-
 }
 
 .greeting p{
-
-  margin:
-    0 0 20px;
-
+  margin:0 0 20px;
 }
 
 .greeting p:last-child{
-
   margin-bottom:0;
-
 }
-
 
 /* =========================
    PAGE 3 + 4
 ========================= */
 
 .photo-grid{
-
   width:min(92%,760px);
-
   display:grid;
-
-  grid-template-columns:
-    repeat(
-      auto-fit,
-      minmax(120px,1fr)
-    );
-
+  grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
   gap:18px;
-
 }
 
 .photo-slot{
-
   aspect-ratio:1/1;
-
   border-radius:22px;
-
   overflow:hidden;
-
   background:#fff;
-
   box-shadow:var(--shadow);
-
   cursor:pointer;
-
   position:relative;
-
-  border:
-    1px solid
-    rgba(168,185,163,.45);
-
+  border:1px solid rgba(168,185,163,.45);
 }
 
 .photo-slot img{
-
   width:100%;
-
   height:100%;
-
   object-fit:cover;
-
   opacity:0;
-
   transition:.35s ease;
-
 }
 
 .photo-slot::after{
-
   content:"Clique.. et Découvre 🙂";
 
   position:absolute;
-
   inset:0;
 
   display:grid;
-
   place-items:center;
 
   text-align:center;
-
   padding:10px;
 
   direction:ltr;
@@ -372,114 +267,72 @@ body{
   transition:.35s ease;
 
   font-size:.9rem;
-
 }
 
 .photo-slot.show img{
-
   opacity:1;
-
 }
 
 .photo-slot.show::after{
-
   opacity:0;
-
   pointer-events:none;
-
 }
 
 .photo-note{
-
   margin:16px 0 0;
-
   color:#7b877d;
-
   font-size:.9rem;
-
   direction:ltr;
-
   text-align:center;
-
 }
-
 
 /* =========================
    PAGE 5
 ========================= */
 
 .wish-page{
-
   justify-content:flex-start;
-
   padding-top:28px;
-
 }
 
 .prayer{
-
   width:min(94%,760px);
-
   text-align:center;
-
   background:white;
-
   border-radius:24px;
-
   padding:22px;
-
   box-shadow:var(--shadow);
-
   line-height:2;
-
   font-size:1.05rem;
-
   margin-bottom:20px;
-
 }
 
 .wish-bottle{
-
   width:min(94%,760px);
-
   text-align:center;
-
 }
 
 .real-wish-bottle{
-
   width:150px;
-
   height:205px;
-
-  margin:
-    2px auto 14px;
-
+  margin:2px auto 14px;
   position:relative;
 
   filter:
     drop-shadow(
-      0 12px 18px
-      rgba(71,88,75,.14)
+      0 12px 18px rgba(71,88,75,.14)
     );
-
 }
 
 .rw-body{
-
   position:absolute;
-
   left:12px;
-
   bottom:0;
 
   width:126px;
-
   height:148px;
 
-  border:
-    2px solid
-    rgba(137,163,143,.72);
+  border:2px solid rgba(137,163,143,.72);
 
   border-radius:
     25px 25px 34px 34px /
@@ -495,38 +348,26 @@ body{
     );
 
   box-shadow:
-    inset 8px 0 12px
-    rgba(255,255,255,.72),
-
-    inset -8px 0 14px
-    rgba(125,151,130,.10);
+    inset 8px 0 12px rgba(255,255,255,.72),
+    inset -8px 0 14px rgba(125,151,130,.10);
 
   overflow:hidden;
-
 }
 
 .rw-neck{
-
   position:absolute;
-
   z-index:2;
 
   left:50px;
-
   top:28px;
 
   width:50px;
-
   height:45px;
 
-  border:
-    2px solid
-    rgba(137,163,143,.72);
-
+  border:2px solid rgba(137,163,143,.72);
   border-bottom:0;
 
-  border-radius:
-    11px 11px 0 0;
+  border-radius:11px 11px 0 0;
 
   background:
     linear-gradient(
@@ -535,50 +376,35 @@ body{
       rgba(215,231,218,.20),
       rgba(255,255,255,.65)
     );
-
 }
 
 .rw-lip{
-
   position:absolute;
-
   z-index:4;
 
   left:46px;
-
   top:24px;
 
   width:58px;
-
   height:10px;
 
-  border:
-    2px solid
-    rgba(137,163,143,.78);
-
+  border:2px solid rgba(137,163,143,.78);
   border-radius:7px;
 
-  background:
-    rgba(255,255,255,.72);
-
+  background:rgba(255,255,255,.72);
 }
 
 .rw-cork{
-
   position:absolute;
-
   z-index:5;
 
   left:51px;
-
   top:8px;
 
   width:48px;
-
   height:24px;
 
-  border-radius:
-    6px 6px 5px 5px;
+  border-radius:6px 6px 5px 5px;
 
   background:
     repeating-linear-gradient(
@@ -590,38 +416,29 @@ body{
     );
 
   box-shadow:
-    inset 0 2px 2px
-    rgba(255,255,255,.28);
-
+    inset 0 2px 2px rgba(255,255,255,.28);
 }
 
 .rw-shine{
-
   position:absolute;
 
   left:13px;
-
   top:13px;
 
   width:10px;
-
   height:112px;
 
   border-radius:50%;
 
-  background:
-    rgba(255,255,255,.58);
+  background:rgba(255,255,255,.58);
 
   transform:rotate(4deg);
-
 }
 
 .rw-note{
-
   position:absolute;
 
   width:24px;
-
   height:13px;
 
   border-radius:3px;
@@ -633,111 +450,76 @@ body{
       #ead7b5
     );
 
-  border:
-    1px solid
-    rgba(166,139,96,.28);
+  border:1px solid rgba(166,139,96,.28);
 
   box-shadow:
-    0 2px 3px
-    rgba(70,70,50,.10);
-
+    0 2px 3px rgba(70,70,50,.10);
 }
 
 .rw-note span{
-
   position:absolute;
 
   left:3px;
-
   right:3px;
-
   top:5px;
 
   height:2px;
 
   border-radius:2px;
 
-  background:
-    rgba(178,145,99,.38);
-
+  background:rgba(178,145,99,.38);
 }
 
 .rw-note::after{
-
   content:"";
 
   position:absolute;
 
   right:-2px;
-
   top:2px;
 
   width:5px;
-
   height:8px;
 
   border-radius:50%;
 
-  border:
-    1px solid
-    rgba(166,139,96,.28);
+  border:1px solid rgba(166,139,96,.28);
 
   background:#f1dfbd;
-
 }
 
 .rw-note-1{
-
   left:22px;
-
   bottom:22px;
-
   transform:rotate(-17deg);
-
 }
 
 .rw-note-2{
-
   left:54px;
-
   bottom:31px;
-
   transform:rotate(24deg);
-
 }
 
 .rw-note-3{
-
   right:20px;
-
   bottom:19px;
-
   transform:rotate(-8deg);
-
 }
 
 .rw-note-4{
-
   right:36px;
-
   bottom:52px;
-
   transform:rotate(29deg);
-
 }
 
 .rw-label{
-
   position:absolute;
-
   z-index:2;
 
   left:50%;
-
   top:56%;
 
-  transform:
-    translate(-50%,-50%);
+  transform:translate(-50%,-50%);
 
   width:82px;
 
@@ -745,12 +527,9 @@ body{
 
   border-radius:10px;
 
-  background:
-    rgba(250,249,239,.88);
+  background:rgba(250,249,239,.88);
 
-  border:
-    1px solid
-    rgba(168,185,163,.58);
+  border:1px solid rgba(168,185,163,.58);
 
   color:var(--sage-dark);
 
@@ -760,7 +539,6 @@ body{
     serif;
 
   font-size:13px;
-
   line-height:1.45;
 
   text-align:center;
@@ -768,26 +546,17 @@ body{
   white-space:nowrap;
 
   box-shadow:
-    0 3px 8px
-    rgba(55,70,58,.08);
-
+    0 3px 8px rgba(55,70,58,.08);
 }
 
 .subtitle{
-
-  margin:
-    0 0 18px;
-
+  margin:0 0 18px;
   color:#7a877c;
-
   font-size:1rem;
-
 }
 
 .wish-instruction{
-
-  margin:
-    -4px 0 14px;
+  margin:-4px 0 14px;
 
   color:#7a877c;
 
@@ -798,11 +567,9 @@ body{
   text-align:center;
 
   direction:rtl;
-
 }
 
 .wish-grid{
-
   width:100%;
 
   display:grid;
@@ -811,11 +578,9 @@ body{
     repeat(5,1fr);
 
   gap:12px;
-
 }
 
 .wish-btn{
-
   min-height:64px;
 
   border:0;
@@ -833,30 +598,22 @@ body{
   cursor:pointer;
 
   box-shadow:
-    0 5px 14px
-    rgba(71,88,75,.14);
+    0 5px 14px rgba(71,88,75,.14);
 
   transition:.2s;
-
 }
 
 .wish-btn:hover{
-
   transform:translateY(-3px);
-
   background:var(--sage-dark);
-
 }
-
 
 /* =========================
    WISH MODAL
 ========================= */
 
 .wish-modal{
-
   position:fixed;
-
   inset:0;
 
   z-index:100;
@@ -864,7 +621,6 @@ body{
   display:none;
 
   align-items:center;
-
   justify-content:center;
 
   padding:24px;
@@ -873,23 +629,17 @@ body{
     rgba(53,66,57,.48);
 
   backdrop-filter:blur(7px);
-
 }
 
 .wish-modal.open{
-
   display:flex;
-
   animation:fade .25s ease;
-
 }
 
 .wish-modal-card{
-
   width:min(88vw,700px);
 
   min-height:240px;
-
   max-height:80vh;
 
   overflow:auto;
@@ -897,21 +647,18 @@ body{
   background:#fffdf8;
 
   border:
-    2px solid
-    rgba(168,185,163,.65);
+    2px solid rgba(168,185,163,.65);
 
   border-radius:30px;
 
   padding:38px 30px;
 
   box-shadow:
-    0 25px 70px
-    rgba(30,45,35,.28);
+    0 25px 70px rgba(30,45,35,.28);
 
   display:flex;
 
   align-items:center;
-
   justify-content:center;
 
   text-align:center;
@@ -928,23 +675,18 @@ body{
   color:#465248;
 
   position:relative;
-
 }
 
 .wish-close{
-
   position:absolute;
 
   top:12px;
-
   left:15px;
 
   width:38px;
-
   height:38px;
 
   border:0;
-
   border-radius:50%;
 
   background:#a8b9a3;
@@ -954,24 +696,18 @@ body{
   font-size:1.25rem;
 
   cursor:pointer;
-
 }
-
 
 /* =========================
    PAGE 6
 ========================= */
 
 .playlist{
-
   text-align:center;
-
   direction:ltr;
-
 }
 
 .playlist-title{
-
   direction:rtl;
 
   color:var(--sage-dark);
@@ -987,11 +723,9 @@ body{
 
   margin:
     0 0 24px;
-
 }
 
 .youtube-btn{
-
   display:inline-block;
 
   margin-top:18px;
@@ -1006,113 +740,75 @@ body{
 
   text-decoration:none;
 
-  border:
-    1px solid
-    #b8c5b3;
+  border:1px solid #b8c5b3;
 
   box-shadow:var(--shadow);
 
   transition:.2s ease;
 
   direction:ltr;
-
 }
 
 .youtube-btn:hover{
-
   transform:translateY(-2px);
-
   background:#f3f7f2;
-
 }
-
 
 /* =========================
    PAGE 7 FINAL
 ========================= */
 
 .page7{
-
   overflow:hidden;
-
 }
 
 .final-content{
-
   width:100%;
-
   display:flex;
-
   flex-direction:column;
-
   align-items:center;
-
   justify-content:center;
-
   text-align:center;
-
 }
 
 .princess-final{
-
   width:min(70vw,260px);
-
   max-height:300px;
-
   object-fit:contain;
 
   display:block;
 
   opacity:0;
-
-  transform:
-    translateY(25px)
-    scale(.94);
+  transform:translateY(25px) scale(.94);
 
   filter:
     drop-shadow(
-      0 12px 18px
-      rgba(71,88,75,.16)
+      0 12px 18px rgba(71,88,75,.16)
     );
-
 }
 
-
-/*
-   SLOWER FINAL ANIMATION
-*/
-
-.page7.final-animation
-.princess-final{
-
+.page7.final-animation .princess-final{
   animation:
     princessAppear
-    1.8s
+    1.1s
     cubic-bezier(.22,1,.36,1)
     forwards;
-
 }
 
 @keyframes princessAppear{
 
   0%{
-
     opacity:0;
-
     transform:
-      translateY(35px)
-      scale(.90);
-
+      translateY(25px)
+      scale(.94);
   }
 
   100%{
-
     opacity:1;
-
     transform:
       translateY(0)
       scale(1);
-
   }
 
 }
@@ -1130,24 +826,21 @@ body{
 
   color:var(--sage-dark);
 
-  margin:
-    22px 0 0;
+  margin:22px 0 0;
 
   opacity:0;
 
-  transform:
-    translateY(18px);
+  transform:translateY(15px);
 
 }
 
-.page7.final-animation
-.final-title{
+.page7.final-animation .final-title{
 
   animation:
     finalTitleAppear
-    1.2s
+    .85s
     ease
-    1.8s
+    1.35s
     forwards;
 
 }
@@ -1155,21 +848,13 @@ body{
 @keyframes finalTitleAppear{
 
   from{
-
     opacity:0;
-
-    transform:
-      translateY(18px);
-
+    transform:translateY(15px);
   }
 
   to{
-
     opacity:1;
-
-    transform:
-      translateY(0);
-
+    transform:translateY(0);
   }
 
 }
@@ -1188,19 +873,17 @@ body{
 
   opacity:0;
 
-  transform:
-    translateY(15px);
+  transform:translateY(12px);
 
 }
 
-.page7.final-animation
-.final-message{
+.page7.final-animation .final-message{
 
   animation:
     finalMessageAppear
-    1.1s
+    .85s
     ease
-    2.8s
+    1.65s
     forwards;
 
 }
@@ -1208,25 +891,16 @@ body{
 @keyframes finalMessageAppear{
 
   from{
-
     opacity:0;
-
-    transform:
-      translateY(15px);
-
+    transform:translateY(12px);
   }
 
   to{
-
     opacity:1;
-
-    transform:
-      translateY(0);
-
+    transform:translateY(0);
   }
 
 }
-
 
 /* =========================
    MUSIC BUTTON
@@ -1239,16 +913,12 @@ body{
   z-index:50;
 
   top:15px;
-
   left:15px;
 
   width:42px;
-
   height:42px;
 
-  border:
-    1px solid
-    #b8c5b3;
+  border:1px solid #b8c5b3;
 
   border-radius:50%;
 
@@ -1260,8 +930,7 @@ body{
   cursor:pointer;
 
   box-shadow:
-    0 6px 20px
-    rgba(71,88,75,.12);
+    0 6px 20px rgba(71,88,75,.12);
 
   backdrop-filter:blur(8px);
 
@@ -1272,24 +941,19 @@ body{
 }
 
 .music-btn:hover{
-
   transform:scale(1.05);
-
 }
-
 
 /* =========================
    NAVIGATION
 ========================= */
 
 .nav{
-
   position:fixed;
 
   z-index:20;
 
   bottom:15px;
-
   left:50%;
 
   transform:
@@ -1311,7 +975,6 @@ body{
     rgba(71,88,75,.16);
 
   backdrop-filter:blur(8px);
-
 }
 
 .nav button{
@@ -1327,7 +990,6 @@ body{
   border-radius:50%;
 
   width:40px;
-
   height:40px;
 
   font-size:1rem;
@@ -1347,7 +1009,6 @@ body{
   position:absolute;
 
   top:18px;
-
   right:22px;
 
   color:#94a193;
@@ -1356,7 +1017,6 @@ body{
 
 }
 
-
 /* =========================
    MOBILE
 ========================= */
@@ -1364,71 +1024,48 @@ body{
 @media(max-width:600px){
 
   .page{
-
     padding-left:15px;
-
     padding-right:15px;
-
   }
 
   .wish-grid{
-
     grid-template-columns:
       repeat(4,1fr);
-
   }
 
   .wish-btn{
-
     min-height:58px;
-
   }
 
   .card{
-
     padding:19px;
-
   }
 
   .calendar-row{
-
     gap:8px;
-
   }
 
   .fixed-sticker{
-
     width:95px;
-
     height:72px;
-
   }
 
   .photo-grid{
-
     grid-template-columns:
       repeat(2,1fr);
 
     gap:12px;
-
   }
 
   .nav{
-
     gap:3px;
-
     padding:6px;
-
   }
 
   .nav button{
-
     width:35px;
-
     height:35px;
-
     font-size:.9rem;
-
   }
 
   .princess-final{
@@ -1475,14 +1112,11 @@ body{
   id="bgMusic"
   loop
 >
-
   <source
     src="music.mp3"
     type="audio/mpeg"
   >
-
 </audio>
-
 
 <button
   class="music-btn"
@@ -1507,6 +1141,10 @@ body{
 >
 
   <div>
+
+    <div class="opening-title">
+      🤍
+    </div>
 
     <button
       class="open-btn"
@@ -1635,73 +1273,55 @@ body{
       class="photo-slot"
       onclick="this.classList.toggle('show')"
     >
-
       <img
         src="images/cartoon1.png"
         alt="Cartoon 1"
       >
-
     </div>
-
 
     <div
       class="photo-slot"
       onclick="this.classList.toggle('show')"
     >
-
       <img
         src="images/cartoon2.png"
         alt="Cartoon 2"
       >
-
     </div>
-
 
     <div
       class="photo-slot"
       onclick="this.classList.toggle('show')"
     >
-
       <img
         src="images/cartoon3.png"
         alt="Cartoon 3"
       >
-
     </div>
-
 
     <div
       class="photo-slot"
       onclick="this.classList.toggle('show')"
     >
-
       <img
         src="images/cartoon4.png"
         alt="Cartoon 4"
       >
-
     </div>
-
 
     <div
       class="photo-slot"
       onclick="this.classList.toggle('show')"
     >
-
       <img
         src="images/cartoon5.png"
         alt="Cartoon 5"
       >
-
     </div>
 
   </div>
 
-
-  <p
-    class="photo-note"
-    dir="ltr"
-  >
+  <p class="photo-note" dir="ltr">
     Clique... je te laisse découvrir 🤍
   </p>
 
@@ -1725,7 +1345,7 @@ body{
     class="title"
     dir="rtl"
   >
-    اشياء احبها 😍
+    بعض مفضلاتي 😍
   </h2>
 
 
@@ -1735,73 +1355,55 @@ body{
       class="photo-slot"
       onclick="this.classList.toggle('show')"
     >
-
       <img
         src="images/thing1.png"
         alt="Thing 1"
       >
-
     </div>
-
 
     <div
       class="photo-slot"
       onclick="this.classList.toggle('show')"
     >
-
       <img
         src="images/thing2.png"
         alt="Thing 2"
       >
-
     </div>
-
 
     <div
       class="photo-slot"
       onclick="this.classList.toggle('show')"
     >
-
       <img
         src="images/thing3.png"
         alt="Thing 3"
       >
-
     </div>
-
 
     <div
       class="photo-slot"
       onclick="this.classList.toggle('show')"
     >
-
       <img
         src="images/thing4.png"
         alt="Thing 4"
       >
-
     </div>
-
 
     <div
       class="photo-slot"
       onclick="this.classList.toggle('show')"
     >
-
       <img
         src="images/thing5.png"
         alt="Thing 5"
       >
-
     </div>
 
   </div>
 
-
-  <p
-    class="photo-note"
-    dir="ltr"
-  >
+  <p class="photo-note" dir="ltr">
     Chaque image cache une petite surprise ✨
   </p>
 
@@ -1853,26 +1455,21 @@ body{
 
         <div class="rw-shine"></div>
 
-
         <div class="rw-note rw-note-1">
           <span></span>
         </div>
-
 
         <div class="rw-note rw-note-2">
           <span></span>
         </div>
 
-
         <div class="rw-note rw-note-3">
           <span></span>
         </div>
 
-
         <div class="rw-note rw-note-4">
           <span></span>
         </div>
-
 
         <div class="rw-label">
           قارورة أمنيات
@@ -2029,24 +1626,17 @@ body{
 >
 
   <button onclick="goTo(1)">1</button>
-
   <button onclick="goTo(2)">2</button>
-
   <button onclick="goTo(3)">3</button>
-
   <button onclick="goTo(4)">4</button>
-
   <button onclick="goTo(5)">5</button>
-
   <button onclick="goTo(6)">6</button>
-
   <button onclick="goTo(7)">7</button>
 
 </nav>
 
 
 <script>
-
 
 /* =========================
    OPEN THE BOOK
@@ -2058,16 +1648,13 @@ function startBook(){
     .getElementById("opening")
     .classList.remove("active");
 
-
   document
     .getElementById("page1")
     .classList.add("active");
 
-
   document
     .getElementById("navigation")
     .style.display="flex";
-
 
   updateNav(1);
 
@@ -2136,10 +1723,8 @@ const shuffled =
 const grid =
   document.getElementById("wishGrid");
 
-
 const modal =
   document.getElementById("wishModal");
-
 
 const modalText =
   document.getElementById("wishModalText");
@@ -2151,10 +1736,8 @@ shuffled.forEach(
     const btn =
       document.createElement("button");
 
-
     btn.className =
       "wish-btn";
-
 
     btn.textContent =
       index + 1;
@@ -2164,7 +1747,6 @@ shuffled.forEach(
 
       modalText.textContent =
         wish;
-
 
       modal.classList.add("open");
 
@@ -2187,13 +1769,10 @@ function closeWish(event){
     event &&
     event.target !== modal
   ){
-
     return;
-
   }
 
   modal.classList.remove("open");
-
 }
 
 
@@ -2202,9 +1781,7 @@ document.addEventListener(
   e=>{
 
     if(e.key === "Escape"){
-
       modal.classList.remove("open");
-
     }
 
   }
@@ -2221,21 +1798,14 @@ function goTo(n){
     .querySelectorAll(".page")
     .forEach(
       page=>{
-
         page.classList.remove("active");
-
-        page.classList.remove(
-          "final-animation"
-        );
-
+        page.classList.remove("final-animation");
       }
     );
 
 
   const target =
-    document.getElementById(
-      "page"+n
-    );
+    document.getElementById("page"+n);
 
 
   target.classList.add("active");
@@ -2245,11 +1815,8 @@ function goTo(n){
 
 
   window.scrollTo({
-
     top:0,
-
     behavior:"smooth"
-
   });
 
 
@@ -2284,11 +1851,8 @@ function updateNav(n){
       (button,index)=>{
 
         button.classList.toggle(
-
           "active",
-
           index === n - 1
-
         );
 
       }
@@ -2302,15 +1866,10 @@ function updateNav(n){
 ========================= */
 
 const music =
-  document.getElementById(
-    "bgMusic"
-  );
-
+  document.getElementById("bgMusic");
 
 const musicBtn =
-  document.getElementById(
-    "musicBtn"
-  );
+  document.getElementById("musicBtn");
 
 
 let musicPlaying = false;
@@ -2360,19 +1919,13 @@ document.addEventListener(
 
     if(e.key === "Escape"){
 
-      if(
-        !modal.classList.contains(
-          "open"
-        )
-      ){
+      if(!modal.classList.contains("open")){
 
         return;
 
       }
 
-      modal.classList.remove(
-        "open"
-      );
+      modal.classList.remove("open");
 
     }
 
@@ -2383,3 +1936,4 @@ document.addEventListener(
 
 </body>
 </html>
+```
