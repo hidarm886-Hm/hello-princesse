@@ -7,10 +7,8 @@
 
 <title>Hello princesse 🤍</title>
 
-<!-- Favicon الإيموجي -->
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤍</text></svg>">
 
-<!-- مكتبة القصاصات الملونة Confetti -->
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 <style>
@@ -42,7 +40,6 @@ body{
   transition: background-color 0.8s ease, filter 0.8s ease;
 }
 
-/* تأثير تعتيم الشاشة عند إطفاء الشمعة */
 body.lights-off {
   filter: brightness(0.4) contrast(1.1);
 }
@@ -133,7 +130,6 @@ textarea{
   margin:0 auto;
 }
 
-/* العبارة الأولى */
 .passcode-label {
   font-size:1.15rem;
   color:var(--sage-dark);
@@ -142,7 +138,6 @@ textarea{
   text-align:center;
 }
 
-/* العبارة العربية */
 .passcode-instruction {
   font-family:"Noto Naskh Arabic","Amiri",Georgia,serif;
   font-size:1rem;
@@ -153,7 +148,6 @@ textarea{
   margin-bottom:2px;
 }
 
-/* أزرار الأرقام */
 .code-options{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -184,7 +178,6 @@ textarea{
   transform:scale(.94);
 }
 
-/* رسالة الخطأ */
 .passcode-error {
   color:#c94a4a;
   font-size:.95rem;
@@ -261,18 +254,12 @@ textarea{
   padding-top:78px;
 }
 
-
-/* عنوان Joyeux */
-
 #page2 > .title{
   margin-top:4px;
   margin-bottom:4px;
   font-family:Georgia,"Times New Roman",serif;
   line-height:1.2;
 }
-
-
-/* BEDDIAR */
 
 .beddiar-title{
   font-family:Georgia,"Times New Roman",serif;
@@ -296,9 +283,6 @@ textarea{
   cursor:pointer;
 }
 
-
-/* النص العربي تحت الشمعة */
-
 .candle-hint{
   order:2;
   font-family:"Noto Naskh Arabic","Amiri",Georgia,serif;
@@ -312,9 +296,6 @@ textarea{
   transition:color .5s ease;
 }
 
-
-/* جسم الشمعة */
-
 .candle{
   order:1;
   width:24px;
@@ -325,7 +306,6 @@ textarea{
   box-shadow:inset -3px 0 5px rgba(0,0,0,.05);
 }
 
-
 .wick{
   width:2px;
   height:10px;
@@ -335,7 +315,6 @@ textarea{
   left:50%;
   transform:translateX(-50%);
 }
-
 
 .flame{
   width:14px;
@@ -379,7 +358,6 @@ textarea{
   margin-top:4px;
 }
 
-
 .calendar-row{
   display:flex;
   align-items:center;
@@ -387,7 +365,6 @@ textarea{
   gap:16px;
   margin-bottom:22px;
 }
-
 
 .fixed-sticker{
   width:110px;
@@ -409,7 +386,6 @@ textarea{
   cursor:pointer;
   perspective:1000px;
 }
-
 
 .envelope{
   width:280px;
@@ -453,9 +429,6 @@ textarea{
   padding:0 15px;
   line-height:1.6;
 }
-
-
-/* الرسالة بعد الفتح */
 
 .greeting{
   display:none;
@@ -787,6 +760,13 @@ textarea{
   cursor:pointer;
   box-shadow:0 5px 14px rgba(71,88,75,.14);
   transition:.2s;
+
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 .wish-btn:hover{
@@ -1211,17 +1191,14 @@ textarea{
 
   <div class="passcode-box">
 
-    <!-- العبارة الأولى باتجاه فرنسي -->
     <div class="passcode-label" dir="ltr">
       CODE !! 🙂🔑
     </div>
 
-    <!-- العبارة العربية -->
     <div class="passcode-instruction" dir="rtl">
       اختاري رقمك المفضل لكي تري باقي المفاجآت
     </div>
 
-    <!-- الأرقام من 1 إلى 9 -->
     <div class="code-options">
 
       <button class="code-btn" onclick="checkCode(1)">1</button>
@@ -1238,7 +1215,6 @@ textarea{
 
     </div>
 
-    <!-- الخطأ باتجاه فرنسي -->
     <div class="passcode-error" id="passcodeError" dir="ltr"></div>
 
   </div>
@@ -1269,20 +1245,14 @@ textarea{
     2 / 7
   </span>
 
-
-  <!-- Joyeux Anniversaire -->
   <h2 class="title">
     Joyeux Anniversaire! 🎂
   </h2>
 
-
-  <!-- BEDDIAR -->
   <div class="beddiar-title">
     BEDDIAR
   </div>
 
-
-  <!-- الشمعة -->
   <div class="candle-container" onclick="blowCandle()">
 
     <span class="candle-hint" id="candleHint" dir="rtl">
@@ -1316,7 +1286,6 @@ textarea{
     </div>
 
 
-    <!-- المظروف التفاعلي -->
     <div
       class="envelope-wrapper"
       id="envelopeWrapper"
@@ -1650,7 +1619,6 @@ function checkCode(number){
 
   const error = document.getElementById("passcodeError");
 
-  /* الرقم الصحيح */
   if(number === 2){
 
     error.textContent = "";
@@ -1671,7 +1639,6 @@ function checkCode(number){
 
   }
 
-  /* الرقم الخاطئ */
   else{
 
     error.textContent = "BOUCHRAAAAA 🙂💔";
@@ -1807,8 +1774,6 @@ function blowCandle(){
 
     flame.classList.add("out");
 
-    /* تأثير إطفاء الأنوار */
-
     document.body.classList.add("lights-off");
 
 
@@ -1819,8 +1784,6 @@ function blowCandle(){
 
       hint.setAttribute("dir","rtl");
 
-
-      /* إعادة السطوع تدريجياً */
 
       document.body.classList.remove("lights-off");
 
@@ -1885,8 +1848,6 @@ function goTo(n){
 
   });
 
-
-  /* FINAL PAGE ANIMATION */
 
   if(n === 7){
 
@@ -1987,4 +1948,4 @@ function toggleMusic(){
 </script>
 
 </body>
-</html>
+      </html>
