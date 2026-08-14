@@ -792,6 +792,7 @@ body{
     princessAppear
     1.1s
     cubic-bezier(.22,1,.36,1)
+    .4s
     forwards;
 }
 
@@ -840,7 +841,7 @@ body{
     finalTitleAppear
     .85s
     ease
-    1.35s
+    1.2s
     forwards;
 
 }
@@ -883,7 +884,7 @@ body{
     finalMessageAppear
     .85s
     ease
-    1.65s
+    2.5s
     forwards;
 
 }
@@ -1699,7 +1700,7 @@ const wishes = [
 
   "أتمنى لكِ أيامًا تشبه قلبكِ الجميل. 🤍🌷",
 
-  "هذه لأمنيتك التي لم تخبري بها أحد 🥹",
+  "هذه لأمنيتك التي لم تخبرِي بها أحد 🥹",
 
   "أتمنى أن يجبركِ الله جبرًا يُنسيكِ كل تعب، 🤍",
 
@@ -1826,13 +1827,9 @@ function goTo(n){
 
   if(n === 7){
 
-    setTimeout(()=>{
-
-      target.classList.add(
-        "final-animation"
-      );
-
-    },100);
+    target.classList.add(
+      "final-animation"
+    );
 
   }
 
@@ -1936,4 +1933,3 @@ document.addEventListener(
 
 </body>
 </html>
-```
