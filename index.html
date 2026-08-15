@@ -10,7 +10,12 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤍</text></svg>">
 
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@twemoji/api@14.0.2/dist/twemoji.min.js" crossorigin="anonymous"></script>
+
+<!-- Twemoji: إصلاح الإيموجيات على الكمبيوتر -->
+<script
+  src="https://cdn.jsdelivr.net/npm/@twemoji/api@14.0.2/dist/twemoji.min.js"
+  crossorigin="anonymous">
+</script>
 
 <style>
 
@@ -53,16 +58,21 @@ textarea{
   font-family:Georgia,"Times New Roman",serif;
 }
 
-img.emoji {
+/* =========================
+   TWEMOJI
+========================= */
+
+img.emoji{
   height:1.2em;
   width:1.2em;
   margin:0 .15em;
-  vertical-align:-.2em;
+  vertical-align:-.15em;
   display:inline-block;
+  object-fit:contain;
 }
 
 /* =========================
-   CURTAIN
+   CURTAIN / COVER REVEAL
 ========================= */
 
 .curtain-overlay{
@@ -78,7 +88,7 @@ img.emoji {
   height:100%;
   background:var(--sage);
   position:relative;
-  transition:transform 1.8s cubic-bezier(.77,0,.175,1);
+  transition:transform 1.8s cubic-bezier(0.77,0,0.175,1);
   box-shadow:0 0 30px rgba(0,0,0,.15);
 }
 
@@ -99,7 +109,7 @@ img.emoji {
 }
 
 /* =========================
-   BOOK
+   BOOK CONTAINER
 ========================= */
 
 .book{
@@ -153,11 +163,12 @@ img.emoji {
 }
 
 /* =========================
-   OPENING
+   OPENING & PASSCODE
 ========================= */
 
 .opening{
   min-height:100vh;
+
   background:
     radial-gradient(
       circle at 20% 15%,
@@ -170,6 +181,7 @@ img.emoji {
       transparent 30%
     ),
     var(--cream);
+
   text-align:center;
 }
 
@@ -417,6 +429,8 @@ img.emoji {
   margin:8px 0 20px;
   line-height:1.1;
 }
+
+/* CARD */
 
 .card{
   width:min(92%,700px);
@@ -912,7 +926,7 @@ img.emoji {
 }
 
 /* =========================
-   PAGE 7
+   PAGE 7: PLAYER CARD
 ========================= */
 
 .playlist-container{
@@ -1132,7 +1146,7 @@ img.emoji {
 }
 
 /* =========================
-   MUSIC
+   MUSIC BUTTON
 ========================= */
 
 .music-container{
@@ -1360,12 +1374,20 @@ img.emoji {
 
 <body>
 
+<!-- =========================
+     CURTAIN OVERLAY
+========================= -->
+
 <div class="curtain-overlay" id="curtainOverlay">
 
   <div class="curtain-panel panel-left"></div>
   <div class="curtain-panel panel-right"></div>
 
 </div>
+
+<!-- =========================
+     OPTIONAL MUSIC
+========================= -->
 
 <audio id="bgMusic" loop onplay="this.volume=0.3">
 
@@ -1391,6 +1413,10 @@ img.emoji {
 </div>
 
 <div class="book">
+
+<!-- =========================
+     OPENING SCREEN
+========================= -->
 
 <section class="page opening active" id="opening">
 
@@ -1426,6 +1452,10 @@ img.emoji {
 
 </section>
 
+<!-- =========================
+     PAGE 1
+========================= -->
+
 <section class="page page1" id="page1">
 
   <h1>
@@ -1433,6 +1463,10 @@ img.emoji {
   </h1>
 
 </section>
+
+<!-- =========================
+     PAGE 2
+========================= -->
 
 <section class="page" id="page2">
 
@@ -1474,6 +1508,10 @@ img.emoji {
   </div>
 
 </section>
+
+<!-- =========================
+     PAGE 3
+========================= -->
 
 <section class="page" id="page3">
 
@@ -1548,6 +1586,10 @@ img.emoji {
 
 </section>
 
+<!-- =========================
+     PAGE 4
+========================= -->
+
 <section class="page" id="page4">
 
   <span class="page-number">
@@ -1588,6 +1630,10 @@ img.emoji {
 
 </section>
 
+<!-- =========================
+     PAGE 5
+========================= -->
+
 <section class="page" id="page5">
 
   <span class="page-number">
@@ -1627,6 +1673,10 @@ img.emoji {
   </p>
 
 </section>
+
+<!-- =========================
+     PAGE 6
+========================= -->
 
 <section class="page wish-page" id="page6">
 
@@ -1692,6 +1742,10 @@ img.emoji {
 
 </section>
 
+<!-- =========================
+     PAGE 7
+========================= -->
+
 <section class="page" id="page7">
 
   <span class="page-number">
@@ -1748,6 +1802,10 @@ img.emoji {
 
 </section>
 
+<!-- =========================
+     PAGE 8
+========================= -->
+
 <section class="page page8 final" id="page8">
 
   <span class="page-number">
@@ -1782,6 +1840,10 @@ img.emoji {
 
 </section>
 
+<!-- =========================
+     WISH MODAL
+========================= -->
+
 <div
   class="wish-modal"
   id="wishModal"
@@ -1805,6 +1867,10 @@ img.emoji {
 
 </div>
 
+<!-- =========================
+     NAVIGATION
+========================= -->
+
 <nav
   class="nav"
   id="navigation"
@@ -1826,28 +1892,34 @@ img.emoji {
 <script>
 
 /* =========================
-   EMOJI FIX FOR PC ONLY
+   TWEMOJI — DESKTOP EMOJI FIX
 ========================= */
 
-function parseDesktopEmojis() {
+function renderEmojisDesktop(){
+
+  if(typeof twemoji === "undefined"){
+    return;
+  }
 
   const isMobile =
     /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i
     .test(navigator.userAgent);
 
-  if(!isMobile && typeof twemoji !== 'undefined'){
-
-    twemoji.parse(document.body,{
-      folder:'svg',
-      ext:'.svg'
-    });
-
+  if(isMobile){
+    return;
   }
+
+  twemoji.parse(document.body,{
+    base:"https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/",
+    folder:"svg",
+    ext:".svg",
+    className:"emoji"
+  });
 
 }
 
 /* =========================
-   CURTAIN
+   TRIGGER CURTAIN ANIMATION
 ========================= */
 
 window.addEventListener("DOMContentLoaded",()=>{
@@ -1859,14 +1931,15 @@ window.addEventListener("DOMContentLoaded",()=>{
       .classList
       .add("open");
 
-    parseDesktopEmojis();
-
   },200);
+
+  /* تشغيل Twemoji على الكمبيوتر بعد تحميل الصفحة */
+  renderEmojisDesktop();
 
 });
 
 /* =========================
-   TOOLTIP
+   TOOLTIP AUTO HIDE
 ========================= */
 
 const tooltip =
@@ -1885,7 +1958,7 @@ function hideTooltip(){
 setTimeout(hideTooltip,5000);
 
 /* =========================
-   CODE
+   CODE & OPEN BOOK
 ========================= */
 
 function checkCode(number){
@@ -1924,6 +1997,8 @@ function checkCode(number){
 
     });
 
+    renderEmojisDesktop();
+
   }
 
   else{
@@ -1931,14 +2006,14 @@ function checkCode(number){
     error.textContent =
       "BOUCHRAAAAA 🙂💔";
 
-    parseDesktopEmojis();
+    renderEmojisDesktop();
 
   }
 
 }
 
 /* =========================
-   CAKE
+   BLOW CAKE CANDLES
 ========================= */
 
 function blowCakeCandles(){
@@ -1981,8 +2056,6 @@ function blowCakeCandles(){
         "rtl"
       );
 
-      parseDesktopEmojis();
-
       document.body.classList.remove(
         "lights-off"
       );
@@ -1994,6 +2067,8 @@ function blowCakeCandles(){
         origin:{y:.5}
 
       });
+
+      renderEmojisDesktop();
 
     },700);
 
@@ -2023,7 +2098,7 @@ const wishes = [
 
   "أتمنى لكِ نومًا طويلًا، هادئًا، بلا منبّه 😴🤍",
 
-  "WOOOOOY 😂😂",
+  "😂😂 WOOOOOY",
 
   "أتمنى أن تعرفي أن صديقكِ هنا موجود ليسمعكِ دائما  بكل حماس واهتمام... حتى لو كانت أطول les vocaux في العالم و بسرعة ×1 😅🎧",
 
@@ -2050,7 +2125,7 @@ const wishes = [
 ];
 
 /* =========================
-   SHUFFLE
+   SHUFFLE & RENDER
 ========================= */
 
 const shuffled =
@@ -2087,13 +2162,16 @@ shuffled.forEach((wish,index)=>{
 
     btn.classList.add("opened");
 
-    parseDesktopEmojis();
+    renderEmojisDesktop();
 
   };
 
   grid.appendChild(btn);
 
 });
+
+/* تحويل الأمنيات بعد إنشائها مباشرة على الكمبيوتر */
+renderEmojisDesktop();
 
 /* =========================
    CLOSE MODAL
@@ -2125,7 +2203,7 @@ document.addEventListener(
 );
 
 /* =========================
-   ENVELOPE
+   OPEN ENVELOPE
 ========================= */
 
 function openEnvelope(){
@@ -2137,10 +2215,12 @@ function openEnvelope(){
 
   wrapper.classList.add("open");
 
+  renderEmojisDesktop();
+
 }
 
 /* =========================
-   NAVIGATION
+   PAGE NAVIGATION
 ========================= */
 
 function goTo(n){
@@ -2176,6 +2256,8 @@ function goTo(n){
 
   });
 
+  renderEmojisDesktop();
+
   if(n === 8){
 
     target.classList.add(
@@ -2208,7 +2290,7 @@ function goTo(n){
 }
 
 /* =========================
-   ACTIVE NAV
+   NAVIGATION ACTIVE STATE
 ========================= */
 
 function updateNav(n){
@@ -2227,7 +2309,7 @@ function updateNav(n){
 }
 
 /* =========================
-   MUSIC
+   OPTIONAL MUSIC
 ========================= */
 
 const music =
@@ -2254,7 +2336,7 @@ function toggleMusic(){
         musicBtn.textContent =
           "🔊";
 
-        parseDesktopEmojis();
+        renderEmojisDesktop();
 
       })
       .catch(()=>{
@@ -2274,7 +2356,7 @@ function toggleMusic(){
     musicBtn.textContent =
       "🎧";
 
-    parseDesktopEmojis();
+    renderEmojisDesktop();
 
   }
 
@@ -2283,4 +2365,4 @@ function toggleMusic(){
 </script>
 
 </body>
-    </html>
+  </html>
