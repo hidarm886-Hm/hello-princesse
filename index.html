@@ -11,7 +11,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
-<!-- Twemoji: إصلاح الإيموجيات على الكمبيوتر -->
+<!-- Twemoji - version stable pour PC -->
 <script
   src="https://cdn.jsdelivr.net/npm/@twemoji/api@14.0.2/dist/twemoji.min.js"
   crossorigin="anonymous">
@@ -47,6 +47,35 @@ body{
   overflow-x:hidden;
 }
 
+/* =========================
+   EMOJI SYSTEM
+   PC = TWEMOJI
+   PHONE = SYSTEM EMOJIS
+========================= */
+
+body.emoji-loading .book,
+body.emoji-loading .music-container,
+body.emoji-loading .nav{
+  visibility:hidden;
+}
+
+body.emoji-ready .book,
+body.emoji-ready .music-container,
+body.emoji-ready .nav{
+  visibility:visible;
+}
+
+img.emoji{
+  height:1.2em !important;
+  width:1.2em !important;
+  max-width:1.2em !important;
+  max-height:1.2em !important;
+  margin:0 .15em !important;
+  vertical-align:-.18em !important;
+  display:inline-block !important;
+  object-fit:contain !important;
+}
+
 body.lights-off{
   filter:brightness(.4) contrast(1.1);
 }
@@ -56,19 +85,6 @@ a,
 input,
 textarea{
   font-family:Georgia,"Times New Roman",serif;
-}
-
-/* =========================
-   TWEMOJI
-========================= */
-
-img.emoji{
-  height:1.2em;
-  width:1.2em;
-  margin:0 .15em;
-  vertical-align:-.15em;
-  display:inline-block;
-  object-fit:contain;
 }
 
 /* =========================
@@ -88,7 +104,9 @@ img.emoji{
   height:100%;
   background:var(--sage);
   position:relative;
+
   transition:transform 1.8s cubic-bezier(0.77,0,0.175,1);
+
   box-shadow:0 0 30px rgba(0,0,0,.15);
 }
 
@@ -118,6 +136,7 @@ img.emoji{
   min-height:100vh;
   position:relative;
   overflow:hidden;
+
   opacity:0;
   transform:scale(.96);
   animation:bookFadeIn 1s cubic-bezier(.16,1,.3,1) .3s forwards;
@@ -1157,6 +1176,7 @@ img.emoji{
   display:flex;
   align-items:center;
   gap:8px;
+
   opacity:0;
   animation:musicReveal .8s ease 2.2s forwards;
 }
@@ -1372,7 +1392,7 @@ img.emoji{
 </style>
 </head>
 
-<body>
+<body class="emoji-loading">
 
 <!-- =========================
      CURTAIN OVERLAY
@@ -1892,29 +1912,66 @@ img.emoji{
 <script>
 
 /* =========================
-   TWEMOJI — DESKTOP EMOJI FIX
+   ROBUST EMOJI SYSTEM
+   PHONE = SYSTEM EMOJIS
+   PC = TWEMOJI
 ========================= */
+
+const isMobileDevice =
+  /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i
+  .test(navigator.userAgent);
 
 function renderEmojisDesktop(){
 
-  if(typeof twemoji === "undefined"){
+  /* الهاتف يستعمل إيموجيات النظام */
+  if(isMobileDevice){
+
+    document.body.classList.remove("emoji-loading");
+    document.body.classList.add("emoji-ready");
+
     return;
   }
 
-  const isMobile =
-    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i
-    .test(navigator.userAgent);
+  /* الكمبيوتر يستعمل Twemoji */
+  if(typeof twemoji !== "undefined"){
 
-  if(isMobile){
-    return;
+    twemoji.parse(document.body,{
+
+      folder:"svg",
+
+      ext:".svg",
+
+      base:
+        "https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/",
+
+      className:"emoji"
+
+    });
+
+    document.body.classList.remove("emoji-loading");
+    document.body.classList.add("emoji-ready");
+
   }
 
-  twemoji.parse(document.body,{
-    base:"https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/",
-    folder:"svg",
-    ext:".svg",
-    className:"emoji"
-  });
+  else{
+
+    setTimeout(()=>{
+
+      if(typeof twemoji !== "undefined"){
+
+        renderEmojisDesktop();
+
+      }
+      else{
+
+        document.body.classList.remove("emoji-loading");
+        document.body.classList.add("emoji-ready");
+
+      }
+
+    },500);
+
+  }
 
 }
 
@@ -1933,8 +1990,11 @@ window.addEventListener("DOMContentLoaded",()=>{
 
   },200);
 
-  /* تشغيل Twemoji على الكمبيوتر بعد تحميل الصفحة */
-  renderEmojisDesktop();
+  setTimeout(()=>{
+
+    renderEmojisDesktop();
+
+  },100);
 
 });
 
@@ -2098,7 +2158,7 @@ const wishes = [
 
   "أتمنى لكِ نومًا طويلًا، هادئًا، بلا منبّه 😴🤍",
 
-  "😂😂 WOOOOOY",
+  "WOOOOOY 😂😂",
 
   "أتمنى أن تعرفي أن صديقكِ هنا موجود ليسمعكِ دائما  بكل حماس واهتمام... حتى لو كانت أطول les vocaux في العالم و بسرعة ×1 😅🎧",
 
@@ -2169,9 +2229,6 @@ shuffled.forEach((wish,index)=>{
   grid.appendChild(btn);
 
 });
-
-/* تحويل الأمنيات بعد إنشائها مباشرة على الكمبيوتر */
-renderEmojisDesktop();
 
 /* =========================
    CLOSE MODAL
@@ -2365,4 +2422,4 @@ function toggleMusic(){
 </script>
 
 </body>
-  </html>
+</html>
