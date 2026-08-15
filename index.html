@@ -38,6 +38,7 @@ body{
   color:var(--text);
   font-family:Georgia,"Times New Roman",serif;
   transition:background-color .8s ease,filter .8s ease;
+  overflow-x:hidden;
 }
 
 body.lights-off{
@@ -51,27 +52,66 @@ textarea{
   font-family:Georgia,"Times New Roman",serif;
 }
 
+/* =========================
+   CURTAIN / COVER REVEAL
+========================= */
+
+.curtain-overlay{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  display:flex;
+  pointer-events:none;
+}
+
+.curtain-panel{
+  width:50%;
+  height:100%;
+  background:var(--sage);
+  position:relative;
+
+  /* تم إبطاء الستار */
+  transition:transform 1.8s cubic-bezier(0.77,0,0.175,1);
+
+  box-shadow:0 0 30px rgba(0,0,0,.15);
+}
+
+.panel-left{
+  border-right:1px solid rgba(255,255,255,.3);
+}
+
+.panel-right{
+  border-left:1px solid rgba(255,255,255,.3);
+}
+
+.curtain-overlay.open .panel-left{
+  transform:translateX(-100%);
+}
+
+.curtain-overlay.open .panel-right{
+  transform:translateX(100%);
+}
+
+/* =========================
+   BOOK CONTAINER
+========================= */
+
 .book{
   width:min(100%,900px);
   margin:auto;
   min-height:100vh;
   position:relative;
   overflow:hidden;
-  
-  /* تطبيق Blur Reveal على المحتوى بحيث يبدأ أولاً بتأثير ضبابي ثم يظهر */
-  animation: blurRevealApp 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+
+  opacity:0;
+  transform:scale(.96);
+  animation:bookFadeIn 1s cubic-bezier(.16,1,.3,1) .3s forwards;
 }
 
-@keyframes blurRevealApp {
-  0% {
-    filter: blur(16px);
-    opacity: 0;
-    transform: scale(0.97);
-  }
-  100% {
-    filter: blur(0px);
-    opacity: 1;
-    transform: scale(1);
+@keyframes bookFadeIn{
+  to{
+    opacity:1;
+    transform:scale(1);
   }
 }
 
@@ -226,12 +266,8 @@ textarea{
 
 .page1 h1{
   font-family:Georgia,"Times New Roman",serif;
-
-  font-size:
-    clamp(2.5rem,8vw,5rem);
-
+  font-size:clamp(2.5rem,8vw,5rem);
   font-weight:bold;
-
   color:var(--sage-dark);
 }
 
@@ -241,14 +277,9 @@ textarea{
 
 .title{
   font-family:Georgia,"Times New Roman",serif;
-
   color:var(--sage-dark);
-
-  font-size:
-    clamp(1.8rem,5vw,3rem);
-
+  font-size:clamp(1.8rem,5vw,3rem);
   font-weight:normal;
-
   margin:0 0 24px;
 }
 
@@ -810,7 +841,6 @@ textarea{
   background:var(--sage-dark);
 }
 
-/* نمط الأزرار المفتوحة/المقروءة */
 .wish-btn.opened{
   background:var(--sage-dark);
   opacity:.85;
@@ -925,8 +955,13 @@ textarea{
 }
 
 @keyframes spinCover{
-  from{ transform:rotate(0deg); }
-  to{ transform:rotate(360deg); }
+  from{
+    transform:rotate(0deg);
+  }
+
+  to{
+    transform:rotate(360deg);
+  }
 }
 
 .player-info{
@@ -1107,22 +1142,24 @@ textarea{
   display:flex;
   align-items:center;
   gap:8px;
-  
-  /* ظهور زر الموسيقى والملاحظة متأخراً بعد وضوح محتوى الكود */
-  opacity: 0;
-  animation: musicReveal 0.8s ease 0.8s forwards;
+
+  /*
+     ظهور أبطأ بعد الستار
+     يبدأ بعد 2.2 ثانية
+  */
+  opacity:0;
+  animation:musicReveal .8s ease 2.2s forwards;
 }
 
-@keyframes musicReveal {
-  from {
-    opacity: 0;
-    transform: translateY(-12px);
-    filter: blur(8px);
+@keyframes musicReveal{
+  from{
+    opacity:0;
+    transform:translateY(-12px);
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-    filter: blur(0);
+
+  to{
+    opacity:1;
+    transform:translateY(0);
   }
 }
 
@@ -1328,11 +1365,24 @@ textarea{
 <body>
 
 <!-- =========================
+     CURTAIN OVERLAY
+========================= -->
+
+<div class="curtain-overlay" id="curtainOverlay">
+
+  <div class="curtain-panel panel-left"></div>
+  <div class="curtain-panel panel-right"></div>
+
+</div>
+
+<!-- =========================
      OPTIONAL MUSIC
 ========================= -->
 
 <audio id="bgMusic" loop onplay="this.volume=0.3">
+
   <source src="music.mp3" type="audio/mpeg">
+
 </audio>
 
 <div class="music-container">
@@ -1683,7 +1733,7 @@ textarea{
 </section>
 
 <!-- =========================
-     PAGE 7: PLAYER CARD
+     PAGE 7
 ========================= -->
 
 <section class="page" id="page7">
@@ -1699,21 +1749,29 @@ textarea{
     </div>
 
     <div class="player-card">
-      
+
       <div class="player-cover">
         🎵
       </div>
 
       <div class="player-info">
-        <div class="player-song-title">Mes Classiques 🎧❤️‍🩹</div>
+
+        <div class="player-song-title">
+          Mes Classiques 🎧❤️‍🩹
+        </div>
+
       </div>
 
       <div class="player-progress-bar">
+
         <div class="player-progress-fill"></div>
+
       </div>
 
       <div class="player-controls">
+
         <span>⏮</span>
+
         <a
           class="player-btn-main"
           href="https://youtube.com/playlist?list=PLD04eF7aAOu0&si=PxK83m0N-ZerUSHS"
@@ -1723,7 +1781,9 @@ textarea{
         >
           ▶
         </a>
+
         <span>⏭</span>
+
       </div>
 
     </div>
@@ -1733,7 +1793,7 @@ textarea{
 </section>
 
 <!-- =========================
-     PAGE 8 FINAL
+     PAGE 8
 ========================= -->
 
 <section class="page page8 final" id="page8">
@@ -1822,6 +1882,23 @@ textarea{
 <script>
 
 /* =========================
+   TRIGGER CURTAIN ANIMATION
+========================= */
+
+window.addEventListener("DOMContentLoaded",()=>{
+
+  setTimeout(()=>{
+
+    document
+      .getElementById("curtainOverlay")
+      .classList
+      .add("open");
+
+  },200);
+
+});
+
+/* =========================
    TOOLTIP AUTO HIDE
 ========================= */
 
@@ -1838,6 +1915,10 @@ function hideTooltip(){
 
 }
 
+/*
+   الملاحظة تبقى ظاهرة بعد ظهورها
+   ثم تختفي بعد مدة مناسبة.
+*/
 setTimeout(hideTooltip,5000);
 
 /* =========================
@@ -2037,7 +2118,6 @@ shuffled.forEach((wish,index)=>{
 
     modal.classList.add("open");
 
-    /* تمييز البطاقة المفتوحة بإضافة كلاس opened */
     btn.classList.add("opened");
 
   };
@@ -2230,4 +2310,4 @@ function toggleMusic(){
 </script>
 
 </body>
-</html>
+  </html>
