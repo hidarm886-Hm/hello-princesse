@@ -37,11 +37,11 @@ body{
   background:linear-gradient(135deg,#f7faf6,#eef3ed);
   color:var(--text);
   font-family:Georgia,"Times New Roman",serif;
-  transition: background-color 0.8s ease, filter 0.8s ease;
+  transition:background-color .8s ease,filter .8s ease;
 }
 
-body.lights-off {
-  filter: brightness(0.4) contrast(1.1);
+body.lights-off{
+  filter:brightness(.4) contrast(1.1);
 }
 
 button,
@@ -114,7 +114,7 @@ textarea{
   text-align:center;
 }
 
-.passcode-box {
+.passcode-box{
   display:flex;
   flex-direction:column;
   align-items:center;
@@ -128,7 +128,7 @@ textarea{
   margin:0 auto;
 }
 
-.passcode-label {
+.passcode-label{
   font-size:1.15rem;
   color:var(--sage-dark);
   margin-bottom:5px;
@@ -136,7 +136,7 @@ textarea{
   text-align:center;
 }
 
-.passcode-instruction {
+.passcode-instruction{
   font-family:"Noto Naskh Arabic","Amiri",Georgia,serif;
   font-size:1rem;
   color:var(--sage-dark);
@@ -176,7 +176,7 @@ textarea{
   transform:scale(.94);
 }
 
-.passcode-error {
+.passcode-error{
   color:#c94a4a;
   font-size:.95rem;
   min-height:24px;
@@ -237,101 +237,106 @@ textarea{
 }
 
 /* =========================
-   PAGE 2 (BIRTHDAY CAKE & CANDLES)
+   PAGE 2
 ========================= */
 
-#page2 {
-  justify-content: flex-start;
-  padding-top: 60px;
-  text-align: center;
+#page2{
+  justify-content:flex-start;
+  padding-top:60px;
+  text-align:center;
 }
 
-#page2 * {
-  -webkit-tap-highlight-color: transparent !important;
-  outline: none !important;
-  user-select: none;
-  -webkit-user-select: none;
+#page2 *{
+  -webkit-tap-highlight-color:transparent !important;
+  outline:none !important;
+  user-select:none;
+  -webkit-user-select:none;
 }
 
-.cake-hint {
-  font-family: "Noto Naskh Arabic", "Amiri", Georgia, serif;
-  direction: rtl;
-  text-align: center;
-  font-size: 1.25rem;
-  color: var(--sage-dark);
-  margin-bottom: 10px;
-  line-height: 1.8;
-  transition: color 0.5s ease;
+.cake-hint{
+  font-family:"Noto Naskh Arabic","Amiri",Georgia,serif;
+  direction:rtl;
+  text-align:center;
+  font-size:1.25rem;
+  color:var(--sage-dark);
+  margin-bottom:10px;
+  line-height:1.8;
+  transition:color .5s ease;
 }
 
-.cake-wrapper {
-  position: relative;
-  display: inline-block;
-  cursor: pointer;
-  margin-top: 55px;
+.cake-wrapper{
+  position:relative;
+  display:inline-block;
+  cursor:pointer;
+  margin-top:55px;
 }
 
-.cake-img {
-  width: min(50vw, 170px);
-  height: auto;
-  display: block;
-  filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
+.cake-img{
+  width:min(50vw,170px);
+  height:auto;
+  display:block;
+  filter:drop-shadow(0 10px 15px rgba(0,0,0,.1));
 }
 
-.candles-group {
-  position: absolute;
-  top: 10%; 
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 20px;
-  z-index: 5;
+.candles-group{
+  position:absolute;
+  top:10%;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  gap:20px;
+  z-index:5;
 }
 
-.mini-candle {
-  width: 16px;
-  height: 48px;
-  background: linear-gradient(to bottom, #fff, #f3d5db);
-  border-radius: 4px;
-  position: relative;
+.mini-candle{
+  width:16px;
+  height:48px;
+  background:linear-gradient(to bottom,#fff,#f3d5db);
+  border-radius:4px;
+  position:relative;
 }
 
-.mini-wick {
-  width: 3px;
-  height: 9px;
-  background: #444;
-  position: absolute;
-  top: -9px;
-  left: 50%;
-  transform: translateX(-50%);
+.mini-wick{
+  width:3px;
+  height:9px;
+  background:#444;
+  position:absolute;
+  top:-9px;
+  left:50%;
+  transform:translateX(-50%);
 }
 
-.mini-flame {
-  width: 18px;
-  height: 28px;
-  background: orange;
-  border-radius: 50% 50% 35% 35%;
-  position: absolute;
-  top: -34px;
-  left: 50%;
-  transform: translateX(-50%);
-  box-shadow: 0 0 12px orange, 0 0 20px yellow;
-  animation: flicker .15s infinite alternate;
-  transition: opacity .4s ease, transform .4s ease;
+.mini-flame{
+  width:18px;
+  height:28px;
+  background:orange;
+  border-radius:50% 50% 35% 35%;
+  position:absolute;
+  top:-34px;
+  left:50%;
+  transform:translateX(-50%);
+  box-shadow:0 0 12px orange,0 0 20px yellow;
+  animation:flicker .15s infinite alternate;
+  transition:opacity .4s ease,transform .4s ease;
 }
 
-.mini-flame.out {
-  opacity: 0;
-  transform: translateX(-50%) scale(0.2);
+.mini-flame.out{
+  opacity:0;
+  transform:translateX(-50%) scale(.2);
 }
 
-@keyframes flicker {
-  0% { transform: translateX(-50%) scale(1); }
-  100% { transform: translateX(-50%) scale(1.08); }
+@keyframes flicker{
+  0%{
+    transform:translateX(-50%) scale(1);
+  }
+
+  100%{
+    transform:translateX(-50%) scale(1.08);
+  }
 }
 
 /* =========================
-   PAGE 3 (CALENDAR & CARD)
+   PAGE 3
 ========================= */
 
 #page3{
@@ -339,11 +344,11 @@ textarea{
   padding-top:78px;
 }
 
-#page3 * {
-  -webkit-tap-highlight-color: transparent !important;
-  outline: none !important;
-  user-select: none;
-  -webkit-user-select: none;
+#page3 *{
+  -webkit-tap-highlight-color:transparent !important;
+  outline:none !important;
+  user-select:none;
+  -webkit-user-select:none;
 }
 
 #page3 > .title{
@@ -401,10 +406,10 @@ textarea{
   margin:20px auto 0;
   cursor:pointer;
   perspective:1000px;
-  -webkit-tap-highlight-color: transparent;
-  outline: none;
-  user-select: none;
-  -webkit-user-select: none;
+  -webkit-tap-highlight-color:transparent;
+  outline:none;
+  user-select:none;
+  -webkit-user-select:none;
 }
 
 .envelope{
@@ -493,7 +498,7 @@ textarea{
 }
 
 /* =========================
-   PAGE 4 + 5 (PHOTOS)
+   PAGE 4 + 5
 ========================= */
 
 .photo-grid{
@@ -555,7 +560,7 @@ textarea{
 }
 
 /* =========================
-   PAGE 6 (WISHES)
+   PAGE 6
 ========================= */
 
 .wish-page{
@@ -700,10 +705,29 @@ textarea{
   background:#f1dfbd;
 }
 
-.rw-note-1{ left:22px; bottom:22px; transform:rotate(-17deg); }
-.rw-note-2{ left:54px; bottom:31px; transform:rotate(24deg); }
-.rw-note-3{ right:20px; bottom:19px; transform:rotate(-8deg); }
-.rw-note-4{ right:36px; bottom:52px; transform:rotate(29deg); }
+.rw-note-1{
+  left:22px;
+  bottom:22px;
+  transform:rotate(-17deg);
+}
+
+.rw-note-2{
+  left:54px;
+  bottom:31px;
+  transform:rotate(24deg);
+}
+
+.rw-note-3{
+  right:20px;
+  bottom:19px;
+  transform:rotate(-8deg);
+}
+
+.rw-note-4{
+  right:36px;
+  bottom:52px;
+  transform:rotate(29deg);
+}
 
 .rw-label{
   position:absolute;
@@ -759,9 +783,9 @@ textarea{
   cursor:pointer;
   box-shadow:0 5px 14px rgba(71,88,75,.14);
   transition:.2s;
-  -webkit-tap-highlight-color: transparent;
-  outline: none;
-  user-select: none;
+  -webkit-tap-highlight-color:transparent;
+  outline:none;
+  user-select:none;
 }
 
 .wish-btn:hover{
@@ -825,7 +849,7 @@ textarea{
 }
 
 /* =========================
-   PAGE 7 (PLAYLIST)
+   PAGE 7
 ========================= */
 
 .playlist{
@@ -863,7 +887,7 @@ textarea{
 }
 
 /* =========================
-   PAGE 8 FINAL
+   PAGE 8
 ========================= */
 
 .page8{
@@ -898,6 +922,7 @@ textarea{
     opacity:0;
     transform:translateY(25px) scale(.94);
   }
+
   100%{
     opacity:1;
     transform:translateY(0) scale(1);
@@ -928,6 +953,7 @@ textarea{
     opacity:0;
     transform:translateY(15px);
   }
+
   to{
     opacity:1;
     transform:translateY(0);
@@ -954,6 +980,7 @@ textarea{
     opacity:0;
     transform:translateY(12px);
   }
+
   to{
     opacity:1;
     transform:translateY(0);
@@ -961,7 +988,7 @@ textarea{
 }
 
 /* =========================
-   MUSIC BUTTON & TOOLTIP
+   MUSIC BUTTON
 ========================= */
 
 .music-container{
@@ -987,35 +1014,35 @@ textarea{
   font-size:1rem;
   transition:.2s;
   font-family:Georgia,"Times New Roman",serif;
-  -webkit-tap-highlight-color: transparent;
-  outline: none;
-  user-select: none;
+  -webkit-tap-highlight-color:transparent;
+  outline:none;
+  user-select:none;
 }
 
 .music-btn:hover{
   transform:scale(1.05);
 }
 
-.music-tooltip {
-  background: var(--sage);
-  color: white;
-  padding: 6px 12px;
-  border-radius: 12px;
-  font-size: 0.85rem;
-  font-weight: bold;
-  box-shadow: 0 4px 12px rgba(71,88,75,.15);
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  opacity: 1;
-  transition: opacity 0.5s ease, transform 0.5s ease;
-  pointer-events: none;
-  white-space: nowrap;
+.music-tooltip{
+  background:var(--sage);
+  color:white;
+  padding:6px 12px;
+  border-radius:12px;
+  font-size:.85rem;
+  font-weight:bold;
+  box-shadow:0 4px 12px rgba(71,88,75,.15);
+  display:flex;
+  align-items:center;
+  gap:6px;
+  opacity:1;
+  transition:opacity .5s ease,transform .5s ease;
+  pointer-events:none;
+  white-space:nowrap;
 }
 
-.music-tooltip.hidden {
-  opacity: 0;
-  transform: translateX(-10px);
+.music-tooltip.hidden{
+  opacity:0;
+  transform:translateX(-10px);
 }
 
 /* =========================
@@ -1047,9 +1074,9 @@ textarea{
   height:40px;
   font-size:1rem;
   font-family:Georgia,"Times New Roman",serif;
-  -webkit-tap-highlight-color: transparent;
-  outline: none;
-  user-select: none;
+  -webkit-tap-highlight-color:transparent;
+  outline:none;
+  user-select:none;
 }
 
 .nav button.active{
@@ -1179,17 +1206,25 @@ textarea{
      OPTIONAL MUSIC
 ========================= -->
 
-<audio id="bgMusic" loop>
+<audio id="bgMusic" loop onplay="this.volume=0.3">
   <source src="music.mp3" type="audio/mpeg">
 </audio>
 
 <div class="music-container">
-  <button class="music-btn" id="musicBtn" onclick="toggleMusic()" aria-label="Musique">
+
+  <button
+    class="music-btn"
+    id="musicBtn"
+    onclick="toggleMusic()"
+    aria-label="Musique"
+  >
     🎧
   </button>
+
   <div class="music-tooltip" id="musicTooltip">
     ← Lancer la musique.. 🎧 !!
   </div>
+
 </div>
 
 <div class="book">
@@ -1245,7 +1280,7 @@ textarea{
 </section>
 
 <!-- =========================
-     PAGE 2 (CAKE & CANDLES)
+     PAGE 2
 ========================= -->
 
 <section class="page" id="page2">
@@ -1259,7 +1294,7 @@ textarea{
   </div>
 
   <div class="cake-wrapper" onclick="blowCakeCandles()">
-    
+
     <div class="candles-group">
 
       <div class="mini-candle">
@@ -1279,9 +1314,9 @@ textarea{
 
     </div>
 
-    <img 
-      class="cake-img" 
-      src="images/cake.png" 
+    <img
+      class="cake-img"
+      src="images/cake.png"
       alt="كعكة عيد الميلاد"
     >
 
@@ -1535,7 +1570,7 @@ textarea{
   <div class="playlist">
 
     <div class="playlist-title" dir="rtl">
-     مجموعة من أغانيكِ المفضلة       🎶🎧
+      مجموعة من أغانيكِ المفضلة 🎶🎧
     </div>
 
     <a
@@ -1642,19 +1677,23 @@ textarea{
 <script>
 
 /* =========================
-   TOOLTIP AUTO HIDE (7s)
+   TOOLTIP AUTO HIDE
 ========================= */
 
-const tooltip = document.getElementById("musicTooltip");
+const tooltip =
+  document.getElementById("musicTooltip");
 
-function hideTooltip() {
-  if (tooltip) {
+function hideTooltip(){
+
+  if(tooltip){
+
     tooltip.classList.add("hidden");
+
   }
+
 }
 
-// إخفاء الملاحظة تلقائياً بعد 3 ثوانٍ من التحميل
-setTimeout(hideTooltip, 3000);
+setTimeout(hideTooltip,3000);
 
 /* =========================
    CODE & OPEN BOOK
@@ -1662,75 +1701,108 @@ setTimeout(hideTooltip, 3000);
 
 function checkCode(number){
 
-  const error = document.getElementById("passcodeError");
+  const error =
+    document.getElementById("passcodeError");
 
   if(number === 2){
 
     error.textContent = "";
 
-    hideTooltip(); // إخفاء الملاحظة فوراً عند المرور للصفحات التالية
+    hideTooltip();
 
-    document.getElementById("opening").classList.remove("active");
+    document
+      .getElementById("opening")
+      .classList
+      .remove("active");
 
-    document.getElementById("page1").classList.add("active");
+    document
+      .getElementById("page1")
+      .classList
+      .add("active");
 
-    document.getElementById("navigation").style.display = "flex";
+    document
+      .getElementById("navigation")
+      .style
+      .display = "flex";
 
     updateNav(1);
 
     confetti({
+
       particleCount:50,
       spread:60,
-      origin:{ y:0.5 }
+      origin:{y:.5}
+
     });
 
   }
 
   else{
 
-    error.textContent = "BOUCHRAAAAA 🙂💔";
+    error.textContent =
+      "BOUCHRAAAAA 🙂💔";
 
   }
 
 }
 
 /* =========================
-   BLOW CAKE CANDLES (PAGE 2)
+   BLOW CAKE CANDLES
 ========================= */
 
 function blowCakeCandles(){
 
-  const flames = document.querySelectorAll(".mini-flame");
+  const flames =
+    document.querySelectorAll(".mini-flame");
 
-  const hint = document.getElementById("cakeHint");
+  const hint =
+    document.getElementById("cakeHint");
 
   let isAnyLit = false;
 
-  flames.forEach(f => {
-    if(!f.classList.contains("out")) isAnyLit = true;
+  flames.forEach(f=>{
+
+    if(!f.classList.contains("out")){
+
+      isAnyLit = true;
+
+    }
+
   });
 
   if(isAnyLit){
 
-    flames.forEach(f => f.classList.add("out"));
+    flames.forEach(f=>{
+
+      f.classList.add("out");
+
+    });
 
     document.body.classList.add("lights-off");
 
     setTimeout(()=>{
 
-      hint.textContent = "إن شاء الله.. ❤️‍🩹";
+      hint.textContent =
+        "إن شاء الله.. ❤️‍🩹";
 
-      hint.setAttribute("dir","rtl");
+      hint.setAttribute(
+        "dir",
+        "rtl"
+      );
 
-      document.body.classList.remove("lights-off");
+      document.body.classList.remove(
+        "lights-off"
+      );
 
       confetti({
+
         particleCount:70,
         spread:70,
-        origin:{ y:0.5 }
+        origin:{y:.5}
+
       });
 
-    }, 700);
+    },700);
 
   }
 
@@ -1788,27 +1860,35 @@ const wishes = [
    SHUFFLE & RENDER
 ========================= */
 
-const shuffled = [...wishes].sort(
-  () => Math.random() - 0.5
-);
+const shuffled =
+  [...wishes].sort(
+    () => Math.random() - .5
+  );
 
-const grid = document.getElementById("wishGrid");
+const grid =
+  document.getElementById("wishGrid");
 
-const modal = document.getElementById("wishModal");
+const modal =
+  document.getElementById("wishModal");
 
-const modalText = document.getElementById("wishModalText");
+const modalText =
+  document.getElementById("wishModalText");
 
 shuffled.forEach((wish,index)=>{
 
-  const btn = document.createElement("button");
+  const btn =
+    document.createElement("button");
 
-  btn.className = "wish-btn";
+  btn.className =
+    "wish-btn";
 
-  btn.textContent = index + 1;
+  btn.textContent =
+    index + 1;
 
-  btn.onclick = () => {
+  btn.onclick = ()=>{
 
-    modalText.textContent = wish;
+    modalText.textContent =
+      wish;
 
     modal.classList.add("open");
 
@@ -1825,22 +1905,27 @@ shuffled.forEach((wish,index)=>{
 function closeWish(event){
 
   if(event && event.target !== modal){
+
     return;
+
   }
 
   modal.classList.remove("open");
 
 }
 
-document.addEventListener("keydown",e=>{
+document.addEventListener(
+  "keydown",
+  e=>{
 
-  if(e.key === "Escape"){
+    if(e.key === "Escape"){
 
-    modal.classList.remove("open");
+      modal.classList.remove("open");
+
+    }
 
   }
-
-});
+);
 
 /* =========================
    OPEN ENVELOPE
@@ -1849,7 +1934,9 @@ document.addEventListener("keydown",e=>{
 function openEnvelope(){
 
   const wrapper =
-    document.getElementById("envelopeWrapper");
+    document.getElementById(
+      "envelopeWrapper"
+    );
 
   wrapper.classList.add("open");
 
@@ -1861,18 +1948,24 @@ function openEnvelope(){
 
 function goTo(n){
 
-  hideTooltip(); // ضمان عدم ظهور الملاحظة عند التنقل بين الصفحات
+  hideTooltip();
 
-  document.querySelectorAll(".page").forEach(page=>{
+  document
+    .querySelectorAll(".page")
+    .forEach(page=>{
 
-    page.classList.remove("active");
+      page.classList.remove("active");
 
-    page.classList.remove("final-animation");
+      page.classList.remove(
+        "final-animation"
+      );
 
-  });
+    });
 
   const target =
-    document.getElementById("page"+n);
+    document.getElementById(
+      "page" + n
+    );
 
   target.classList.add("active");
 
@@ -1888,7 +1981,9 @@ function goTo(n){
 
   if(n === 8){
 
-    target.classList.add("final-animation");
+    target.classList.add(
+      "final-animation"
+    );
 
     setTimeout(()=>{
 
@@ -1898,13 +1993,13 @@ function goTo(n){
 
         spread:90,
 
-        origin:{ y:0.6 },
+        origin:{y:.6},
 
         colors:[
-          '#a8b9a3',
-          '#71836d',
-          '#c9a96b',
-          '#ffffff'
+          "#a8b9a3",
+          "#71836d",
+          "#c9a96b",
+          "#ffffff"
         ]
 
       });
@@ -1948,16 +2043,19 @@ let musicPlaying = false;
 
 function toggleMusic(){
 
-  hideTooltip(); // إخفاء الملاحظة فوراً بمجرد الضغط على زر الموسيقى
+  hideTooltip();
 
   if(!musicPlaying){
+
+    music.volume = .3;
 
     music.play()
       .then(()=>{
 
         musicPlaying = true;
 
-        musicBtn.textContent = "🔊";
+        musicBtn.textContent =
+          "🔊";
 
       })
       .catch(()=>{
@@ -1974,13 +2072,14 @@ function toggleMusic(){
 
     musicPlaying = false;
 
-    musicBtn.textContent = "🎧";
+    musicBtn.textContent =
+      "🎧";
 
   }
 
 }
-music.volume = 0.3;
+
 </script>
 
 </body>
-  </html>
+      </html>
