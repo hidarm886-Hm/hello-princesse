@@ -961,14 +961,20 @@ textarea{
 }
 
 /* =========================
-   MUSIC BUTTON
+   MUSIC BUTTON & TOOLTIP
 ========================= */
 
-.music-btn{
+.music-container{
   position:fixed;
   z-index:50;
   top:15px;
   left:15px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.music-btn{
   width:42px;
   height:42px;
   border:1px solid #b8c5b3;
@@ -988,6 +994,28 @@ textarea{
 
 .music-btn:hover{
   transform:scale(1.05);
+}
+
+.music-tooltip {
+  background: var(--sage);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(71,88,75,.15);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  opacity: 1;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.music-tooltip.hidden {
+  opacity: 0;
+  transform: translateX(-10px);
 }
 
 /* =========================
@@ -1155,9 +1183,14 @@ textarea{
   <source src="music.mp3" type="audio/mpeg">
 </audio>
 
-<button class="music-btn" id="musicBtn" onclick="toggleMusic()" aria-label="Musique">
-  🎧
-</button>
+<div class="music-container">
+  <button class="music-btn" id="musicBtn" onclick="toggleMusic()" aria-label="Musique">
+    🎧
+  </button>
+  <div class="music-tooltip" id="musicTooltip">
+    ← Lancer la musique.. 🎧 !!
+  </div>
+</div>
 
 <div class="book">
 
@@ -1609,6 +1642,21 @@ textarea{
 <script>
 
 /* =========================
+   TOOLTIP AUTO HIDE (7s)
+========================= */
+
+const tooltip = document.getElementById("musicTooltip");
+
+function hideTooltip() {
+  if (tooltip) {
+    tooltip.classList.add("hidden");
+  }
+}
+
+// إخفاء الملاحظة تلقائياً بعد 4 ثوانٍ من التحميل
+setTimeout(hideTooltip, 4000);
+
+/* =========================
    CODE & OPEN BOOK
 ========================= */
 
@@ -1619,6 +1667,8 @@ function checkCode(number){
   if(number === 2){
 
     error.textContent = "";
+
+    hideTooltip(); // إخفاء الملاحظة فوراً عند المرور للصفحات التالية
 
     document.getElementById("opening").classList.remove("active");
 
@@ -1811,6 +1861,8 @@ function openEnvelope(){
 
 function goTo(n){
 
+  hideTooltip(); // ضمان عدم ظهور الملاحظة عند التنقل بين الصفحات
+
   document.querySelectorAll(".page").forEach(page=>{
 
     page.classList.remove("active");
@@ -1895,6 +1947,8 @@ const musicBtn =
 let musicPlaying = false;
 
 function toggleMusic(){
+
+  hideTooltip(); // إخفاء الملاحظة فوراً بمجرد الضغط على زر الموسيقى
 
   if(!musicPlaying){
 
