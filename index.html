@@ -3922,4 +3922,806 @@ function spawnMeteor(){
       "page6"
     );
 
-  const
+  const meteor =
+    document.getElementById(
+      "meteor"
+    );
+
+  if(
+    !page6 ||
+    !meteor
+  ){
+
+    return;
+
+  }
+
+  /*
+    Meteor is visually created
+    only while page 6 is active.
+  */
+
+  if(
+    page6.classList.contains(
+      "active"
+    )
+  ){
+
+    meteorActive=true;
+
+    /*
+      Random starting position.
+    */
+
+    const startTop =
+      30+
+      Math.random()*100;
+
+    const startLeft =
+      -20+
+      Math.random()*80;
+
+    meteor.style.top=
+      startTop+"px";
+
+    meteor.style.left=
+      startLeft+"px";
+
+    meteor.classList.remove(
+      "active"
+    );
+
+    /*
+      Force reflow so animation
+      can restart every time.
+    */
+
+    void meteor.offsetWidth;
+
+    meteor.classList.add(
+      "active"
+    );
+
+    setTimeout(()=>{
+
+      meteor.classList.remove(
+        "active"
+      );
+
+      meteorActive=false;
+
+    },3300);
+
+  }
+
+  startMeteorLoop();
+
+}
+
+/* =========================================
+   METEOR TOUCH
+   ========================================= */
+
+document.addEventListener(
+  "click",
+  e=>{
+
+    const meteor =
+      document.getElementById(
+        "meteor"
+      );
+
+    const page6 =
+      document.getElementById(
+        "page6"
+      );
+
+    if(
+      !meteor ||
+      !page6
+    ){
+
+      return;
+
+    }
+
+    /*
+      Meteor sound only on page 6.
+    */
+
+    if(
+      !page6.classList.contains(
+        "active"
+      )
+    ){
+
+      return;
+
+    }
+
+    if(
+      !meteor.classList.contains(
+        "active"
+      )
+    ){
+
+      return;
+
+    }
+
+    /*
+      Check whether click
+      actually hit meteor.
+    */
+
+    const rect=
+      meteor.getBoundingClientRect();
+
+    const hit=
+      e.clientX>=rect.left-12 &&
+      e.clientX<=rect.right+12 &&
+      e.clientY>=rect.top-12 &&
+      e.clientY<=rect.bottom+12;
+
+    if(!hit){
+
+      return;
+
+    }
+
+    playMeteorSound();
+
+  }
+);
+
+/* METEOR SOUND */
+
+function playMeteorSound(){
+
+  const page6 =
+    document.getElementById(
+      "page6"
+    );
+
+  if(
+    !page6 ||
+    !page6.classList.contains(
+      "active"
+    )
+  ){
+
+    return;
+
+  }
+
+  const meteorSound =
+    document.getElementById(
+      "meteorSound"
+    );
+
+  if(!meteorSound) return;
+
+  /*
+    LOWER MUSIC ONLY WHILE
+    METEOR SOUND IS PLAYING.
+  */
+
+  if(
+    musicPlaying &&
+    music
+  ){
+
+    music.volume=.05;
+
+  }
+
+  meteorSound.currentTime=0;
+
+  const promise=
+    meteorSound.play();
+
+  if(promise){
+
+    promise.catch(()=>{});
+
+  }
+
+  /*
+    Small spark explosion.
+  */
+
+  createMeteorSparks();
+
+  meteorSound.onended=()=>{
+
+    if(
+      page6.classList.contains(
+        "active"
+      ) &&
+      musicPlaying &&
+      music
+    ){
+
+      music.volume=.3;
+
+    }
+
+  };
+
+}
+
+/* METEOR SPARKS */
+
+function createMeteorSparks(){
+
+  const meteor =
+    document.getElementById(
+      "meteor"
+    );
+
+  const sky =
+    document.querySelector(
+      ".sky-container"
+    );
+
+  if(
+    !meteor ||
+    !sky
+  ){
+
+    return;
+
+  }
+
+  const rect=
+    meteor.getBoundingClientRect();
+
+  const skyRect=
+    sky.getBoundingClientRect();
+
+  const x=
+    rect.left-
+    skyRect.left+
+    rect.width/2;
+
+  const y=
+    rect.top-
+    skyRect.top+
+    rect.height/2;
+
+  for(
+    let i=0;
+    i<12;
+    i++
+  ){
+
+    const spark=
+      document.createElement(
+        "span"
+      );
+
+    spark.className=
+      "meteor-spark";
+
+    spark.style.left=
+      x+"px";
+
+    spark.style.top=
+      y+"px";
+
+    spark.style.setProperty(
+      "--sx",
+      (
+        Math.random()*70-
+        35
+      )+"px"
+    );
+
+    spark.style.setProperty(
+      "--sy",
+      (
+        Math.random()*70-
+        35
+      )+"px"
+    );
+
+    sky.appendChild(spark);
+
+    setTimeout(()=>{
+
+      spark.remove();
+
+    },750);
+
+  }
+
+}
+
+/* =========================================
+   B CONSTELLATION
+   ========================================= */
+
+function prepareConstellation(){
+
+  const lines =
+    document.querySelectorAll(
+      ".b-constellation-line"
+    );
+
+  lines.forEach(line=>{
+
+    const from=
+      line.dataset.from
+        .split(",")
+        .map(Number);
+
+    const to=
+      line.dataset.to
+        .split(",")
+        .map(Number);
+
+    const x1=from[0];
+    const y1=from[1];
+
+    const x2=to[0];
+    const y2=to[1];
+
+    const dx=x2-x1;
+    const dy=y2-y1;
+
+    const length=
+      Math.sqrt(
+        dx*dx+
+        dy*dy
+      );
+
+    const angle=
+      Math.atan2(
+        dy,
+        dx
+      )*
+      180/
+      Math.PI;
+
+    line.style.width=
+      length+"px";
+
+    line.style.left=
+      x1+"px";
+
+    line.style.top=
+      y1+"px";
+
+    line.style.transform=
+      `rotate(${angle}deg)`;
+
+  });
+
+}
+
+function showConstellation(){
+
+  const starsB =
+    document.querySelectorAll(
+      ".b-star"
+    );
+
+  const linesB =
+    document.querySelectorAll(
+      ".b-constellation-line"
+    );
+
+  /*
+    Make the B clearer
+    progressively.
+  */
+
+  starsB.forEach(
+    (star,index)=>{
+
+      setTimeout(()=>{
+
+        star.classList.add(
+          "visible"
+        );
+
+      },index*80);
+
+    }
+  );
+
+  linesB.forEach(
+    (line,index)=>{
+
+      setTimeout(()=>{
+
+        line.classList.add(
+          "visible"
+        );
+
+      },500+index*110);
+
+    }
+  );
+
+}
+
+/* =========================================
+   WISHES
+   ========================================= */
+
+const wishes=[
+
+  "ما كُتب لكِ سيجد طريقه إليكِ 🌿",
+
+  "ربما أجمل أيامكِ سيكون يومًا عاديًا جدًا ✨",
+
+  "لا أحد يعرف ما يخبئه الغد... وهذه أجمل مفاجآته 🌙",
+
+  "أتمنى أن تحققي أمنية لم تخبري بها أحدًا 🤍",
+
+  "أتمنى أن يبقى فيكِ دائمًا شيءٌ لا يكبر 🦋",
+
+  "لا تكبري كثيرًا... بعض الأشياء الجميلة تحتاج قليلًا من الطفولة 🙂",
+
+  "أتمنى لكِ مالًا لا ينتهي... ولا تعرفين أين تضعينه 😂💸",
+
+  "أتمنى لكِ نومًا طويلًا، هادئًا، بلا منبّه 😴🤍",
+
+  "WOOOOOY 😂😂",
+
+  "أتمنى أن تعرفي أن صديقكِ هنا موجود ليسمعكِ دائما بكل حماس واهتمام... حتى لو كانت أطول les vocaux في العالم و بسرعة ×1 😅🎧",
+
+  "﴿إِنَّ رَبِّي لَطِيفٌ لِّمَا يَشَاءُ﴾ 🤍",
+
+  "﴿لَا تَدْرِي لَعَلَّ اللَّهَ يُحْدِثُ بَعْدَ ذَٰلِكَ أَمْرًا﴾ 🌿🤍",
+
+  "أتمنى أن تكوني بخير .. جدًا جدًاااااا 🤍",
+
+  "يُرسِلُنا الله بَعضَنا لِبَعضٍ رَحمَات 🦋",
+
+  "بعض الأشياء لا تحتاج سببًا، يكفي أنها أسعدتكِ ✨",
+
+  "أتمنى لكِ أيامًا تشبه قلبكِ الجميل 🤍🌷",
+
+  "هذه لأمنياتك التي لم تخبرِي بها أحداً 🥹",
+
+  "أتمنى أن يجبركِ الله جبرًا يُنسيكِ كل تعب 🤍",
+
+  "أتمنى أن تدركي دائمًا كم أن وجودكِ بين من يحبونكِ يصنع فارقًا كبيرًا 🌸",
+
+  "﴿ فَضَحِكَتْ فَبَشَّرْنَاهَا ..﴾ ❤️‍🩹"
+
+];
+
+const shuffled=
+  [...wishes].sort(
+    ()=>Math.random()-.5
+  );
+
+const grid=
+  document.getElementById(
+    "wishGrid"
+  );
+
+const modal=
+  document.getElementById(
+    "wishModal"
+  );
+
+const modalText=
+  document.getElementById(
+    "wishModalText"
+  );
+
+shuffled.forEach(
+  (wish,index)=>{
+
+    const btn=
+      document.createElement(
+        "button"
+      );
+
+    btn.className=
+      "wish-btn";
+
+    btn.textContent=
+      index+1;
+
+    btn.onclick=()=>{
+
+      modalText.textContent=
+        wish;
+
+      modal.classList.add(
+        "open"
+      );
+
+      btn.classList.add(
+        "opened"
+      );
+
+    };
+
+    grid.appendChild(btn);
+
+  }
+);
+
+function closeWish(event){
+
+  if(
+    event &&
+    event.target!==modal
+  ){
+
+    return;
+
+  }
+
+  modal.classList.remove(
+    "open"
+  );
+
+}
+
+document.addEventListener(
+  "keydown",
+  e=>{
+
+    if(e.key==="Escape"){
+
+      modal.classList.remove(
+        "open"
+      );
+
+    }
+
+  }
+);
+
+/* =========================================
+   NAVIGATION
+   ========================================= */
+
+function goTo(n){
+
+  hideTooltip();
+
+  /*
+    ALWAYS restore background music
+    when changing pages.
+  */
+
+  if(
+    musicPlaying &&
+    music
+  ){
+
+    music.volume=.3;
+
+  }
+
+  /*
+    Stop meteor sound if user leaves page 6.
+  */
+
+  const meteorSound =
+    document.getElementById(
+      "meteorSound"
+    );
+
+  const pop =
+    document.getElementById(
+      "popSound"
+    );
+
+  if(n!==6){
+
+    if(meteorSound){
+
+      meteorSound.pause();
+      meteorSound.currentTime=0;
+
+    }
+
+    if(pop){
+
+      pop.pause();
+      pop.currentTime=0;
+
+    }
+
+    meteorActive=false;
+
+    const meteor =
+      document.getElementById(
+        "meteor"
+      );
+
+    if(meteor){
+
+      meteor.classList.remove(
+        "active"
+      );
+
+    }
+
+  }
+
+  document
+    .querySelectorAll(".page")
+    .forEach(page=>{
+
+      page.classList.remove(
+        "active"
+      );
+
+      page.classList.remove(
+        "final-animation"
+      );
+
+    });
+
+  const target=
+    document.getElementById(
+      "page"+n
+    );
+
+  target.classList.add(
+    "active"
+  );
+
+  const themeBtn=
+    document.getElementById(
+      "themeBtn"
+    );
+
+  if(n===6){
+
+    document.body.classList.add(
+      "starry-night"
+    );
+
+    if(themeBtn){
+
+      themeBtn.textContent=
+        "☀️";
+
+    }
+
+  }else{
+
+    document.body.classList.remove(
+      "starry-night"
+    );
+
+    if(themeBtn){
+
+      themeBtn.textContent=
+        "🌙";
+
+    }
+
+  }
+
+  updateNav(n);
+
+  window.scrollTo({
+
+    top:0,
+
+    behavior:"smooth"
+
+  });
+
+  if(n===9){
+
+    target.classList.add(
+      "final-animation"
+    );
+
+    setTimeout(()=>{
+
+      confetti({
+
+        particleCount:65,
+
+        spread:70,
+
+        origin:{y:.6},
+
+        colors:[
+
+          "#a8b9a3",
+          "#71836d",
+          "#c9a96b",
+          "#ffffff"
+
+        ],
+
+        disableForReducedMotion:true
+
+      });
+
+    },1000);
+
+  }
+
+}
+
+function updateNav(n){
+
+  document
+    .querySelectorAll(
+      ".nav button"
+    )
+    .forEach(
+      (button,index)=>{
+
+        button.classList.toggle(
+          "active",
+          index===n-1
+        );
+
+      }
+    );
+
+}
+
+/* =========================================
+   MUSIC
+   ========================================= */
+
+const music=
+  document.getElementById(
+    "bgMusic"
+  );
+
+const musicBtn=
+  document.getElementById(
+    "musicBtn"
+  );
+
+let musicPlaying=false;
+
+function toggleMusic(){
+
+  hideTooltip();
+
+  if(!musicPlaying){
+
+    music.volume=.3;
+
+    music.play()
+      .then(()=>{
+
+        musicPlaying=true;
+
+        musicBtn.textContent=
+          "🔊";
+
+      })
+      .catch(()=>{
+
+        musicPlaying=false;
+
+      });
+
+  }else{
+
+    music.pause();
+
+    musicPlaying=false;
+
+    musicBtn.textContent=
+      "🎧";
+
+  }
+
+}
+
+</script>
+
+</body>
+        </html>
