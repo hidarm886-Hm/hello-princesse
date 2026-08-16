@@ -554,7 +554,7 @@ button,a,input,textarea{
   }
 }
 
-/* PAGE 4: CARTOON CAROUSEL WITH CLICK OVERLAY */
+/* PAGE 4 */
 
 .carousel-container{
   width:min(95%,540px);
@@ -578,7 +578,7 @@ button,a,input,textarea{
   justify-content:center;
   cursor:pointer;
   box-shadow:0 12px 30px rgba(0,0,0,.15);
-  transition:opacity .4s ease, transform .4s ease;
+  transition:opacity .4s ease,transform .4s ease;
   -webkit-tap-highlight-color:transparent;
 }
 
@@ -649,7 +649,7 @@ button,a,input,textarea{
   font-weight:bold;
 }
 
-/* PAGE 5 PHOTO GRID (FAVORITES) */
+/* PAGE 5 */
 
 .photo-grid{
   width:min(95%,850px);
@@ -728,7 +728,7 @@ button,a,input,textarea{
   text-align:center;
 }
 
-/* PAGE 6: NIGHT SKY */
+/* PAGE 6 */
 
 .sky-container{
   position:relative;
@@ -755,7 +755,7 @@ button,a,input,textarea{
   -webkit-user-select:none;
 }
 
-/* PAGE 7: WISHES */
+/* PAGE 7 */
 
 .wish-page{
   justify-content:flex-start;
@@ -1036,7 +1036,7 @@ button,a,input,textarea{
   cursor:pointer;
 }
 
-/* PAGE 8: PLAYLIST */
+/* PAGE 8 */
 
 .playlist-container{
   width:min(90%,420px);
@@ -1148,7 +1148,7 @@ button,a,input,textarea{
   background:var(--sage-dark);
 }
 
-/* PAGE 9: FINAL */
+/* PAGE 9 */
 
 .page9{
   overflow:hidden;
@@ -1489,11 +1489,12 @@ button,a,input,textarea{
   <div class="curtain-panel panel-right"></div>
 </div>
 
-<audio id="bgMusic" loop onplay="this.volume=0.3">
+<audio id="bgMusic" loop>
   <source src="music.mp3" type="audio/mpeg">
 </audio>
 
-<audio id="popSound" src="pop.mp3"></audio>
+<!-- صوت لمس النجوم: يُستخدم فقط داخل الصفحة 6 -->
+<audio id="popSound" src="pop.mp3" preload="auto"></audio>
 
 <div class="top-controls-container">
 
@@ -2260,15 +2261,27 @@ function initNightSky(){
 
   canvas.addEventListener('click', (e) => {
 
+    /*
+      صوت النجوم مربوط بهذا الحدث فقط.
+      ولا يتم تشغيله إلا إذا كانت الصفحة 6 فعليًا active.
+    */
     const page6 = document.getElementById('page6');
 
-    if (page6 && page6.classList.contains('active')) {
+    if(!page6 || !page6.classList.contains('active')){
+      return;
+    }
 
-      const pop = document.getElementById('popSound');
+    const pop = document.getElementById('popSound');
 
-      if(pop){
-        pop.currentTime = 0;
-        pop.play().catch(()=>{});
+    if(pop){
+
+      pop.pause();
+      pop.currentTime = 0;
+
+      const playPromise = pop.play();
+
+      if(playPromise !== undefined){
+        playPromise.catch(()=>{});
       }
 
     }
@@ -2551,6 +2564,17 @@ function goTo(n){
 
   hideTooltip();
 
+  /*
+    إيقاف وإعادة ضبط صوت النجوم عند مغادرة الصفحة 6.
+    هذا يضمن أنه لا يستمر في الخلفية أو يعمل في أي صفحة أخرى.
+  */
+  const pop = document.getElementById("popSound");
+
+  if(pop){
+    pop.pause();
+    pop.currentTime = 0;
+  }
+
   if(musicPlaying && music){
     music.volume = 0.3;
   }
@@ -2693,4 +2717,4 @@ function toggleMusic(){
 </script>
 
 </body>
-    </html>
+        </html>
