@@ -192,7 +192,6 @@ button,a,input,textarea{
   min-height:100vh;
   background:
     radial-gradient(circle at 20% 15%,rgba(168,185,163,.28),transparent 25%),
-    radial-gradient(circle at 80% 80%,rgba(220,233,245,.38),transparent 30%),
     var(--cream);
   text-align:center;
 }
@@ -286,7 +285,6 @@ button,a,input,textarea{
   text-align:center;
   background:
     radial-gradient(circle at 20% 15%,rgba(168,185,163,.24),transparent 25%),
-    radial-gradient(circle at 80% 80%,rgba(220,233,245,.35),transparent 28%),
     var(--cream);
 }
 
@@ -554,7 +552,7 @@ button,a,input,textarea{
   }
 }
 
-/* PAGE 4: CARTOON CAROUSEL WITH CLICK OVERLAY */
+/* PAGE 4: CARTOON CAROUSEL */
 
 .carousel-container{
   width:min(95%,540px);
@@ -578,7 +576,7 @@ button,a,input,textarea{
   justify-content:center;
   cursor:pointer;
   box-shadow:0 12px 30px rgba(0,0,0,.15);
-  transition:opacity .4s ease, transform .4s ease;
+  transition:opacity .4s ease,transform .4s ease;
 }
 
 .carousel-cover-overlay.hidden{
@@ -648,7 +646,7 @@ button,a,input,textarea{
   font-weight:bold;
 }
 
-/* PAGE 5 PHOTO GRID (FAVORITES) */
+/* PAGE 5 PHOTO GRID */
 
 .photo-grid{
   width:min(95%,850px);
@@ -727,7 +725,7 @@ button,a,input,textarea{
   text-align:center;
 }
 
-/* PAGE 6: NIGHT SKY */
+/* PAGE 6 */
 
 .sky-container{
   position:relative;
@@ -740,21 +738,21 @@ button,a,input,textarea{
   box-shadow:0 10px 30px rgba(0,0,0,.5);
   overflow:hidden;
   cursor:pointer;
-  -webkit-tap-highlight-color: transparent;
-  user-select: none;
-  -webkit-user-select: none;
+  -webkit-tap-highlight-color:transparent;
+  user-select:none;
+  -webkit-user-select:none;
 }
 
 #skyCanvas{
   width:100%;
   height:100%;
   display:block;
-  -webkit-tap-highlight-color: transparent;
-  user-select: none;
-  -webkit-user-select: none;
+  -webkit-tap-highlight-color:transparent;
+  user-select:none;
+  -webkit-user-select:none;
 }
 
-/* PAGE 7: WISHES */
+/* PAGE 7 */
 
 .wish-page{
   justify-content:flex-start;
@@ -1043,7 +1041,7 @@ button,a,input,textarea{
 }
 
 .playlist-title{
-  direction:rtl;
+  direction:ltr;
   color:var(--sage-dark);
   font-size:clamp(1.6rem,4.5vw,2.5rem);
   font-weight:normal;
@@ -1147,7 +1145,7 @@ button,a,input,textarea{
   background:var(--sage-dark);
 }
 
-/* PAGE 9: FINAL */
+/* PAGE 9 */
 
 .page9{
   overflow:hidden;
@@ -1681,18 +1679,49 @@ button,a,input,textarea{
 
   <div class="carousel-container">
 
-    <div class="carousel-cover-overlay" id="carouselOverlay" onclick="revealCarousel()">
-      <div class="carousel-cover-text">Clique 🙂</div>
+    <div
+      class="carousel-cover-overlay"
+      id="carouselOverlay"
+      onclick="revealCarousel()"
+    >
+      <div class="carousel-cover-text">
+        Clique 🙂
+      </div>
     </div>
 
     <div class="carousel-slide">
-      <img id="carouselImg" src="images/cartoon1.png" alt="Cartoon">
+
+      <img
+        id="carouselImg"
+        src="images/cartoon1.png"
+        alt="Cartoon"
+      >
+
     </div>
 
     <div class="carousel-controls">
-      <button class="carousel-btn" onclick="prevSlide()">❮</button>
-      <span class="carousel-counter" id="carouselCounter">1 / 6</span>
-      <button class="carousel-btn" onclick="nextSlide()">❯</button>
+
+      <button
+        class="carousel-btn"
+        onclick="prevSlide()"
+      >
+        ❮
+      </button>
+
+      <span
+        class="carousel-counter"
+        id="carouselCounter"
+      >
+        1 / 6
+      </span>
+
+      <button
+        class="carousel-btn"
+        onclick="nextSlide()"
+      >
+        ❯
+      </button>
+
     </div>
 
   </div>
@@ -1715,24 +1744,54 @@ button,a,input,textarea{
 
   <div class="photo-grid">
 
-    <div class="photo-slot" onclick="this.classList.toggle('show')">
-      <img src="images/thing1.png" alt="Thing 1">
+    <div
+      class="photo-slot"
+      onclick="this.classList.toggle('show')"
+    >
+      <img
+        src="images/thing1.png"
+        alt="Thing 1"
+      >
     </div>
 
-    <div class="photo-slot" onclick="this.classList.toggle('show')">
-      <img src="images/thing2.png" alt="Thing 2">
+    <div
+      class="photo-slot"
+      onclick="this.classList.toggle('show')"
+    >
+      <img
+        src="images/thing2.png"
+        alt="Thing 2"
+      >
     </div>
 
-    <div class="photo-slot" onclick="this.classList.toggle('show')">
-      <img src="images/thing3.png" alt="Thing 3">
+    <div
+      class="photo-slot"
+      onclick="this.classList.toggle('show')"
+    >
+      <img
+        src="images/thing3.png"
+        alt="Thing 3"
+      >
     </div>
 
-    <div class="photo-slot" onclick="this.classList.toggle('show')">
-      <img src="images/thing4.png" alt="Thing 4">
+    <div
+      class="photo-slot"
+      onclick="this.classList.toggle('show')"
+    >
+      <img
+        src="images/thing4.png"
+        alt="Thing 4"
+      >
     </div>
 
-    <div class="photo-slot" onclick="this.classList.toggle('show')">
-      <img src="images/thing5.png" alt="Thing 5">
+    <div
+      class="photo-slot"
+      onclick="this.classList.toggle('show')"
+    >
+      <img
+        src="images/thing5.png"
+        alt="Thing 5"
+      >
     </div>
 
   </div>
@@ -1754,10 +1813,16 @@ button,a,input,textarea{
   </h2>
 
   <div class="sky-container">
+
     <canvas id="skyCanvas"></canvas>
+
   </div>
 
-  <p class="photo-note" dir="rtl" style="margin-top:20px;">
+  <p
+    class="photo-note"
+    dir="rtl"
+    style="margin-top:20px;"
+  >
     Des clics sur le ciel pour les faire briller ✨
   </p>
 
@@ -1779,7 +1844,10 @@ button,a,input,textarea{
 
   <div class="wish-bottle">
 
-    <div class="real-wish-bottle" aria-label="قارورة أمنيات">
+    <div
+      class="real-wish-bottle"
+      aria-label="قارورة أمنيات"
+    >
 
       <div class="rw-cork"></div>
       <div class="rw-lip"></div>
@@ -1821,7 +1889,10 @@ button,a,input,textarea{
       20 أمنية بانتظارك... اختاريها واحدةً تلو الأخرى، كلها لكِ 🤍
     </div>
 
-    <div class="wish-grid" id="wishGrid"></div>
+    <div
+      class="wish-grid"
+      id="wishGrid"
+    ></div>
 
   </div>
 
@@ -1861,7 +1932,9 @@ button,a,input,textarea{
 
       <div class="player-controls">
 
-        <span>⏮</span>
+        <span>
+          ⏮
+        </span>
 
         <a
           class="player-btn-main"
@@ -1873,7 +1946,9 @@ button,a,input,textarea{
           ▶
         </a>
 
-        <span>⏭</span>
+        <span>
+          ⏭
+        </span>
 
       </div>
 
@@ -1883,7 +1958,10 @@ button,a,input,textarea{
 
 </section>
 
-<section class="page page9 final" id="page9">
+<section
+  class="page page9 final"
+  id="page9"
+>
 
   <span class="page-number">
     9 / 9
@@ -1909,7 +1987,10 @@ button,a,input,textarea{
 
     </h1>
 
-    <p class="final-message" dir="rtl">
+    <p
+      class="final-message"
+      dir="rtl"
+    >
       كل عام و أنتِ بألف خير يا أفضل صديقة في العالم 😊😄
     </p>
 
@@ -1923,7 +2004,10 @@ button,a,input,textarea{
   onclick="closeWish(event)"
 >
 
-  <div class="wish-modal-card" dir="rtl">
+  <div
+    class="wish-modal-card"
+    dir="rtl"
+  >
 
     <button
       class="wish-close"
@@ -1961,45 +2045,53 @@ button,a,input,textarea{
 
 <script>
 
-document.querySelectorAll('.photo-slot').forEach(slot=>{
-  slot.style.setProperty('--random',Math.random());
+document.querySelectorAll('.photo-slot').forEach(slot => {
+  slot.style.setProperty(
+    '--random',
+    Math.random()
+  );
 });
 
 function toggleTheme(){
 
-  requestAnimationFrame(()=>{
+  requestAnimationFrame(() => {
 
-    const body=document.body;
-    const themeBtn=document.getElementById("themeBtn");
+    const body = document.body;
+    const themeBtn =
+      document.getElementById("themeBtn");
 
     body.classList.toggle("starry-night");
 
     if(body.classList.contains("starry-night")){
-      themeBtn.textContent="☀️";
+      themeBtn.textContent = "☀️";
     }else{
-      themeBtn.textContent="🌙";
+      themeBtn.textContent = "🌙";
     }
 
   });
 
 }
 
-window.addEventListener("DOMContentLoaded",()=>{
+window.addEventListener(
+  "DOMContentLoaded",
+  () => {
 
-  setTimeout(()=>{
+    setTimeout(() => {
 
-    document
-      .getElementById("curtainOverlay")
-      .classList
-      .add("open");
+      document
+        .getElementById("curtainOverlay")
+        .classList
+        .add("open");
 
-  },200);
+    },200);
 
-  initNightSky();
+    initNightSky();
 
-});
+  }
+);
 
-const tooltip=document.getElementById("musicTooltip");
+const tooltip =
+  document.getElementById("musicTooltip");
 
 function hideTooltip(){
 
@@ -2009,79 +2101,142 @@ function hideTooltip(){
 
 }
 
-setTimeout(hideTooltip,5000);
+setTimeout(
+  hideTooltip,
+  5000
+);
 
 function checkCode(number){
 
-  const error=document.getElementById("passcodeError");
-  const box=document.getElementById("passcodeBox");
+  const error =
+    document.getElementById(
+      "passcodeError"
+    );
 
-  if(number===2){
+  const box =
+    document.getElementById(
+      "passcodeBox"
+    );
 
-    error.textContent="";
+  if(number === 2){
+
+    error.textContent = "";
+
     hideTooltip();
 
     confetti({
+
       particleCount:40,
       spread:60,
       origin:{y:.5},
       shapes:["star"],
-      colors:["#ffe17d","#ffffff","#c9a96b"]
+      colors:[
+        "#ffe17d",
+        "#ffffff",
+        "#c9a96b"
+      ]
+
     });
 
-    document.getElementById("opening").classList.remove("active");
-    document.getElementById("page1").classList.add("active");
-    document.getElementById("navigation").style.display="flex";
+    document
+      .getElementById("opening")
+      .classList
+      .remove("active");
 
-    document.getElementById("themeBtn").style.display="none";
+    document
+      .getElementById("page1")
+      .classList
+      .add("active");
+
+    document
+      .getElementById("navigation")
+      .style
+      .display = "flex";
+
+    document
+      .getElementById("themeBtn")
+      .style
+      .display = "none";
 
     updateNav(1);
 
   }else{
 
-    error.textContent="BOUCHRAAAAA 🙂💔";
+    error.textContent =
+      "BOUCHRAAAAA 🙂💔";
 
-    box.classList.add("error-shake");
+    box.classList.add(
+      "error-shake"
+    );
 
-    setTimeout(()=>{
-      box.classList.remove("error-shake");
+    setTimeout(() => {
+
+      box.classList.remove(
+        "error-shake"
+      );
+
     },400);
 
   }
 
 }
 
-const p1Text="Que cette nouvelle année t'apporte autant de bonheur, de réussite, de joie et de belles surprises que tu en diffuses autour de toi.";
-const p2Text="Avoir une amie comme toi est un magnifique cadeau. Que la vie te gâte comme tu le mérites.";
-const p3Text="Reste toujours aussi brillante! ✨";
+const p1Text =
+  "Que cette nouvelle année t'apporte autant de bonheur, de réussite, de joie et de belles surprises que tu en diffuses autour de toi.";
 
-let envelopeAlreadyOpened=false;
+const p2Text =
+  "Avoir une amie comme toi est un magnifique cadeau. Que la vie te gâte comme tu le mérites.";
+
+const p3Text =
+  "Reste toujours aussi brillante! ✨";
+
+let envelopeAlreadyOpened = false;
 
 function typeWriterSequence(){
 
-  let i=0;
+  let i = 0;
 
-  const elem1=document.getElementById("typewriterText1");
-  const elem2=document.getElementById("typewriterText2");
-  const elem3=document.getElementById("typewriterText3");
+  const elem1 =
+    document.getElementById(
+      "typewriterText1"
+    );
 
-  elem1.innerHTML="";
-  elem2.innerHTML="";
-  elem3.innerHTML="";
+  const elem2 =
+    document.getElementById(
+      "typewriterText2"
+    );
+
+  const elem3 =
+    document.getElementById(
+      "typewriterText3"
+    );
+
+  elem1.innerHTML = "";
+  elem2.innerHTML = "";
+  elem3.innerHTML = "";
 
   function type1(){
 
-    if(i<p1Text.length){
+    if(i < p1Text.length){
 
-      elem1.innerHTML+=p1Text.charAt(i);
+      elem1.innerHTML +=
+        p1Text.charAt(i);
+
       i++;
 
-      setTimeout(type1,30);
+      setTimeout(
+        type1,
+        30
+      );
 
     }else{
 
-      i=0;
-      setTimeout(type2,200);
+      i = 0;
+
+      setTimeout(
+        type2,
+        200
+      );
 
     }
 
@@ -2089,17 +2244,26 @@ function typeWriterSequence(){
 
   function type2(){
 
-    if(i<p2Text.length){
+    if(i < p2Text.length){
 
-      elem2.innerHTML+=p2Text.charAt(i);
+      elem2.innerHTML +=
+        p2Text.charAt(i);
+
       i++;
 
-      setTimeout(type2,30);
+      setTimeout(
+        type2,
+        30
+      );
 
     }else{
 
-      i=0;
-      setTimeout(type3,200);
+      i = 0;
+
+      setTimeout(
+        type3,
+        200
+      );
 
     }
 
@@ -2107,12 +2271,17 @@ function typeWriterSequence(){
 
   function type3(){
 
-    if(i<p3Text.length){
+    if(i < p3Text.length){
 
-      elem3.innerHTML+=p3Text.charAt(i);
+      elem3.innerHTML +=
+        p3Text.charAt(i);
+
       i++;
 
-      setTimeout(type3,30);
+      setTimeout(
+        type3,
+        30
+      );
 
     }
 
@@ -2124,15 +2293,21 @@ function typeWriterSequence(){
 
 function openEnvelope(){
 
-  const wrapper=document.getElementById("envelopeWrapper");
+  const wrapper =
+    document.getElementById(
+      "envelopeWrapper"
+    );
 
   wrapper.classList.add("open");
 
   if(!envelopeAlreadyOpened){
 
-    envelopeAlreadyOpened=true;
+    envelopeAlreadyOpened = true;
 
-    setTimeout(typeWriterSequence,400);
+    setTimeout(
+      typeWriterSequence,
+      400
+    );
 
   }
 
@@ -2140,39 +2315,67 @@ function openEnvelope(){
 
 function blowCakeCandles(){
 
-  const flames=document.querySelectorAll(".mini-flame");
-  const hint=document.getElementById("cakeHint");
+  const flames =
+    document.querySelectorAll(
+      ".mini-flame"
+    );
 
-  let isAnyLit=false;
+  const hint =
+    document.getElementById(
+      "cakeHint"
+    );
 
-  flames.forEach(f=>{
+  let isAnyLit = false;
 
-    if(!f.classList.contains("out")){
-      isAnyLit=true;
+  flames.forEach(
+    f => {
+
+      if(
+        !f.classList.contains("out")
+      ){
+
+        isAnyLit = true;
+
+      }
+
     }
-
-  });
+  );
 
   if(isAnyLit){
 
-    flames.forEach(f=>{
-      f.classList.add("out");
-    });
+    flames.forEach(
+      f => {
 
-    document.body.classList.add("lights-off");
+        f.classList.add("out");
 
-    setTimeout(()=>{
+      }
+    );
 
-      hint.textContent="إن شاء الله.. ❤️‍🩹";
-      hint.setAttribute("dir","rtl");
+    document.body.classList.add(
+      "lights-off"
+    );
 
-      document.body.classList.remove("lights-off");
+    setTimeout(() => {
+
+      hint.textContent =
+        "إن شاء الله.. ❤️‍🩹";
+
+      hint.setAttribute(
+        "dir",
+        "rtl"
+      );
+
+      document.body.classList.remove(
+        "lights-off"
+      );
 
       confetti({
+
         particleCount:45,
         spread:60,
         origin:{y:.5},
         disableForReducedMotion:true
+
       });
 
     },700);
@@ -2182,31 +2385,52 @@ function blowCakeCandles(){
 }
 
 const cartoonImages = [
+
   "images/cartoon1.png",
   "images/cartoon2.png",
   "images/cartoon3.png",
   "images/cartoon4.png",
   "images/cartoon5.png",
   "images/cartoon6.png"
+
 ];
 
 let currentCartoonIndex = 0;
 
 function revealCarousel(){
-  document.getElementById("carouselOverlay").classList.add("hidden");
+
+  document
+    .getElementById(
+      "carouselOverlay"
+    )
+    .classList
+    .add("hidden");
+
 }
 
 function updateCarousel(){
 
-  const img = document.getElementById("carouselImg");
-  const counter = document.getElementById("carouselCounter");
+  const img =
+    document.getElementById(
+      "carouselImg"
+    );
+
+  const counter =
+    document.getElementById(
+      "carouselCounter"
+    );
 
   img.style.opacity = 0;
 
   setTimeout(() => {
 
-    img.src = cartoonImages[currentCartoonIndex];
+    img.src =
+      cartoonImages[
+        currentCartoonIndex
+      ];
+
     img.style.opacity = 1;
+
     counter.textContent =
       `${currentCartoonIndex + 1} / ${cartoonImages.length}`;
 
@@ -2217,7 +2441,10 @@ function updateCarousel(){
 function nextSlide(){
 
   currentCartoonIndex =
-    (currentCartoonIndex + 1) % cartoonImages.length;
+    (
+      currentCartoonIndex + 1
+    ) %
+    cartoonImages.length;
 
   updateCarousel();
 
@@ -2226,7 +2453,11 @@ function nextSlide(){
 function prevSlide(){
 
   currentCartoonIndex =
-    (currentCartoonIndex - 1 + cartoonImages.length) %
+    (
+      currentCartoonIndex -
+      1 +
+      cartoonImages.length
+    ) %
     cartoonImages.length;
 
   updateCarousel();
@@ -2237,58 +2468,113 @@ let stars = [];
 
 function initNightSky(){
 
-  const canvas = document.getElementById('skyCanvas');
+  const canvas =
+    document.getElementById(
+      'skyCanvas'
+    );
 
   if(!canvas) return;
 
-  const ctx = canvas.getContext('2d');
+  const ctx =
+    canvas.getContext('2d');
 
   canvas.width = 340;
   canvas.height = 340;
 
-  stars = Array.from({ length: 120 }, () => ({
+  stars =
+    Array.from(
+      {length:120},
+      () => ({
 
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    radius: Math.random() * 2 + 0.5,
-    alpha: Math.random(),
-    speed: Math.random() * 0.02 + 0.005,
-    sparkle: 0
+        x:
+          Math.random() *
+          canvas.width,
 
-  }));
+        y:
+          Math.random() *
+          canvas.height,
 
-  canvas.addEventListener('click', (e) => {
+        radius:
+          Math.random() * 2 +
+          0.5,
 
-    const pop = document.getElementById('popSound');
-    if(pop){
-      pop.currentTime = 0;
-      pop.play().catch(()=>{});
-    }
+        alpha:
+          Math.random(),
 
-    if(musicPlaying && music){
-      music.volume = 0.05;
-    }
+        speed:
+          Math.random() *
+          0.02 +
+          0.005,
 
-    const rect = canvas.getBoundingClientRect();
+        sparkle:0
 
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+      })
+    );
 
-    stars.forEach(star => {
+  canvas.addEventListener(
+    'click',
+    e => {
 
-      const dist =
-        Math.hypot(star.x - x, star.y - y);
+      const pop =
+        document.getElementById(
+          'popSound'
+        );
 
-      if(dist < 75){
+      if(pop){
 
-        star.sparkle = 2;
-        star.radius = Math.random() * 3.5 + 2.5;
+        pop.currentTime = 0;
+
+        pop.play().catch(
+          () => {}
+        );
 
       }
 
-    });
+      if(
+        musicPlaying &&
+        music
+      ){
 
-  });
+        music.volume = 0.05;
+
+      }
+
+      const rect =
+        canvas.getBoundingClientRect();
+
+      const x =
+        e.clientX -
+        rect.left;
+
+      const y =
+        e.clientY -
+        rect.top;
+
+      stars.forEach(
+        star => {
+
+          const dist =
+            Math.hypot(
+              star.x - x,
+              star.y - y
+            );
+
+          if(dist < 75){
+
+            star.sparkle = 2;
+
+            star.radius =
+              Math.random() *
+              3.5 +
+              2.5;
+
+          }
+
+        }
+      );
+
+    }
+  );
 
   function drawSky(){
 
@@ -2315,14 +2601,18 @@ function initNightSky(){
 
         const dist =
           Math.hypot(
-            stars[i].x - stars[j].x,
-            stars[i].y - stars[j].y
+            stars[i].x -
+              stars[j].x,
+
+            stars[i].y -
+              stars[j].y
           );
 
         if(dist < 65){
 
           const alphaLine =
-            (1 - dist / 65) * 0.35;
+            (1 - dist / 65) *
+            0.35;
 
           ctx.strokeStyle =
             `rgba(201,169,107,${alphaLine})`;
@@ -2347,54 +2637,67 @@ function initNightSky(){
 
     }
 
-    stars.forEach(star => {
+    stars.forEach(
+      star => {
 
-      star.alpha += star.speed;
+        star.alpha +=
+          star.speed;
 
-      if(
-        star.alpha > 1 ||
-        star.alpha < 0.2
-      ){
+        if(
+          star.alpha > 1 ||
+          star.alpha < 0.2
+        ){
 
-        star.speed =
-          -star.speed;
+          star.speed =
+            -star.speed;
 
-      }
+        }
 
-      if(star.sparkle > 0){
+        if(
+          star.sparkle > 0
+        ){
 
-        star.sparkle -= 0.03;
+          star.sparkle -=
+            0.03;
 
-        ctx.shadowBlur = 15;
-        ctx.shadowColor = '#ffffff';
+          ctx.shadowBlur = 15;
 
-      }else{
+          ctx.shadowColor =
+            '#ffffff';
+
+        }else{
+
+          ctx.shadowBlur = 0;
+
+        }
+
+        ctx.beginPath();
+
+        ctx.arc(
+          star.x,
+          star.y,
+          star.radius +
+            (
+              star.sparkle *
+              2
+            ),
+          0,
+          Math.PI * 2
+        );
+
+        ctx.fillStyle =
+          `rgba(255,255,255,${Math.min(
+            1,
+            Math.abs(star.alpha) +
+              star.sparkle
+          )})`;
+
+        ctx.fill();
 
         ctx.shadowBlur = 0;
 
       }
-
-      ctx.beginPath();
-
-      ctx.arc(
-        star.x,
-        star.y,
-        star.radius + (star.sparkle * 2),
-        0,
-        Math.PI * 2
-      );
-
-      ctx.fillStyle =
-        `rgba(255,255,255,${Math.min(
-          1,
-          Math.abs(star.alpha) + star.sparkle
-        )})`;
-
-      ctx.fill();
-
-      ctx.shadowBlur = 0;
-
-    });
+    );
 
     ctx.font =
       'bold 19px Georgia';
@@ -2405,8 +2708,7 @@ function initNightSky(){
     ctx.textAlign =
       'center';
 
-    ctx.shadowBlur =
-      10;
+    ctx.shadowBlur = 10;
 
     ctx.shadowColor =
       'rgba(201,169,107,0.5)';
@@ -2419,7 +2721,9 @@ function initNightSky(){
 
     ctx.shadowBlur = 0;
 
-    requestAnimationFrame(drawSky);
+    requestAnimationFrame(
+      drawSky
+    );
 
   }
 
@@ -2441,7 +2745,7 @@ const wishes = [
 
   "لا تكبري كثيرًا... بعض الأشياء الجميلة تحتاج قليلًا من الطفولة 🙂",
 
-  "أتمنى لكِ مالًا لا ينتهي... ولا تعرفين أين تضعينه 😂💸",
+  "أتمنى لكِ مالًا لا ينتهي... ولا تعرفين أين tضعينه 😂💸",
 
   "أتمنى لكِ نومًا طويلًا، هادئًا، بلا منبّه 😴🤍",
 
@@ -2473,43 +2777,59 @@ const wishes = [
 
 const shuffled =
   [...wishes].sort(
-    () => Math.random() - 0.5
+    () =>
+      Math.random() -
+      0.5
   );
 
 const grid =
-  document.getElementById("wishGrid");
+  document.getElementById(
+    "wishGrid"
+  );
 
 const modal =
-  document.getElementById("wishModal");
+  document.getElementById(
+    "wishModal"
+  );
 
 const modalText =
-  document.getElementById("wishModalText");
+  document.getElementById(
+    "wishModalText"
+  );
 
-shuffled.forEach((wish,index)=>{
+shuffled.forEach(
+  (wish,index) => {
 
-  const btn =
-    document.createElement("button");
+    const btn =
+      document.createElement(
+        "button"
+      );
 
-  btn.className =
-    "wish-btn";
+    btn.className =
+      "wish-btn";
 
-  btn.textContent =
-    index + 1;
+    btn.textContent =
+      index + 1;
 
-  btn.onclick = ()=>{
+    btn.onclick = () => {
 
-    modalText.textContent =
-      wish;
+      modalText.textContent =
+        wish;
 
-    modal.classList.add("open");
+      modal.classList.add(
+        "open"
+      );
 
-    btn.classList.add("opened");
+      btn.classList.add(
+        "opened"
+      );
 
-  };
+    };
 
-  grid.appendChild(btn);
+    grid.appendChild(btn);
 
-});
+  }
+);
 
 function closeWish(event){
 
@@ -2522,17 +2842,21 @@ function closeWish(event){
 
   }
 
-  modal.classList.remove("open");
+  modal.classList.remove(
+    "open"
+  );
 
 }
 
 document.addEventListener(
   "keydown",
-  e=>{
+  e => {
 
-    if(e.key==="Escape"){
+    if(e.key === "Escape"){
 
-      modal.classList.remove("open");
+      modal.classList.remove(
+        "open"
+      );
 
     }
 
@@ -2543,23 +2867,42 @@ function goTo(n){
 
   hideTooltip();
 
-  if(musicPlaying && music){
+  if(
+    musicPlaying &&
+    music
+  ){
+
     music.volume = 0.3;
+
   }
 
-  document.querySelectorAll(".page").forEach(page=>{
+  document
+    .querySelectorAll(".page")
+    .forEach(page => {
 
-    page.classList.remove("active");
-    page.classList.remove("final-animation");
+      page.classList.remove(
+        "active"
+      );
 
-  });
+      page.classList.remove(
+        "final-animation"
+      );
+
+    });
 
   const target =
-    document.getElementById("page"+n);
+    document.getElementById(
+      "page" + n
+    );
 
-  target.classList.add("active");
+  target.classList.add(
+    "active"
+  );
 
-  const themeBtn = document.getElementById("themeBtn");
+  const themeBtn =
+    document.getElementById(
+      "themeBtn"
+    );
 
   if(n === 6){
 
@@ -2567,17 +2910,21 @@ function goTo(n){
       "starry-night"
     );
 
-    if(themeBtn)
-      themeBtn.textContent="☀️";
+    if(themeBtn){
+      themeBtn.textContent =
+        "☀️";
+    }
 
-  } else {
+  }else{
 
     document.body.classList.remove(
       "starry-night"
     );
 
-    if(themeBtn)
-      themeBtn.textContent="🌙";
+    if(themeBtn){
+      themeBtn.textContent =
+        "🌙";
+    }
 
   }
 
@@ -2590,13 +2937,13 @@ function goTo(n){
 
   });
 
-  if(n===9){
+  if(n === 9){
 
     target.classList.add(
       "final-animation"
     );
 
-    setTimeout(()=>{
+    setTimeout(() => {
 
       confetti({
 
@@ -2624,15 +2971,19 @@ function goTo(n){
 function updateNav(n){
 
   document
-    .querySelectorAll(".nav button")
-    .forEach((button,index)=>{
+    .querySelectorAll(
+      ".nav button"
+    )
+    .forEach(
+      (button,index) => {
 
-      button.classList.toggle(
-        "active",
-        index===n-1
-      );
+        button.classList.toggle(
+          "active",
+          index === n - 1
+        );
 
-    });
+      }
+    );
 
 }
 
@@ -2646,7 +2997,7 @@ const musicBtn =
     "musicBtn"
   );
 
-let musicPlaying=false;
+let musicPlaying = false;
 
 function toggleMusic(){
 
@@ -2654,19 +3005,20 @@ function toggleMusic(){
 
   if(!musicPlaying){
 
-    music.volume=.3;
+    music.volume = 0.3;
 
     music.play()
-      .then(()=>{
+      .then(() => {
 
-        musicPlaying=true;
+        musicPlaying = true;
 
-        musicBtn.textContent="🔊";
+        musicBtn.textContent =
+          "🔊";
 
       })
-      .catch(()=>{
+      .catch(() => {
 
-        musicPlaying=false;
+        musicPlaying = false;
 
       });
 
@@ -2674,9 +3026,10 @@ function toggleMusic(){
 
     music.pause();
 
-    musicPlaying=false;
+    musicPlaying = false;
 
-    musicBtn.textContent="🎧";
+    musicBtn.textContent =
+      "🎧";
 
   }
 
@@ -2685,4 +3038,4 @@ function toggleMusic(){
 </script>
 
 </body>
-    </html>
+                                            </html>
