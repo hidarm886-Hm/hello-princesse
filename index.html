@@ -605,14 +605,14 @@ textarea{
 }
 
 /* =========================
-   PAGE 4 + 5 (HORIZONTAL RECTANGLE CARDS)
+   PAGE 4 + 5 (SQUARE CARDS)
 ========================= */
 
 .photo-grid{
-  width:min(92%,760px);
+  width:min(95%,850px);
   display:grid;
   grid-template-columns:repeat(2, 1fr);
-  gap:22px;
+  gap:25px;
   padding: 10px;
 }
 
@@ -625,7 +625,7 @@ textarea{
   box-shadow: 0 8px 22px rgba(0,0,0,0.08);
   cursor: pointer;
   position: relative;
-  aspect-ratio: 2.1 / 1;
+  aspect-ratio: 1 / 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1389,7 +1389,8 @@ textarea{
 
   .photo-grid{
     grid-template-columns:repeat(2,1fr);
-    gap:12px;
+    gap:15px;
+    width:100%;
   }
 
   .photo-slot::after{
@@ -2348,4 +2349,4 @@ function toggleMusic(){
 </script>
 
 </body>
-</html>
+  </html>
