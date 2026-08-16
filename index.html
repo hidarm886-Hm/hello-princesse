@@ -578,7 +578,7 @@ button,a,input,textarea{
   justify-content:center;
   cursor:pointer;
   box-shadow:0 12px 30px rgba(0,0,0,.15);
-  transition:opacity .4s ease,transform .4s ease;
+  transition:opacity .4s ease, transform .4s ease;
   -webkit-tap-highlight-color:transparent;
 }
 
@@ -928,7 +928,6 @@ button,a,input,textarea{
   margin:0 0 18px;
   color:#7a877c;
   font-size:1rem;
-  font-family:Georgia,"Times New Roman",serif;
 }
 
 .wish-instruction{
@@ -1693,13 +1692,11 @@ button,a,input,textarea{
     </div>
 
     <div class="carousel-slide">
-
       <img
         id="carouselImg"
         src="images/cartoon1.png"
         alt="Cartoon"
       >
-
     </div>
 
     <div class="carousel-controls">
@@ -1751,35 +1748,50 @@ button,a,input,textarea{
       class="photo-slot"
       onclick="this.classList.toggle('show')"
     >
-      <img src="images/thing1.png" alt="Thing 1">
+      <img
+        src="images/thing1.png"
+        alt="Thing 1"
+      >
     </div>
 
     <div
       class="photo-slot"
       onclick="this.classList.toggle('show')"
     >
-      <img src="images/thing2.png" alt="Thing 2">
+      <img
+        src="images/thing2.png"
+        alt="Thing 2"
+      >
     </div>
 
     <div
       class="photo-slot"
       onclick="this.classList.toggle('show')"
     >
-      <img src="images/thing3.png" alt="Thing 3">
+      <img
+        src="images/thing3.png"
+        alt="Thing 3"
+      >
     </div>
 
     <div
       class="photo-slot"
       onclick="this.classList.toggle('show')"
     >
-      <img src="images/thing4.png" alt="Thing 4">
+      <img
+        src="images/thing4.png"
+        alt="Thing 4"
+      >
     </div>
 
     <div
       class="photo-slot"
       onclick="this.classList.toggle('show')"
     >
-      <img src="images/thing5.png" alt="Thing 5">
+      <img
+        src="images/thing5.png"
+        alt="Thing 5"
+      >
     </div>
 
   </div>
@@ -2038,12 +2050,7 @@ button,a,input,textarea{
 /* RANDOM PHOTO ROTATION */
 
 document.querySelectorAll('.photo-slot').forEach(slot=>{
-
-  slot.style.setProperty(
-    '--random',
-    Math.random()
-  );
-
+  slot.style.setProperty('--random',Math.random());
 });
 
 
@@ -2059,13 +2066,9 @@ function toggleTheme(){
     body.classList.toggle("starry-night");
 
     if(body.classList.contains("starry-night")){
-
       themeBtn.textContent="☀️";
-
     }else{
-
       themeBtn.textContent="🌙";
-
     }
 
   });
@@ -2073,7 +2076,7 @@ function toggleTheme(){
 }
 
 
-/* START */
+/* INITIALIZATION */
 
 window.addEventListener("DOMContentLoaded",()=>{
 
@@ -2093,53 +2096,37 @@ window.addEventListener("DOMContentLoaded",()=>{
 
 /* MUSIC TOOLTIP */
 
-const tooltip =
-  document.getElementById("musicTooltip");
+const tooltip=document.getElementById("musicTooltip");
 
 function hideTooltip(){
 
   if(tooltip){
-
     tooltip.classList.add("hidden");
-
   }
 
 }
 
-setTimeout(
-  hideTooltip,
-  5000
-);
+setTimeout(hideTooltip,5000);
 
 
 /* PASSCODE */
 
 function checkCode(number){
 
-  const error =
-    document.getElementById("passcodeError");
-
-  const box =
-    document.getElementById("passcodeBox");
+  const error=document.getElementById("passcodeError");
+  const box=document.getElementById("passcodeBox");
 
   if(number===2){
 
     error.textContent="";
-
     hideTooltip();
 
     confetti({
-
       particleCount:40,
       spread:60,
       origin:{y:.5},
       shapes:["star"],
-      colors:[
-        "#ffe17d",
-        "#ffffff",
-        "#c9a96b"
-      ]
-
+      colors:["#ffe17d","#ffffff","#c9a96b"]
     });
 
     document
@@ -2166,19 +2153,12 @@ function checkCode(number){
 
   }else{
 
-    error.textContent=
-      "BOUCHRAAAAA 🙂💔";
+    error.textContent="BOUCHRAAAAA 🙂💔";
 
-    box.classList.add(
-      "error-shake"
-    );
+    box.classList.add("error-shake");
 
     setTimeout(()=>{
-
-      box.classList.remove(
-        "error-shake"
-      );
-
+      box.classList.remove("error-shake");
     },400);
 
   }
@@ -2188,14 +2168,9 @@ function checkCode(number){
 
 /* ENVELOPE */
 
-const p1Text =
-  "Que cette nouvelle année t'apporte autant de bonheur, de réussite, de joie et de belles surprises que tu en diffuses autour de toi.";
-
-const p2Text =
-  "Avoir une amie comme toi est un magnifique cadeau. Que la vie te gâte comme tu le mérites.";
-
-const p3Text =
-  "Reste toujours aussi brillante! ✨";
+const p1Text="Que cette nouvelle année t'apporte autant de bonheur, de réussite, de joie et de belles surprises que tu en diffuses autour de toi.";
+const p2Text="Avoir une amie comme toi est un magnifique cadeau. Que la vie te gâte comme tu le mérites.";
+const p3Text="Reste toujours aussi brillante! ✨";
 
 let envelopeAlreadyOpened=false;
 
@@ -2203,20 +2178,9 @@ function typeWriterSequence(){
 
   let i=0;
 
-  const elem1 =
-    document.getElementById(
-      "typewriterText1"
-    );
-
-  const elem2 =
-    document.getElementById(
-      "typewriterText2"
-    );
-
-  const elem3 =
-    document.getElementById(
-      "typewriterText3"
-    );
+  const elem1=document.getElementById("typewriterText1");
+  const elem2=document.getElementById("typewriterText2");
+  const elem3=document.getElementById("typewriterText3");
 
   elem1.innerHTML="";
   elem2.innerHTML="";
@@ -2226,24 +2190,15 @@ function typeWriterSequence(){
 
     if(i<p1Text.length){
 
-      elem1.innerHTML +=
-        p1Text.charAt(i);
-
+      elem1.innerHTML+=p1Text.charAt(i);
       i++;
 
-      setTimeout(
-        type1,
-        30
-      );
+      setTimeout(type1,30);
 
     }else{
 
       i=0;
-
-      setTimeout(
-        type2,
-        200
-      );
+      setTimeout(type2,200);
 
     }
 
@@ -2253,24 +2208,15 @@ function typeWriterSequence(){
 
     if(i<p2Text.length){
 
-      elem2.innerHTML +=
-        p2Text.charAt(i);
-
+      elem2.innerHTML+=p2Text.charAt(i);
       i++;
 
-      setTimeout(
-        type2,
-        30
-      );
+      setTimeout(type2,30);
 
     }else{
 
       i=0;
-
-      setTimeout(
-        type3,
-        200
-      );
+      setTimeout(type3,200);
 
     }
 
@@ -2280,15 +2226,10 @@ function typeWriterSequence(){
 
     if(i<p3Text.length){
 
-      elem3.innerHTML +=
-        p3Text.charAt(i);
-
+      elem3.innerHTML+=p3Text.charAt(i);
       i++;
 
-      setTimeout(
-        type3,
-        30
-      );
+      setTimeout(type3,30);
 
     }
 
@@ -2300,10 +2241,7 @@ function typeWriterSequence(){
 
 function openEnvelope(){
 
-  const wrapper =
-    document.getElementById(
-      "envelopeWrapper"
-    );
+  const wrapper=document.getElementById("envelopeWrapper");
 
   wrapper.classList.add("open");
 
@@ -2311,10 +2249,7 @@ function openEnvelope(){
 
     envelopeAlreadyOpened=true;
 
-    setTimeout(
-      typeWriterSequence,
-      400
-    );
+    setTimeout(typeWriterSequence,400);
 
   }
 
@@ -2325,24 +2260,15 @@ function openEnvelope(){
 
 function blowCakeCandles(){
 
-  const flames =
-    document.querySelectorAll(
-      ".mini-flame"
-    );
-
-  const hint =
-    document.getElementById(
-      "cakeHint"
-    );
+  const flames=document.querySelectorAll(".mini-flame");
+  const hint=document.getElementById("cakeHint");
 
   let isAnyLit=false;
 
   flames.forEach(f=>{
 
     if(!f.classList.contains("out")){
-
       isAnyLit=true;
-
     }
 
   });
@@ -2350,36 +2276,23 @@ function blowCakeCandles(){
   if(isAnyLit){
 
     flames.forEach(f=>{
-
       f.classList.add("out");
-
     });
 
-    document.body.classList.add(
-      "lights-off"
-    );
+    document.body.classList.add("lights-off");
 
     setTimeout(()=>{
 
-      hint.textContent=
-        "إن شاء الله.. ❤️‍🩹";
+      hint.textContent="إن شاء الله.. ❤️‍🩹";
+      hint.setAttribute("dir","rtl");
 
-      hint.setAttribute(
-        "dir",
-        "rtl"
-      );
-
-      document.body.classList.remove(
-        "lights-off"
-      );
+      document.body.classList.remove("lights-off");
 
       confetti({
-
         particleCount:45,
         spread:60,
         origin:{y:.5},
         disableForReducedMotion:true
-
       });
 
     },700);
@@ -2391,15 +2304,13 @@ function blowCakeCandles(){
 
 /* CARTOON CAROUSEL */
 
-const cartoonImages=[
-
+const cartoonImages = [
   "images/cartoon1.png",
   "images/cartoon2.png",
   "images/cartoon3.png",
   "images/cartoon4.png",
   "images/cartoon5.png",
   "images/cartoon6.png"
-
 ];
 
 let currentCartoonIndex=0;
@@ -2407,9 +2318,7 @@ let currentCartoonIndex=0;
 function revealCarousel(){
 
   document
-    .getElementById(
-      "carouselOverlay"
-    )
+    .getElementById("carouselOverlay")
     .classList
     .add("hidden");
 
@@ -2417,28 +2326,17 @@ function revealCarousel(){
 
 function updateCarousel(){
 
-  const img =
-    document.getElementById(
-      "carouselImg"
-    );
-
-  const counter =
-    document.getElementById(
-      "carouselCounter"
-    );
+  const img=document.getElementById("carouselImg");
+  const counter=document.getElementById("carouselCounter");
 
   img.style.opacity=0;
 
   setTimeout(()=>{
 
-    img.src =
-      cartoonImages[
-        currentCartoonIndex
-      ];
-
+    img.src=cartoonImages[currentCartoonIndex];
     img.style.opacity=1;
 
-    counter.textContent =
+    counter.textContent=
       `${currentCartoonIndex+1} / ${cartoonImages.length}`;
 
   },200);
@@ -2447,10 +2345,8 @@ function updateCarousel(){
 
 function nextSlide(){
 
-  currentCartoonIndex =
-    (
-      currentCartoonIndex+1
-    ) %
+  currentCartoonIndex=
+    (currentCartoonIndex+1) %
     cartoonImages.length;
 
   updateCarousel();
@@ -2459,11 +2355,8 @@ function nextSlide(){
 
 function prevSlide(){
 
-  currentCartoonIndex =
-    (
-      currentCartoonIndex-1+
-      cartoonImages.length
-    ) %
+  currentCartoonIndex=
+    (currentCartoonIndex-1+cartoonImages.length) %
     cartoonImages.length;
 
   updateCarousel();
@@ -2471,172 +2364,120 @@ function prevSlide(){
 }
 
 
-/* =====================================================
-   PAGE 6 — NIGHT SKY
-   POP SOUND WORKS ONLY HERE
-   ===================================================== */
+/* =========================
+   PAGE 6 - NIGHT SKY
+   ========================= */
 
 let stars=[];
 
 function initNightSky(){
 
-  const canvas =
-    document.getElementById(
-      "skyCanvas"
-    );
+  const canvas=document.getElementById("skyCanvas");
 
   if(!canvas) return;
 
-  const ctx =
-    canvas.getContext("2d");
+  const ctx=canvas.getContext("2d");
 
   canvas.width=340;
   canvas.height=340;
 
-  stars =
-    Array.from(
-      {length:120},
-      ()=>({
+  stars=Array.from(
+    {length:120},
+    ()=>({
 
-        x:
-          Math.random() *
-          canvas.width,
+      x:Math.random()*canvas.width,
+      y:Math.random()*canvas.height,
+      radius:Math.random()*2+.5,
+      alpha:Math.random(),
+      speed:Math.random()*.02+.005,
+      sparkle:0
 
-        y:
-          Math.random() *
-          canvas.height,
-
-        radius:
-          Math.random()*2+.5,
-
-        alpha:
-          Math.random(),
-
-        speed:
-          Math.random()*.02+.005,
-
-        sparkle:0
-
-      })
-    );
-
-
-  /*
-   * IMPORTANT:
-   * هذا الحدث مربوط بالـ canvas فقط.
-   * وحتى لو حدثت نقرة في مكان آخر،
-   * لا يمكن تشغيل popSound من هنا.
-   */
-  canvas.addEventListener(
-    "click",
-    (e)=>{
-
-      const page6 =
-        document.getElementById(
-          "page6"
-        );
-
-
-      /*
-       * شرط إضافي:
-       * الصوت ممنوع تمامًا إذا لم تكن الصفحة 6 نشطة.
-       */
-      if(
-        !page6 ||
-        !page6.classList.contains("active")
-      ){
-
-        return;
-
-      }
-
-
-      /*
-       * تشغيل popSound فقط داخل الصفحة 6
-       */
-      const pop =
-        document.getElementById(
-          "popSound"
-        );
-
-      if(pop){
-
-        pop.pause();
-
-        pop.currentTime=0;
-
-        pop.play().catch(()=>{});
-
-      }
-
-
-      /*
-       * تخفيف الموسيقى الخلفية مؤقتًا
-       */
-      if(
-        musicPlaying &&
-        music
-      ){
-
-        music.volume=.05;
-
-        setTimeout(()=>{
-
-          if(musicPlaying){
-
-            music.volume=.3;
-
-          }
-
-        },350);
-
-      }
-
-
-      /*
-       * تحديد مكان اللمسة
-       */
-      const rect =
-        canvas.getBoundingClientRect();
-
-      const x =
-        e.clientX -
-        rect.left;
-
-      const y =
-        e.clientY -
-        rect.top;
-
-
-      /*
-       * جعل النجوم القريبة من اللمسة تتلألأ
-       */
-      stars.forEach(star=>{
-
-        const dist =
-          Math.hypot(
-            star.x-x,
-            star.y-y
-          );
-
-        if(dist<75){
-
-          star.sparkle=2;
-
-          star.radius =
-            Math.random()*3.5+2.5;
-
-        }
-
-      });
-
-    }
+    })
   );
 
 
   /*
-   * رسم السماء
-   */
+    صوت النجوم:
+    يعمل فقط إذا كانت الصفحة 6 هي الصفحة النشطة.
+    وفي نفس اللحظة تخفض موسيقى الخلفية إلى 0.05.
+  */
+
+  canvas.addEventListener("click",(e)=>{
+
+    const page6=document.getElementById("page6");
+
+    /*
+      حماية إضافية:
+      إذا لم تكن الصفحة 6 فعّالة،
+      لا نشغل pop ولا نخفض الموسيقى.
+    */
+
+    if(
+      !page6 ||
+      !page6.classList.contains("active")
+    ){
+
+      return;
+
+    }
+
+
+    /* POP SOUND */
+
+    const pop=document.getElementById("popSound");
+
+    if(pop){
+
+      pop.currentTime=0;
+
+      pop.play().catch(()=>{});
+
+    }
+
+
+    /*
+      خفض موسيقى الخلفية فقط في الصفحة 6
+    */
+
+    if(musicPlaying && music){
+
+      music.volume=0.05;
+
+    }
+
+
+    /* STAR CLICK POSITION */
+
+    const rect=canvas.getBoundingClientRect();
+
+    const x=e.clientX-rect.left;
+    const y=e.clientY-rect.top;
+
+
+    /* STAR SPARKLE */
+
+    stars.forEach(star=>{
+
+      const dist=
+        Math.hypot(
+          star.x-x,
+          star.y-y
+        );
+
+      if(dist<75){
+
+        star.sparkle=2;
+
+        star.radius=
+          Math.random()*3.5+2.5;
+
+      }
+
+    });
+
+  });
+
+
   function drawSky(){
 
     ctx.clearRect(
@@ -2649,9 +2490,8 @@ function initNightSky(){
     ctx.lineWidth=1;
 
 
-    /*
-     * خطوط بين النجوم
-     */
+    /* CONSTELLATION LINES */
+
     for(
       let i=0;
       i<stars.length;
@@ -2664,21 +2504,18 @@ function initNightSky(){
         j++
       ){
 
-        const dist =
+        const dist=
           Math.hypot(
-            stars[i].x-
-            stars[j].x,
-
-            stars[i].y-
-            stars[j].y
+            stars[i].x-stars[j].x,
+            stars[i].y-stars[j].y
           );
 
         if(dist<65){
 
-          const alphaLine =
+          const alphaLine=
             (1-dist/65)*.35;
 
-          ctx.strokeStyle =
+          ctx.strokeStyle=
             `rgba(201,169,107,${alphaLine})`;
 
           ctx.beginPath();
@@ -2702,21 +2539,18 @@ function initNightSky(){
     }
 
 
-    /*
-     * النجوم
-     */
+    /* STARS */
+
     stars.forEach(star=>{
 
-      star.alpha +=
-        star.speed;
+      star.alpha+=star.speed;
 
       if(
         star.alpha>1 ||
         star.alpha<.2
       ){
 
-        star.speed =
-          -star.speed;
+        star.speed=-star.speed;
 
       }
 
@@ -2726,9 +2560,7 @@ function initNightSky(){
         star.sparkle-=.03;
 
         ctx.shadowBlur=15;
-
-        ctx.shadowColor=
-          "#ffffff";
+        ctx.shadowColor="#ffffff";
 
       }else{
 
@@ -2736,22 +2568,21 @@ function initNightSky(){
 
       }
 
+
       ctx.beginPath();
 
       ctx.arc(
         star.x,
         star.y,
-        star.radius+
-          star.sparkle*2,
+        star.radius+(star.sparkle*2),
         0,
         Math.PI*2
       );
 
-      ctx.fillStyle =
+      ctx.fillStyle=
         `rgba(255,255,255,${Math.min(
           1,
-          Math.abs(star.alpha)+
-          star.sparkle
+          Math.abs(star.alpha)+star.sparkle
         )})`;
 
       ctx.fill();
@@ -2761,17 +2592,15 @@ function initNightSky(){
     });
 
 
-    /*
-     * الاسم
-     */
+    /* NAME */
+
     ctx.font=
       "bold 19px Georgia";
 
     ctx.fillStyle=
       "rgba(201,169,107,0.95)";
 
-    ctx.textAlign=
-      "center";
+    ctx.textAlign="center";
 
     ctx.shadowBlur=10;
 
@@ -2786,37 +2615,11 @@ function initNightSky(){
 
     ctx.shadowBlur=0;
 
-    requestAnimationFrame(
-      drawSky
-    );
+    requestAnimationFrame(drawSky);
 
   }
 
   drawSky();
-
-}
-
-
-/*
- * إيقاف صوت النجوم.
- *
- * يتم استدعاء هذه الدالة كل مرة
- * ننتقل فيها إلى صفحة أخرى.
- */
-function stopStarSound(){
-
-  const pop =
-    document.getElementById(
-      "popSound"
-    );
-
-  if(pop){
-
-    pop.pause();
-
-    pop.currentTime=0;
-
-  }
 
 }
 
@@ -2867,59 +2670,42 @@ const wishes=[
 
 ];
 
-const shuffled =
+const shuffled=
   [...wishes].sort(
     ()=>Math.random()-.5
   );
 
-const grid =
-  document.getElementById(
-    "wishGrid"
-  );
+const grid=
+  document.getElementById("wishGrid");
 
-const modal =
-  document.getElementById(
-    "wishModal"
-  );
+const modal=
+  document.getElementById("wishModal");
 
-const modalText =
-  document.getElementById(
-    "wishModalText"
-  );
+const modalText=
+  document.getElementById("wishModalText");
 
-shuffled.forEach(
-  (wish,index)=>{
+shuffled.forEach((wish,index)=>{
 
-    const btn =
-      document.createElement(
-        "button"
-      );
+  const btn=
+    document.createElement("button");
 
-    btn.className=
-      "wish-btn";
+  btn.className="wish-btn";
 
-    btn.textContent=
-      index+1;
+  btn.textContent=index+1;
 
-    btn.onclick=()=>{
+  btn.onclick=()=>{
 
-      modalText.textContent=
-        wish;
+    modalText.textContent=wish;
 
-      modal.classList.add(
-        "open"
-      );
+    modal.classList.add("open");
 
-      btn.classList.add(
-        "opened"
-      );
+    btn.classList.add("opened");
 
-    };
+  };
 
-    grid.appendChild(btn);
+  grid.appendChild(btn);
 
-  }
-);
+});
 
 
 function closeWish(event){
@@ -2933,11 +2719,10 @@ function closeWish(event){
 
   }
 
-  modal.classList.remove(
-    "open"
-  );
+  modal.classList.remove("open");
 
 }
+
 
 document.addEventListener(
   "keydown",
@@ -2945,9 +2730,7 @@ document.addEventListener(
 
     if(e.key==="Escape"){
 
-      modal.classList.remove(
-        "open"
-      );
+      modal.classList.remove("open");
 
     }
 
@@ -2955,78 +2738,68 @@ document.addEventListener(
 );
 
 
-/* =====================================================
-   NAVIGATION
-   ===================================================== */
+/* =========================
+   PAGE NAVIGATION
+   ========================= */
 
 function goTo(n){
-
-  /*
-   * أول شيء:
-   * أوقف popSound دائمًا عند أي انتقال.
-   *
-   * بالتالي حتى لو كان الصوت قد بدأ
-   * قبل لحظة الانتقال، لن يستمر في الصفحات الأخرى.
-   */
-  stopStarSound();
 
   hideTooltip();
 
 
   /*
-   * إعادة صوت الموسيقى إلى 0.3
-   */
-  if(
-    musicPlaying &&
-    music
-  ){
+    إذا كانت الصفحة السابقة هي صفحة النجوم
+    نوقف صوت pop فورًا ونرجعه للبداية.
+    هذا يمنع الصوت من الاستمرار في الصفحات الأخرى.
+  */
 
-    music.volume=.3;
+  const pop=document.getElementById("popSound");
+
+  if(pop){
+
+    pop.pause();
+
+    pop.currentTime=0;
 
   }
 
 
   /*
-   * إزالة الصفحة الحالية
-   */
+    الموسيقى تعود دائمًا إلى 0.3 عند تغيير الصفحة.
+  */
+
+  if(musicPlaying && music){
+
+    music.volume=0.3;
+
+  }
+
+
+  /* REMOVE ACTIVE PAGE */
+
   document
     .querySelectorAll(".page")
     .forEach(page=>{
 
-      page.classList.remove(
-        "active"
-      );
-
-      page.classList.remove(
-        "final-animation"
-      );
+      page.classList.remove("active");
+      page.classList.remove("final-animation");
 
     });
 
 
-  /*
-   * فتح الصفحة المطلوبة
-   */
-  const target =
-    document.getElementById(
-      "page"+n
-    );
+  /* ACTIVATE TARGET PAGE */
 
-  target.classList.add(
-    "active"
-  );
+  const target=
+    document.getElementById("page"+n);
+
+  target.classList.add("active");
 
 
-  /*
-   * الصفحة 6 تصبح Night Mode تلقائيًا.
-   *
-   * هذا لا يشغّل popSound.
-   * الصوت لا يعمل إلا عند لمس canvas.
-   */
-  const themeBtn =
-    document.getElementById(
-      "themeBtn"
-    );
+  /* THEME */
+
+  const themeBtn=
+    document.getElementById("themeBtn");
+
 
   if(n===6){
 
@@ -3036,8 +2809,7 @@ function goTo(n){
 
     if(themeBtn){
 
-      themeBtn.textContent=
-        "☀️";
+      themeBtn.textContent="☀️";
 
     }
 
@@ -3049,8 +2821,7 @@ function goTo(n){
 
     if(themeBtn){
 
-      themeBtn.textContent=
-        "🌙";
+      themeBtn.textContent="🌙";
 
     }
 
@@ -3060,9 +2831,6 @@ function goTo(n){
   updateNav(n);
 
 
-  /*
-   * الانتقال إلى أعلى الصفحة
-   */
   window.scrollTo({
 
     top:0,
@@ -3071,9 +2839,8 @@ function goTo(n){
   });
 
 
-  /*
-   * الصفحة الأخيرة
-   */
+  /* FINAL PAGE */
+
   if(n===9){
 
     target.classList.add(
@@ -3109,42 +2876,42 @@ function goTo(n){
 function updateNav(n){
 
   document
-    .querySelectorAll(
-      ".nav button"
-    )
-    .forEach(
-      (button,index)=>{
+    .querySelectorAll(".nav button")
+    .forEach((button,index)=>{
 
-        button.classList.toggle(
-          "active",
-          index===n-1
-        );
+      button.classList.toggle(
+        "active",
+        index===n-1
+      );
 
-      }
-    );
+    });
 
 }
 
 
-/* MUSIC */
+/* =========================
+   BACKGROUND MUSIC
+   ========================= */
 
-const music =
-  document.getElementById(
-    "bgMusic"
-  );
+const music=
+  document.getElementById("bgMusic");
 
-const musicBtn =
-  document.getElementById(
-    "musicBtn"
-  );
+const musicBtn=
+  document.getElementById("musicBtn");
 
 let musicPlaying=false;
+
 
 function toggleMusic(){
 
   hideTooltip();
 
+
   if(!musicPlaying){
+
+    /*
+      الصوت الطبيعي للموسيقى = 0.3
+    */
 
     music.volume=.3;
 
@@ -3153,8 +2920,7 @@ function toggleMusic(){
 
         musicPlaying=true;
 
-        musicBtn.textContent=
-          "🔊";
+        musicBtn.textContent="🔊";
 
       })
       .catch(()=>{
@@ -3169,8 +2935,7 @@ function toggleMusic(){
 
     musicPlaying=false;
 
-    musicBtn.textContent=
-      "🎧";
+    musicBtn.textContent="🎧";
 
   }
 
@@ -3179,4 +2944,4 @@ function toggleMusic(){
 </script>
 
 </body>
-  </html>
+    </html>
