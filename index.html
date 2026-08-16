@@ -22,6 +22,56 @@
   --gold:#c9a96b;
   --text:#465248;
   --shadow:0 12px 35px rgba(71,88,75,.12);
+  --bg-gradient: linear-gradient(135deg,#f7faf6,#eef3ed);
+  --card-bg: rgba(255,255,255,.82);
+}
+
+/* =========================
+   STARRY NIGHT MODE
+========================= */
+body.starry-night {
+  --cream: #121824;
+  --text: #e0e6ed;
+  --sage-dark: #a2b9a7;
+  --card-bg: rgba(23, 31, 46, 0.88);
+  --shadow: 0 12px 35px rgba(0,0,0,0.5);
+  background-color: #0b0f19;
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 40px 70px, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 90px 40px, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 160px 120px, #ffffff, rgba(0,0,0,0));
+  background-repeat: repeat;
+  background-size: 200px 200px;
+}
+
+body.starry-night .page,
+body.starry-night .opening,
+body.starry-night .page1,
+body.starry-night .page8 {
+  background: var(--cream) !important;
+}
+
+body.starry-night .passcode-box,
+body.starry-night .card,
+body.starry-night .prayer,
+body.starry-night .player-card {
+  background: var(--card-bg);
+  color: var(--text);
+  border-color: rgba(162, 185, 167, 0.2);
+}
+
+body.starry-night .greeting,
+body.starry-night .subtitle,
+body.starry-night .photo-note,
+body.starry-night .wish-instruction,
+body.starry-night .player-artist,
+body.starry-night .final-message {
+  color: #b0c4b1;
+}
+
+body.starry-night .photo-slot {
+  background: #1e2736;
 }
 
 *{
@@ -34,10 +84,10 @@ html{
 
 body{
   margin:0;
-  background:linear-gradient(135deg,#f7faf6,#eef3ed);
+  background:var(--bg-gradient);
   color:var(--text);
   font-family:Georgia,"Times New Roman",serif;
-  transition:background-color .8s ease,filter .8s ease;
+  transition:background 0.5s ease, color 0.5s ease;
   overflow-x:hidden;
 }
 
@@ -69,10 +119,7 @@ textarea{
   height:100%;
   background:var(--sage);
   position:relative;
-
-  /* تم إبطاء الستار */
   transition:transform 1.8s cubic-bezier(0.77,0,0.175,1);
-
   box-shadow:0 0 30px rgba(0,0,0,.15);
 }
 
@@ -128,6 +175,7 @@ textarea{
   justify-content:center;
   position:relative;
   background:var(--cream);
+  transition: background 0.5s ease;
 }
 
 .page.active{
@@ -153,7 +201,6 @@ textarea{
 
 .opening{
   min-height:100vh;
-
   background:
     radial-gradient(
       circle at 20% 15%,
@@ -170,6 +217,18 @@ textarea{
   text-align:center;
 }
 
+/* SHAKE ANIMATION */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-8px); }
+  40%, 80% { transform: translateX(8px); }
+}
+
+.passcode-box.error-shake {
+  animation: shake 0.4s ease-in-out;
+  border-color: #e74c3c !important;
+}
+
 .passcode-box{
   display:flex;
   flex-direction:column;
@@ -182,6 +241,7 @@ textarea{
   border:1px solid rgba(168,185,163,.4);
   width:min(90%,360px);
   margin:0 auto;
+  transition: border-color 0.3s;
 }
 
 .passcode-label{
@@ -419,7 +479,7 @@ textarea{
 
 .card{
   width:min(92%,700px);
-  background:rgba(255,255,255,.82);
+  background:var(--card-bg);
   border:1px solid rgba(168,185,163,.45);
   border-radius:25px;
   padding:26px;
@@ -545,25 +605,37 @@ textarea{
 }
 
 /* =========================
-   PAGE 4 + 5
+   PAGE 4 + 5 (HORIZONTAL RECTANGLE CARDS)
 ========================= */
 
 .photo-grid{
   width:min(92%,760px);
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
-  gap:18px;
+  grid-template-columns:repeat(2, 1fr);
+  gap:22px;
+  padding: 10px;
 }
 
-.photo-slot{
-  aspect-ratio:1/1;
-  border-radius:22px;
-  overflow:hidden;
-  background:#fff;
-  box-shadow:var(--shadow);
-  cursor:pointer;
-  position:relative;
-  border:1px solid rgba(168,185,163,.45);
+.photo-slot {
+  transform: rotate(calc(-3deg + 6deg * var(--random, 0.5)));
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s;
+  background: #ffffff;
+  padding: 10px;
+  border-radius: 12px;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.08);
+  cursor: pointer;
+  position: relative;
+  aspect-ratio: 2.1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.photo-slot:hover {
+  transform: scale(1.05) rotate(0deg);
+  z-index: 10;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.18);
 }
 
 .photo-slot img{
@@ -572,21 +644,28 @@ textarea{
   object-fit:cover;
   opacity:0;
   transition:.35s ease;
+  border-radius: 8px;
+  display: block;
 }
 
 .photo-slot::after{
-  content:"Clique.. et Découvre 🙂";
+  content:"Clique.. et\A Découvre 🙂";
+  white-space: pre-wrap;
   position:absolute;
   inset:0;
-  display:grid;
-  place-items:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   text-align:center;
   padding:10px;
   direction:ltr;
-  color:var(--sage-dark);
-  background:linear-gradient(135deg,#fff,#eef3ed);
+  color:#556357;
+  background:linear-gradient(135deg, rgba(255,255,255,0.98), rgba(244,248,243,0.95));
   transition:.35s ease;
-  font-size:.9rem;
+  font-size:clamp(0.9rem, 2.5vw, 1.15rem);
+  line-height: 1.45;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 500;
 }
 
 .photo-slot.show img{
@@ -1131,10 +1210,10 @@ textarea{
 }
 
 /* =========================
-   MUSIC BUTTON
+   TOP BUTTONS (MUSIC & THEME TOGGLE)
 ========================= */
 
-.music-container{
+.top-controls-container{
   position:fixed;
   z-index:50;
   top:15px;
@@ -1143,12 +1222,16 @@ textarea{
   align-items:center;
   gap:8px;
 
-  /*
-     ظهور أبطأ بعد الستار
-     يبدأ بعد 2.2 ثانية
-  */
   opacity:0;
   animation:musicReveal .8s ease 2.2s forwards;
+}
+
+/* زر الوضع في أعلى الزاوية الأخرى (اليمنى) */
+.top-theme-container {
+  position: fixed;
+  z-index: 50;
+  top: 15px;
+  right: 15px;
 }
 
 @keyframes musicReveal{
@@ -1163,7 +1246,7 @@ textarea{
   }
 }
 
-.music-btn{
+.top-btn{
   width:42px;
   height:42px;
   border:1px solid #b8c5b3;
@@ -1179,9 +1262,11 @@ textarea{
   -webkit-tap-highlight-color:transparent;
   outline:none;
   user-select:none;
+  display: grid;
+  place-items: center;
 }
 
-.music-btn:hover{
+.top-btn:hover{
   transform:scale(1.05);
 }
 
@@ -1307,6 +1392,10 @@ textarea{
     gap:12px;
   }
 
+  .photo-slot::after{
+    font-size: 0.85rem;
+  }
+
   .nav{
     gap:3px;
     padding:6px;
@@ -1385,10 +1474,11 @@ textarea{
 
 </audio>
 
-<div class="music-container">
+<!-- زر التحكم بالصوت والـ Tooltip في أعلى الزاوية اليسرى -->
+<div class="top-controls-container">
 
   <button
-    class="music-btn"
+    class="top-btn"
     id="musicBtn"
     onclick="toggleMusic()"
     aria-label="Musique"
@@ -1402,6 +1492,18 @@ textarea{
 
 </div>
 
+<!-- زر الوضع في أعلى الزاوية اليمنى -->
+<div class="top-theme-container">
+  <button 
+    class="top-btn" 
+    id="themeBtn" 
+    onclick="toggleTheme()" 
+    aria-label="Toggle Theme"
+  >
+    🌙
+  </button>
+</div>
+
 <div class="book">
 
 <!-- =========================
@@ -1410,7 +1512,7 @@ textarea{
 
 <section class="page opening active" id="opening">
 
-  <div class="passcode-box">
+  <div class="passcode-box" id="passcodeBox">
 
     <div class="passcode-label" dir="ltr">
       CODE !! 🙂🔑
@@ -1551,23 +1653,10 @@ textarea{
 
       </div>
 
-      <div class="greeting">
-
-        <p>
-          Que cette nouvelle année t'apporte autant de bonheur,
-          de réussite, de joie et de belles surprises que tu en
-          diffuses autour de toi.
-        </p>
-
-        <p>
-          Avoir une amie comme toi est un magnifique cadeau.
-          Que la vie te gâte comme tu le mérites.
-        </p>
-
-        <p>
-          Reste toujours aussi brillante! ✨
-        </p>
-
+      <div class="greeting" id="greetingContainer">
+        <p id="typewriterText1"></p>
+        <p id="typewriterText2"></p>
+        <p id="typewriterText3"></p>
       </div>
 
     </div>
@@ -1882,6 +1971,31 @@ textarea{
 <script>
 
 /* =========================
+   RANDOM TILT FOR POLAROIDS
+========================= */
+
+document.querySelectorAll('.photo-slot').forEach(slot => {
+  slot.style.setProperty('--random', Math.random());
+});
+
+/* =========================
+   STARRY NIGHT MODE TOGGLE
+========================= */
+
+function toggleTheme() {
+  const body = document.body;
+  const themeBtn = document.getElementById("themeBtn");
+  
+  body.classList.toggle("starry-night");
+  
+  if (body.classList.contains("starry-night")) {
+    themeBtn.textContent = "☀️";
+  } else {
+    themeBtn.textContent = "🌙";
+  }
+}
+
+/* =========================
    TRIGGER CURTAIN ANIMATION
 ========================= */
 
@@ -1915,10 +2029,6 @@ function hideTooltip(){
 
 }
 
-/*
-   الملاحظة تبقى ظاهرة بعد ظهورها
-   ثم تختفي بعد مدة مناسبة.
-*/
 setTimeout(hideTooltip,5000);
 
 /* =========================
@@ -1927,47 +2037,103 @@ setTimeout(hideTooltip,5000);
 
 function checkCode(number){
 
-  const error =
-    document.getElementById("passcodeError");
+  const error = document.getElementById("passcodeError");
+  const box = document.getElementById("passcodeBox");
 
   if(number === 2){
 
     error.textContent = "";
-
     hideTooltip();
 
-    document
-      .getElementById("opening")
-      .classList
-      .remove("active");
+    // النجوم والحركات المتطايرة عند الإدخال الصحيح
+    confetti({
+      particleCount: 40,
+      spread: 60,
+      origin: { y: 0.5 },
+      shapes: ['star'],
+      colors: ['#ffe17d', '#ffffff', '#c9a96b']
+    });
 
-    document
-      .getElementById("page1")
-      .classList
-      .add("active");
+    document.getElementById("opening").classList.remove("active");
+    document.getElementById("page1").classList.add("active");
+    document.getElementById("navigation").style.display = "flex";
 
-    document
-      .getElementById("navigation")
-      .style
-      .display = "flex";
+    // إخفاء زر النمط Night Mode عند فتح الكتاب لإبقائه متسقاً
+    document.getElementById("themeBtn").style.display = "none";
 
     updateNav(1);
 
-    confetti({
+  } else {
 
-      particleCount:50,
-      spread:60,
-      origin:{y:.5}
-
-    });
+    error.textContent = "BOUCHRAAAAA 🙂💔";
+    box.classList.add('error-shake');
+    setTimeout(() => box.classList.remove('error-shake'), 400);
 
   }
 
-  else{
+}
 
-    error.textContent =
-      "BOUCHRAAAAA 🙂💔";
+/* =========================
+   TYPEWRITER EFFECT (PAGE 3)
+========================= */
 
+const p1Text = "Que cette nouvelle année t'apporte autant de bonheur, de réussite, de joie et de belles surprises que tu en diffuses autour de toi.";
+const p2Text = "Avoir une amie comme toi est un magnifique cadeau. Que la vie te gâte comme tu le mérites.";
+const p3Text = "Reste toujours aussi brillante! ✨";
+
+let envelopeAlreadyOpened = false;
+
+function typeWriterSequence() {
+  let i = 0;
+  const elem1 = document.getElementById("typewriterText1");
+  const elem2 = document.getElementById("typewriterText2");
+  const elem3 = document.getElementById("typewriterText3");
+  
+  elem1.innerHTML = "";
+  elem2.innerHTML = "";
+  elem3.innerHTML = "";
+
+  function type1() {
+    if (i < p1Text.length) {
+      elem1.innerHTML += p1Text.charAt(i);
+      i++;
+      setTimeout(type1, 30);
+    } else {
+      i = 0;
+      setTimeout(type2, 200);
+    }
+  }
+
+  function type2() {
+    if (i < p2Text.length) {
+      elem2.innerHTML += p2Text.charAt(i);
+      i++;
+      setTimeout(type2, 30);
+    } else {
+      i = 0;
+      setTimeout(type3, 200);
+    }
+  }
+
+  function type3() {
+    if (i < p3Text.length) {
+      elem3.innerHTML += p3Text.charAt(i);
+      i++;
+      setTimeout(type3, 30);
+    }
+  }
+
+  type1();
+}
+
+function openEnvelope(){
+
+  const wrapper = document.getElementById("envelopeWrapper");
+  wrapper.classList.add("open");
+
+  if (!envelopeAlreadyOpened) {
+    envelopeAlreadyOpened = true;
+    setTimeout(typeWriterSequence, 400);
   }
 
 }
@@ -1978,57 +2144,38 @@ function checkCode(number){
 
 function blowCakeCandles(){
 
-  const flames =
-    document.querySelectorAll(".mini-flame");
-
-  const hint =
-    document.getElementById("cakeHint");
-
+  const flames = document.querySelectorAll(".mini-flame");
+  const hint = document.getElementById("cakeHint");
   let isAnyLit = false;
 
   flames.forEach(f=>{
-
     if(!f.classList.contains("out")){
-
       isAnyLit = true;
-
     }
-
   });
 
   if(isAnyLit){
 
     flames.forEach(f=>{
-
       f.classList.add("out");
-
     });
 
     document.body.classList.add("lights-off");
 
     setTimeout(()=>{
 
-      hint.textContent =
-        "إن شاء الله.. ❤️‍🩹";
-
-      hint.setAttribute(
-        "dir",
-        "rtl"
-      );
-
-      document.body.classList.remove(
-        "lights-off"
-      );
+      hint.textContent = "إن شاء الله.. ❤️‍🩹";
+      hint.setAttribute("dir", "rtl");
+      document.body.classList.remove("lights-off");
 
       confetti({
-
-        particleCount:70,
-        spread:70,
-        origin:{y:.5}
-
+        particleCount: 45,
+        spread: 60,
+        origin: { y: 0.5 },
+        disableForReducedMotion: true
       });
 
-    },700);
+    }, 700);
 
   }
 
@@ -2039,87 +2186,47 @@ function blowCakeCandles(){
 ========================= */
 
 const wishes = [
-
   "ما كُتب لكِ سيجد طريقه إليكِ 🌿",
-
   "ربما أجمل أيامكِ سيكون يومًا عاديًا جدًا ✨",
-
   "لا أحد يعرف ما يخبئه الغد... وهذه أجمل مفاجآته 🌙",
-
   "أتمنى أن تحققي أمنية لم تخبري بها أحدًا 🤍",
-
   "أتمنى أن يبقى فيكِ دائمًا شيءٌ لا يكبر 🦋",
-
   "لا تكبري كثيرًا... بعض الأشياء الجميلة تحتاج قليلًا من الطفولة 🙂",
-
   "أتمنى لكِ مالًا لا ينتهي... ولا تعرفين أين تضعينه 😂💸",
-
   "أتمنى لكِ نومًا طويلًا، هادئًا، بلا منبّه 😴🤍",
-
   "WOOOOOY 😂😂",
-
   "أتمنى أن تعرفي أن صديقكِ هنا موجود ليسمعكِ دائما  بكل حماس واهتمام... حتى لو كانت أطول les vocaux في العالم و بسرعة ×1 😅🎧",
-
   "﴿إِنَّ رَبِّي لَطِيفٌ لِّمَا يَشَاءُ﴾ 🤍",
-
   "﴿لَا تَدْرِي لَعَلَّ اللَّهَ يُحْدِثُ بَعْدَ ذَٰلِكَ أَمْرًا﴾ 🌿🤍",
-
   "أتمنى أن تكوني بخير .. جدًا جدًاااااا 🤍",
-
   "يُرسِلُنا الله بَعضَنا لِبَعضٍ رَحمَات 🦋",
-
   "بعض الأشياء لا تحتاج سببًا، يكفي أنها أسعدتكِ ✨",
-
   "أتمنى لكِ أيامًا تشبه قلبكِ الجميل 🤍🌷",
-
   "هذه لأمنياتك التي لم تخبرِي بها أحداً 🥹",
-
   "أتمنى أن يجبركِ الله جبرًا يُنسيكِ كل تعب 🤍",
-
   " أتمنى أن تدركي دائمًا كم أن وجودكِ بين من يحبونكِ يصنع فارقًا كبيرًا 🌸",
-
   "﴿ فَضَحِكَتْ فَبَشَّرْنَاهَا ..﴾ ❤️‍🩹"
-
 ];
 
 /* =========================
    SHUFFLE & RENDER
 ========================= */
 
-const shuffled =
-  [...wishes].sort(
-    () => Math.random() - .5
-  );
+const shuffled = [...wishes].sort(() => Math.random() - .5);
+const grid = document.getElementById("wishGrid");
+const modal = document.getElementById("wishModal");
+const modalText = document.getElementById("wishModalText");
 
-const grid =
-  document.getElementById("wishGrid");
+shuffled.forEach((wish, index)=>{
 
-const modal =
-  document.getElementById("wishModal");
-
-const modalText =
-  document.getElementById("wishModalText");
-
-shuffled.forEach((wish,index)=>{
-
-  const btn =
-    document.createElement("button");
-
-  btn.className =
-    "wish-btn";
-
-  btn.textContent =
-    index + 1;
+  const btn = document.createElement("button");
+  btn.className = "wish-btn";
+  btn.textContent = index + 1;
 
   btn.onclick = ()=>{
-
-    modalText.textContent =
-      wish;
-
+    modalText.textContent = wish;
     modal.classList.add("open");
-
     btn.classList.add("opened");
-
   };
 
   grid.appendChild(btn);
@@ -2131,44 +2238,17 @@ shuffled.forEach((wish,index)=>{
 ========================= */
 
 function closeWish(event){
-
   if(event && event.target !== modal){
-
     return;
-
   }
-
   modal.classList.remove("open");
-
 }
 
-document.addEventListener(
-  "keydown",
-  e=>{
-
-    if(e.key === "Escape"){
-
-      modal.classList.remove("open");
-
-    }
-
+document.addEventListener("keydown", e=>{
+  if(e.key === "Escape"){
+    modal.classList.remove("open");
   }
-);
-
-/* =========================
-   OPEN ENVELOPE
-========================= */
-
-function openEnvelope(){
-
-  const wrapper =
-    document.getElementById(
-      "envelopeWrapper"
-    );
-
-  wrapper.classList.add("open");
-
-}
+});
 
 /* =========================
    PAGE NAVIGATION
@@ -2178,61 +2258,41 @@ function goTo(n){
 
   hideTooltip();
 
-  document
-    .querySelectorAll(".page")
-    .forEach(page=>{
+  document.querySelectorAll(".page").forEach(page=>{
+    page.classList.remove("active");
+    page.classList.remove("final-animation");
+  });
 
-      page.classList.remove("active");
-
-      page.classList.remove(
-        "final-animation"
-      );
-
-    });
-
-  const target =
-    document.getElementById(
-      "page" + n
-    );
-
+  const target = document.getElementById("page" + n);
   target.classList.add("active");
 
   updateNav(n);
 
   window.scrollTo({
-
     top:0,
-
     behavior:"smooth"
-
   });
 
   if(n === 8){
 
-    target.classList.add(
-      "final-animation"
-    );
+    target.classList.add("final-animation");
 
     setTimeout(()=>{
 
       confetti({
-
-        particleCount:120,
-
-        spread:90,
-
-        origin:{y:.6},
-
-        colors:[
+        particleCount: 65,
+        spread: 70,
+        origin: { y: 0.6 },
+        colors: [
           "#a8b9a3",
           "#71836d",
           "#c9a96b",
           "#ffffff"
-        ]
-
+        ],
+        disableForReducedMotion: true
       });
 
-    },1000);
+    }, 1000);
 
   }
 
@@ -2244,16 +2304,9 @@ function goTo(n){
 
 function updateNav(n){
 
-  document
-    .querySelectorAll(".nav button")
-    .forEach((button,index)=>{
-
-      button.classList.toggle(
-        "active",
-        index === n - 1
-      );
-
-    });
+  document.querySelectorAll(".nav button").forEach((button,index)=>{
+    button.classList.toggle("active", index === n - 1);
+  });
 
 }
 
@@ -2261,12 +2314,8 @@ function updateNav(n){
    OPTIONAL MUSIC
 ========================= */
 
-const music =
-  document.getElementById("bgMusic");
-
-const musicBtn =
-  document.getElementById("musicBtn");
-
+const music = document.getElementById("bgMusic");
+const musicBtn = document.getElementById("musicBtn");
 let musicPlaying = false;
 
 function toggleMusic(){
@@ -2279,29 +2328,18 @@ function toggleMusic(){
 
     music.play()
       .then(()=>{
-
         musicPlaying = true;
-
-        musicBtn.textContent =
-          "🔊";
-
+        musicBtn.textContent = "🔊";
       })
       .catch(()=>{
-
         musicPlaying = false;
-
       });
 
-  }
-
-  else{
+  } else {
 
     music.pause();
-
     musicPlaying = false;
-
-    musicBtn.textContent =
-      "🎧";
+    musicBtn.textContent = "🎧";
 
   }
 
@@ -2310,4 +2348,4 @@ function toggleMusic(){
 </script>
 
 </body>
-  </html>
+</html>
