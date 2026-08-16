@@ -45,14 +45,15 @@ body.starry-night{
 body.starry-night .page,
 body.starry-night .opening,
 body.starry-night .page1,
-body.starry-night .page8{
+body.starry-night .page9{
   background:var(--cream)!important;
 }
 
 body.starry-night .passcode-box,
 body.starry-night .card,
 body.starry-night .prayer,
-body.starry-night .player-card{
+body.starry-night .player-card,
+body.starry-night .carousel-slide{
   background:var(--card-bg);
   color:var(--text);
   border-color:rgba(162,185,167,.2);
@@ -280,7 +281,7 @@ button,a,input,textarea{
 
 /* PAGE 1 */
 
-.page1,.page8{
+.page1,.page9{
   direction:ltr;
   text-align:center;
   background:
@@ -553,7 +554,101 @@ button,a,input,textarea{
   }
 }
 
-/* PAGE 4 + 5 */
+/* PAGE 4: CARTOON CAROUSEL WITH CLICK OVERLAY */
+
+.carousel-container{
+  width:min(90%,420px);
+  margin:10px auto;
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.carousel-cover-overlay{
+  position:absolute;
+  inset:0;
+  z-index:15;
+  background:linear-gradient(135deg,var(--sage),var(--sage-dark));
+  color:white;
+  border-radius:20px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  box-shadow:0 12px 30px rgba(0,0,0,.15);
+  transition:opacity .4s ease, transform .4s ease;
+}
+
+.carousel-cover-overlay.hidden{
+  opacity:0;
+  pointer-events:none;
+  transform:scale(.92);
+}
+
+.carousel-cover-text{
+  font-size:1.5rem;
+  font-weight:bold;
+  letter-spacing:1px;
+}
+
+.carousel-slide{
+  width:100%;
+  aspect-ratio:4/3;
+  background:#fff;
+  border-radius:20px;
+  padding:12px;
+  box-shadow:0 12px 30px rgba(0,0,0,.1);
+  border:1px solid rgba(168,185,163,.4);
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.carousel-slide img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:12px;
+  transition:opacity .4s ease;
+}
+
+.carousel-controls{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  width:100%;
+  margin-top:16px;
+}
+
+.carousel-btn{
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  border:0;
+  background:var(--sage);
+  color:white;
+  font-size:1.2rem;
+  cursor:pointer;
+  box-shadow:0 4px 12px rgba(0,0,0,.15);
+  transition:background .2s,transform .2s;
+}
+
+.carousel-btn:hover{
+  background:var(--sage-dark);
+  transform:scale(1.05);
+}
+
+.carousel-counter{
+  font-size:1rem;
+  color:var(--sage-dark);
+  font-weight:bold;
+}
+
+/* PAGE 5 PHOTO GRID (FAVORITES) */
 
 .photo-grid{
   width:min(95%,850px);
@@ -632,7 +727,28 @@ button,a,input,textarea{
   text-align:center;
 }
 
-/* PAGE 6 */
+/* PAGE 6: NIGHT SKY */
+
+.sky-container{
+  position:relative;
+  width:min(85vw,340px);
+  height:min(85vw,340px);
+  margin:20px auto 0;
+  border-radius:50%;
+  background:radial-gradient(circle,#1a2332 0%,#0b0f19 100%);
+  border:2px solid rgba(168,185,163,.4);
+  box-shadow:0 10px 30px rgba(0,0,0,.5);
+  overflow:hidden;
+  cursor:pointer;
+}
+
+#skyCanvas{
+  width:100%;
+  height:100%;
+  display:block;
+}
+
+/* PAGE 7: WISHES */
 
 .wish-page{
   justify-content:flex-start;
@@ -913,7 +1029,7 @@ button,a,input,textarea{
   cursor:pointer;
 }
 
-/* PAGE 7 */
+/* PAGE 8: PLAYLIST */
 
 .playlist-container{
   width:min(90%,420px);
@@ -1025,9 +1141,9 @@ button,a,input,textarea{
   background:var(--sage-dark);
 }
 
-/* PAGE 8 */
+/* PAGE 9: FINAL */
 
-.page8{
+.page9{
   overflow:hidden;
 }
 
@@ -1050,7 +1166,7 @@ button,a,input,textarea{
   filter:drop-shadow(0 12px 18px rgba(71,88,75,.16));
 }
 
-.page8.final-animation .princess-final{
+.page9.final-animation .princess-final{
   animation:princessAppear 1.1s cubic-bezier(.22,1,.36,1) .4s forwards;
 }
 
@@ -1080,7 +1196,7 @@ button,a,input,textarea{
   display:block;
 }
 
-.page8.final-animation .final-title{
+.page9.final-animation .final-title{
   animation:finalTitleAppear .85s ease 1.2s forwards;
 }
 
@@ -1106,7 +1222,7 @@ button,a,input,textarea{
   transform:translateY(12px);
 }
 
-.page8.final-animation .final-message{
+.page9.final-animation .final-message{
   animation:finalMessageAppear .85s ease 2.5s forwards;
 }
 
@@ -1306,9 +1422,9 @@ button,a,input,textarea{
   }
 
   .nav button{
-    width:35px;
-    height:35px;
-    font-size:.9rem;
+    width:32px;
+    height:32px;
+    font-size:.85rem;
   }
 
   .princess-final{
@@ -1365,6 +1481,9 @@ button,a,input,textarea{
 <audio id="bgMusic" loop onplay="this.volume=0.3">
   <source src="music.mp3" type="audio/mpeg">
 </audio>
+
+<!-- صوت اللمس الخاص بالنجوم (استبدلي pop.mp3 بملفك الخاص) -->
+<audio id="popSound" src="pop.mp3"></audio>
 
 <div class="top-controls-container">
 
@@ -1443,7 +1562,7 @@ button,a,input,textarea{
 <section class="page" id="page2">
 
   <span class="page-number">
-    2 / 8
+    2 / 9
   </span>
 
   <div class="cake-hint" id="cakeHint" dir="rtl">
@@ -1484,7 +1603,7 @@ button,a,input,textarea{
 <section class="page" id="page3">
 
   <span class="page-number">
-    3 / 8
+    3 / 9
   </span>
 
   <h2 class="title">
@@ -1544,39 +1663,33 @@ button,a,input,textarea{
 <section class="page" id="page4">
 
   <span class="page-number">
-    4 / 8
+    4 / 9
   </span>
 
   <h2 class="title" dir="rtl">
     كرتوناتي الحبيبة 🙂
   </h2>
 
-  <div class="photo-grid">
+  <div class="carousel-container">
 
-    <div class="photo-slot" onclick="this.classList.toggle('show')">
-      <img src="images/cartoon1.png" alt="Cartoon 1">
+    <div class="carousel-cover-overlay" id="carouselOverlay" onclick="revealCarousel()">
+      <div class="carousel-cover-text">Clique 🙂</div>
     </div>
 
-    <div class="photo-slot" onclick="this.classList.toggle('show')">
-      <img src="images/cartoon2.png" alt="Cartoon 2">
+    <div class="carousel-slide">
+      <img id="carouselImg" src="images/cartoon1.png" alt="Cartoon">
     </div>
 
-    <div class="photo-slot" onclick="this.classList.toggle('show')">
-      <img src="images/cartoon3.png" alt="Cartoon 3">
-    </div>
-
-    <div class="photo-slot" onclick="this.classList.toggle('show')">
-      <img src="images/cartoon4.png" alt="Cartoon 4">
-    </div>
-
-    <div class="photo-slot" onclick="this.classList.toggle('show')">
-      <img src="images/cartoon5.png" alt="Cartoon 5">
+    <div class="carousel-controls">
+      <button class="carousel-btn" onclick="prevSlide()">❮</button>
+      <span class="carousel-counter" id="carouselCounter">1 / 6</span>
+      <button class="carousel-btn" onclick="nextSlide()">❯</button>
     </div>
 
   </div>
 
   <p class="photo-note" dir="ltr">
-    Clique... je te laisse découvrir 🤍
+    Mon petit album nostalgie 🤍
   </p>
 
 </section>
@@ -1584,7 +1697,7 @@ button,a,input,textarea{
 <section class="page" id="page5">
 
   <span class="page-number">
-    5 / 8
+    5 / 9
   </span>
 
   <h2 class="title" dir="rtl">
@@ -1621,10 +1734,30 @@ button,a,input,textarea{
 
 </section>
 
-<section class="page wish-page" id="page6">
+<section class="page" id="page6">
 
   <span class="page-number">
-    6 / 8
+    6 / 9
+  </span>
+
+  <h2 class="title" dir="ltr">
+    27 Août 2006 🌠🌌
+  </h2>
+
+  <div class="sky-container">
+    <canvas id="skyCanvas"></canvas>
+  </div>
+
+  <p class="photo-note" dir="rtl" style="margin-top:20px;">
+    اضغطي على السماء لتتألأ النجوم أكثر ✨
+  </p>
+
+</section>
+
+<section class="page wish-page" id="page7">
+
+  <span class="page-number">
+    7 / 9
   </span>
 
   <div class="prayer" dir="rtl">
@@ -1685,10 +1818,10 @@ button,a,input,textarea{
 
 </section>
 
-<section class="page" id="page7">
+<section class="page" id="page8">
 
   <span class="page-number">
-    7 / 8
+    8 / 9
   </span>
 
   <div class="playlist-container">
@@ -1741,10 +1874,10 @@ button,a,input,textarea{
 
 </section>
 
-<section class="page page8 final" id="page8">
+<section class="page page9 final" id="page9">
 
   <span class="page-number">
-    8 / 8
+    9 / 9
   </span>
 
   <div class="final-content">
@@ -1813,6 +1946,7 @@ button,a,input,textarea{
   <button onclick="goTo(6)">6</button>
   <button onclick="goTo(7)">7</button>
   <button onclick="goTo(8)">8</button>
+  <button onclick="goTo(9)">9</button>
 
 </nav>
 
@@ -1851,6 +1985,8 @@ window.addEventListener("DOMContentLoaded",()=>{
       .add("open");
 
   },200);
+
+  initNightSky();
 
 });
 
@@ -2036,7 +2172,252 @@ function blowCakeCandles(){
 
 }
 
-const wishes=[
+const cartoonImages = [
+  "images/cartoon1.png",
+  "images/cartoon2.png",
+  "images/cartoon3.png",
+  "images/cartoon4.png",
+  "images/cartoon5.png",
+  "images/cartoon6.png"
+];
+
+let currentCartoonIndex = 0;
+
+function revealCarousel(){
+  document.getElementById("carouselOverlay").classList.add("hidden");
+}
+
+function updateCarousel(){
+
+  const img = document.getElementById("carouselImg");
+  const counter = document.getElementById("carouselCounter");
+
+  img.style.opacity = 0;
+
+  setTimeout(() => {
+
+    img.src = cartoonImages[currentCartoonIndex];
+    img.style.opacity = 1;
+    counter.textContent =
+      `${currentCartoonIndex + 1} / ${cartoonImages.length}`;
+
+  },200);
+
+}
+
+function nextSlide(){
+
+  currentCartoonIndex =
+    (currentCartoonIndex + 1) % cartoonImages.length;
+
+  updateCarousel();
+
+}
+
+function prevSlide(){
+
+  currentCartoonIndex =
+    (currentCartoonIndex - 1 + cartoonImages.length) %
+    cartoonImages.length;
+
+  updateCarousel();
+
+}
+
+let stars = [];
+
+function initNightSky(){
+
+  const canvas = document.getElementById('skyCanvas');
+
+  if(!canvas) return;
+
+  const ctx = canvas.getContext('2d');
+
+  canvas.width = 340;
+  canvas.height = 340;
+
+  // زيادة عدد النجوم إلى 120 لإعطاء مظهر مبهر
+  stars = Array.from({ length: 120 }, () => ({
+
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    radius: Math.random() * 2 + 0.5,
+    alpha: Math.random(),
+    speed: Math.random() * 0.02 + 0.005,
+    sparkle: 0
+
+  }));
+
+  canvas.addEventListener('click', (e) => {
+
+    // تشغيل صوت اللمس
+    const pop = document.getElementById('popSound');
+    if(pop){
+      pop.currentTime = 0;
+      pop.play().catch(()=>{});
+    }
+
+    const rect = canvas.getBoundingClientRect();
+
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    stars.forEach(star => {
+
+      const dist =
+        Math.hypot(star.x - x, star.y - y);
+
+      if(dist < 75){
+
+        star.sparkle = 2;
+        star.radius = Math.random() * 3.5 + 2.5;
+
+      }
+
+    });
+
+  });
+
+  function drawSky(){
+
+    ctx.clearRect(
+      0,
+      0,
+      canvas.width,
+      canvas.height
+    );
+
+    ctx.lineWidth = 1;
+
+    for(
+      let i = 0;
+      i < stars.length;
+      i++
+    ){
+
+      for(
+        let j = i + 1;
+        j < stars.length;
+        j++
+      ){
+
+        const dist =
+          Math.hypot(
+            stars[i].x - stars[j].x,
+            stars[i].y - stars[j].y
+          );
+
+        // زيادة مسافة وكثافة الخطوط المتصلة بين النجوم
+        if(dist < 65){
+
+          const alphaLine =
+            (1 - dist / 65) * 0.35;
+
+          ctx.strokeStyle =
+            `rgba(201,169,107,${alphaLine})`;
+
+          ctx.beginPath();
+
+          ctx.moveTo(
+            stars[i].x,
+            stars[i].y
+          );
+
+          ctx.lineTo(
+            stars[j].x,
+            stars[j].y
+          );
+
+          ctx.stroke();
+
+        }
+
+      }
+
+    }
+
+    stars.forEach(star => {
+
+      star.alpha += star.speed;
+
+      if(
+        star.alpha > 1 ||
+        star.alpha < 0.2
+      ){
+
+        star.speed =
+          -star.speed;
+
+      }
+
+      if(star.sparkle > 0){
+
+        star.sparkle -= 0.03;
+
+        ctx.shadowBlur = 15;
+        ctx.shadowColor = '#ffffff';
+
+      }else{
+
+        ctx.shadowBlur = 0;
+
+      }
+
+      ctx.beginPath();
+
+      ctx.arc(
+        star.x,
+        star.y,
+        star.radius + (star.sparkle * 2),
+        0,
+        Math.PI * 2
+      );
+
+      ctx.fillStyle =
+        `rgba(255,255,255,${Math.min(
+          1,
+          Math.abs(star.alpha) + star.sparkle
+        )})`;
+
+      ctx.fill();
+
+      ctx.shadowBlur = 0;
+
+    });
+
+    ctx.font =
+      'bold 19px Georgia';
+
+    ctx.fillStyle =
+      'rgba(201,169,107,0.95)';
+
+    ctx.textAlign =
+      'center';
+
+    ctx.shadowBlur =
+      10;
+
+    ctx.shadowColor =
+      'rgba(201,169,107,0.5)';
+
+    ctx.fillText(
+      'B O U C H R A',
+      canvas.width / 2,
+      295
+    );
+
+    ctx.shadowBlur = 0;
+
+    requestAnimationFrame(drawSky);
+
+  }
+
+  drawSky();
+
+}
+
+const wishes = [
 
   "ما كُتب لكِ سيجد طريقه إليكِ 🌿",
 
@@ -2056,7 +2437,7 @@ const wishes=[
 
   "WOOOOOY 😂😂",
 
-  "أتمنى أن تعرفي أن صديقكِ هنا موجود ليسمعكِ دائما  بكل حماس واهتمام... حتى لو كانت أطول les vocaux في العالم و بسرعة ×1 😅🎧",
+  "أتمنى أن تعرفي أن صديقكِ هنا موجود ليسمعكِ دائما بكل حماس واهتمام... حتى لو كانت أطول les vocaux في العالم و بسرعة ×1 😅🎧",
 
   "﴿إِنَّ رَبِّي لَطِيفٌ لِّمَا يَشَاءُ﴾ 🤍",
 
@@ -2074,29 +2455,44 @@ const wishes=[
 
   "أتمنى أن يجبركِ الله جبرًا يُنسيكِ كل تعب 🤍",
 
-  " أتمنى أن تدركي دائمًا كم أن وجودكِ بين من يحبونكِ يصنع فارقًا كبيرًا 🌸",
+  "أتمنى أن تدركي دائمًا كم أن وجودكِ بين من يحبونكِ يصنع فارقًا كبيرًا 🌸",
 
   "﴿ فَضَحِكَتْ فَبَشَّرْنَاهَا ..﴾ ❤️‍🩹"
 
 ];
 
-const shuffled=[...wishes].sort(()=>Math.random()-.5);
+const shuffled =
+  [...wishes].sort(
+    () => Math.random() - 0.5
+  );
 
-const grid=document.getElementById("wishGrid");
-const modal=document.getElementById("wishModal");
-const modalText=document.getElementById("wishModalText");
+const grid =
+  document.getElementById("wishGrid");
+
+const modal =
+  document.getElementById("wishModal");
+
+const modalText =
+  document.getElementById("wishModalText");
 
 shuffled.forEach((wish,index)=>{
 
-  const btn=document.createElement("button");
+  const btn =
+    document.createElement("button");
 
-  btn.className="wish-btn";
-  btn.textContent=index+1;
+  btn.className =
+    "wish-btn";
 
-  btn.onclick=()=>{
+  btn.textContent =
+    index + 1;
 
-    modalText.textContent=wish;
+  btn.onclick = ()=>{
+
+    modalText.textContent =
+      wish;
+
     modal.classList.add("open");
+
     btn.classList.add("opened");
 
   };
@@ -2107,21 +2503,31 @@ shuffled.forEach((wish,index)=>{
 
 function closeWish(event){
 
-  if(event && event.target!==modal){
+  if(
+    event &&
+    event.target !== modal
+  ){
+
     return;
+
   }
 
   modal.classList.remove("open");
 
 }
 
-document.addEventListener("keydown",e=>{
+document.addEventListener(
+  "keydown",
+  e=>{
 
-  if(e.key==="Escape"){
-    modal.classList.remove("open");
+    if(e.key==="Escape"){
+
+      modal.classList.remove("open");
+
+    }
+
   }
-
-});
+);
 
 function goTo(n){
 
@@ -2134,34 +2540,59 @@ function goTo(n){
 
   });
 
-  const target=document.getElementById("page"+n);
+  const target =
+    document.getElementById("page"+n);
 
   target.classList.add("active");
+
+  if(n === 6){
+
+    document.body.classList.add(
+      "starry-night"
+    );
+
+    const themeBtn =
+      document.getElementById(
+        "themeBtn"
+      );
+
+    if(themeBtn)
+      themeBtn.textContent="☀️";
+
+  }
 
   updateNav(n);
 
   window.scrollTo({
+
     top:0,
     behavior:"smooth"
+
   });
 
-  if(n===8){
+  if(n===9){
 
-    target.classList.add("final-animation");
+    target.classList.add(
+      "final-animation"
+    );
 
     setTimeout(()=>{
 
       confetti({
+
         particleCount:65,
         spread:70,
         origin:{y:.6},
+
         colors:[
           "#a8b9a3",
           "#71836d",
           "#c9a96b",
           "#ffffff"
         ],
+
         disableForReducedMotion:true
+
       });
 
     },1000);
@@ -2172,19 +2603,28 @@ function goTo(n){
 
 function updateNav(n){
 
-  document.querySelectorAll(".nav button").forEach((button,index)=>{
+  document
+    .querySelectorAll(".nav button")
+    .forEach((button,index)=>{
 
-    button.classList.toggle(
-      "active",
-      index===n-1
-    );
+      button.classList.toggle(
+        "active",
+        index===n-1
+      );
 
-  });
+    });
 
 }
 
-const music=document.getElementById("bgMusic");
-const musicBtn=document.getElementById("musicBtn");
+const music =
+  document.getElementById(
+    "bgMusic"
+  );
+
+const musicBtn =
+  document.getElementById(
+    "musicBtn"
+  );
 
 let musicPlaying=false;
 
@@ -2200,6 +2640,7 @@ function toggleMusic(){
       .then(()=>{
 
         musicPlaying=true;
+
         musicBtn.textContent="🔊";
 
       })
