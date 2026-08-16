@@ -22,43 +22,40 @@
   --gold:#c9a96b;
   --text:#465248;
   --shadow:0 12px 35px rgba(71,88,75,.12);
-  --bg-gradient: linear-gradient(135deg,#f7faf6,#eef3ed);
-  --card-bg: rgba(255,255,255,.82);
+  --bg-gradient:linear-gradient(135deg,#f7faf6,#eef3ed);
+  --card-bg:rgba(255,255,255,.82);
 }
 
-/* =========================
-   STARRY NIGHT MODE
-========================= */
-body.starry-night {
-  --cream: #121824;
-  --text: #e0e6ed;
-  --sage-dark: #a2b9a7;
-  --card-bg: rgba(23, 31, 46, 0.88);
-  --shadow: 0 12px 35px rgba(0,0,0,0.5);
-  background-color: #0b0f19;
-  background-image: 
-    radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0,0,0,0)),
-    radial-gradient(2px 2px at 40px 70px, #ffffff, rgba(0,0,0,0)),
-    radial-gradient(1px 1px at 90px 40px, #ffffff, rgba(0,0,0,0)),
-    radial-gradient(2px 2px at 160px 120px, #ffffff, rgba(0,0,0,0));
-  background-repeat: repeat;
-  background-size: 200px 200px;
+body.starry-night{
+  --cream:#121824;
+  --text:#e0e6ed;
+  --sage-dark:#a2b9a7;
+  --card-bg:rgba(23,31,46,.88);
+  --shadow:0 12px 35px rgba(0,0,0,.5);
+  background-color:#0b0f19;
+  background-image:
+    radial-gradient(2px 2px at 20px 30px,#fff,rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 40px 70px,#fff,rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 90px 40px,#fff,rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 160px 120px,#fff,rgba(0,0,0,0));
+  background-repeat:repeat;
+  background-size:200px 200px;
 }
 
 body.starry-night .page,
 body.starry-night .opening,
 body.starry-night .page1,
-body.starry-night .page8 {
-  background: var(--cream) !important;
+body.starry-night .page8{
+  background:var(--cream)!important;
 }
 
 body.starry-night .passcode-box,
 body.starry-night .card,
 body.starry-night .prayer,
-body.starry-night .player-card {
-  background: var(--card-bg);
-  color: var(--text);
-  border-color: rgba(162, 185, 167, 0.2);
+body.starry-night .player-card{
+  background:var(--card-bg);
+  color:var(--text);
+  border-color:rgba(162,185,167,.2);
 }
 
 body.starry-night .greeting,
@@ -66,12 +63,12 @@ body.starry-night .subtitle,
 body.starry-night .photo-note,
 body.starry-night .wish-instruction,
 body.starry-night .player-artist,
-body.starry-night .final-message {
-  color: #b0c4b1;
+body.starry-night .final-message{
+  color:#b0c4b1;
 }
 
-body.starry-night .photo-slot {
-  background: #1e2736;
+body.starry-night .photo-slot{
+  background:#1e2736;
 }
 
 *{
@@ -87,24 +84,24 @@ body{
   background:var(--bg-gradient);
   color:var(--text);
   font-family:Georgia,"Times New Roman",serif;
-  transition:background 0.5s ease, color 0.5s ease;
+  transition:color .3s ease,background-color .3s ease;
   overflow-x:hidden;
+}
+
+.page,.card,.passcode-box{
+  will-change:background-color,color,border-color;
+  transition:background-color .3s ease,color .3s ease,border-color .3s ease;
 }
 
 body.lights-off{
   filter:brightness(.4) contrast(1.1);
 }
 
-button,
-a,
-input,
-textarea{
+button,a,input,textarea{
   font-family:Georgia,"Times New Roman",serif;
 }
 
-/* =========================
-   CURTAIN / COVER REVEAL
-========================= */
+/* CURTAIN */
 
 .curtain-overlay{
   position:fixed;
@@ -119,7 +116,7 @@ textarea{
   height:100%;
   background:var(--sage);
   position:relative;
-  transition:transform 1.8s cubic-bezier(0.77,0,0.175,1);
+  transition:transform 1.8s cubic-bezier(.77,0,.175,1);
   box-shadow:0 0 30px rgba(0,0,0,.15);
 }
 
@@ -139,9 +136,7 @@ textarea{
   transform:translateX(100%);
 }
 
-/* =========================
-   BOOK CONTAINER
-========================= */
+/* BOOK */
 
 .book{
   width:min(100%,900px);
@@ -149,7 +144,6 @@ textarea{
   min-height:100vh;
   position:relative;
   overflow:hidden;
-
   opacity:0;
   transform:scale(.96);
   animation:bookFadeIn 1s cubic-bezier(.16,1,.3,1) .3s forwards;
@@ -162,9 +156,7 @@ textarea{
   }
 }
 
-/* =========================
-   PAGES
-========================= */
+/* PAGES */
 
 .page{
   min-height:100vh;
@@ -175,7 +167,6 @@ textarea{
   justify-content:center;
   position:relative;
   background:var(--cream);
-  transition: background 0.5s ease;
 }
 
 .page.active{
@@ -188,45 +179,32 @@ textarea{
     opacity:0;
     transform:translateY(18px) scale(.985);
   }
-
   to{
     opacity:1;
     transform:none;
   }
 }
 
-/* =========================
-   OPENING & PASSCODE
-========================= */
+/* OPENING */
 
 .opening{
   min-height:100vh;
   background:
-    radial-gradient(
-      circle at 20% 15%,
-      rgba(168,185,163,.28),
-      transparent 25%
-    ),
-    radial-gradient(
-      circle at 80% 80%,
-      rgba(220,233,245,.38),
-      transparent 30%
-    ),
+    radial-gradient(circle at 20% 15%,rgba(168,185,163,.28),transparent 25%),
+    radial-gradient(circle at 80% 80%,rgba(220,233,245,.38),transparent 30%),
     var(--cream);
-
   text-align:center;
 }
 
-/* SHAKE ANIMATION */
-@keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  20%, 60% { transform: translateX(-8px); }
-  40%, 80% { transform: translateX(8px); }
+@keyframes shake{
+  0%,100%{transform:translateX(0)}
+  20%,60%{transform:translateX(-8px)}
+  40%,80%{transform:translateX(8px)}
 }
 
-.passcode-box.error-shake {
-  animation: shake 0.4s ease-in-out;
-  border-color: #e74c3c !important;
+.passcode-box.error-shake{
+  animation:shake .4s ease-in-out;
+  border-color:#e74c3c!important;
 }
 
 .passcode-box{
@@ -241,7 +219,6 @@ textarea{
   border:1px solid rgba(168,185,163,.4);
   width:min(90%,360px);
   margin:0 auto;
-  transition: border-color 0.3s;
 }
 
 .passcode-label{
@@ -301,26 +278,14 @@ textarea{
   text-align:center;
 }
 
-/* =========================
-   PAGE 1
-========================= */
+/* PAGE 1 */
 
-.page1,
-.page8{
+.page1,.page8{
   direction:ltr;
   text-align:center;
-
   background:
-    radial-gradient(
-      circle at 20% 15%,
-      rgba(168,185,163,.24),
-      transparent 25%
-    ),
-    radial-gradient(
-      circle at 80% 80%,
-      rgba(220,233,245,.35),
-      transparent 28%
-    ),
+    radial-gradient(circle at 20% 15%,rgba(168,185,163,.24),transparent 25%),
+    radial-gradient(circle at 80% 80%,rgba(220,233,245,.35),transparent 28%),
     var(--cream);
 }
 
@@ -331,9 +296,7 @@ textarea{
   color:var(--sage-dark);
 }
 
-/* =========================
-   TITLES
-========================= */
+/* TITLES */
 
 .title{
   font-family:Georgia,"Times New Roman",serif;
@@ -343,9 +306,7 @@ textarea{
   margin:0 0 24px;
 }
 
-/* =========================
-   PAGE 2
-========================= */
+/* PAGE 2 */
 
 #page2{
   justify-content:flex-start;
@@ -354,8 +315,8 @@ textarea{
 }
 
 #page2 *{
-  -webkit-tap-highlight-color:transparent !important;
-  outline:none !important;
+  -webkit-tap-highlight-color:transparent!important;
+  outline:none!important;
   user-select:none;
   -webkit-user-select:none;
 }
@@ -433,18 +394,11 @@ textarea{
 }
 
 @keyframes flicker{
-  0%{
-    transform:translateX(-50%) scale(1);
-  }
-
-  100%{
-    transform:translateX(-50%) scale(1.08);
-  }
+  0%{transform:translateX(-50%) scale(1)}
+  100%{transform:translateX(-50%) scale(1.08)}
 }
 
-/* =========================
-   PAGE 3
-========================= */
+/* PAGE 3 */
 
 #page3{
   justify-content:flex-start;
@@ -452,13 +406,13 @@ textarea{
 }
 
 #page3 *{
-  -webkit-tap-highlight-color:transparent !important;
-  outline:none !important;
+  -webkit-tap-highlight-color:transparent!important;
+  outline:none!important;
   user-select:none;
   -webkit-user-select:none;
 }
 
-#page3 > .title{
+#page3>.title{
   margin-top:4px;
   margin-bottom:4px;
   font-family:Georgia,"Times New Roman",serif;
@@ -474,8 +428,6 @@ textarea{
   margin:8px 0 20px;
   line-height:1.1;
 }
-
-/* CARD */
 
 .card{
   width:min(92%,700px);
@@ -505,9 +457,7 @@ textarea{
   padding:4px;
 }
 
-/* =========================
-   ENVELOPE
-========================= */
+/* ENVELOPE */
 
 .envelope-wrapper{
   margin:20px auto 0;
@@ -597,45 +547,42 @@ textarea{
     opacity:0;
     transform:translateY(10px);
   }
-
   to{
     opacity:1;
     transform:translateY(0);
   }
 }
 
-/* =========================
-   PAGE 4 + 5 (SQUARE CARDS)
-========================= */
+/* PAGE 4 + 5 */
 
 .photo-grid{
   width:min(95%,850px);
   display:grid;
-  grid-template-columns:repeat(2, 1fr);
+  grid-template-columns:repeat(2,1fr);
   gap:25px;
-  padding: 10px;
+  padding:10px;
 }
 
-.photo-slot {
-  transform: rotate(calc(-3deg + 6deg * var(--random, 0.5)));
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s;
-  background: #ffffff;
-  padding: 10px;
-  border-radius: 12px;
-  box-shadow: 0 8px 22px rgba(0,0,0,0.08);
-  cursor: pointer;
-  position: relative;
-  aspect-ratio: 1 / 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+.photo-slot{
+  transform:rotate(calc(-3deg + 6deg * var(--random,.5)));
+  transition:transform .4s cubic-bezier(.175,.885,.32,1.275),box-shadow .4s;
+  background:#fff;
+  padding:10px;
+  border-radius:12px;
+  box-shadow:0 8px 22px rgba(0,0,0,.08);
+  cursor:pointer;
+  position:relative;
+  aspect-ratio:1/1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
 }
 
-.photo-slot:hover {
-  transform: scale(1.05) rotate(0deg);
-  z-index: 10;
-  box-shadow: 0 15px 30px rgba(0,0,0,0.18);
+.photo-slot:hover{
+  transform:scale(1.05) rotate(0deg);
+  z-index:10;
+  box-shadow:0 15px 30px rgba(0,0,0,.18);
 }
 
 .photo-slot img{
@@ -644,13 +591,13 @@ textarea{
   object-fit:cover;
   opacity:0;
   transition:.35s ease;
-  border-radius: 8px;
-  display: block;
+  border-radius:8px;
+  display:block;
 }
 
 .photo-slot::after{
   content:"Clique.. et\A Découvre 🙂";
-  white-space: pre-wrap;
+  white-space:pre-wrap;
   position:absolute;
   inset:0;
   display:flex;
@@ -660,12 +607,12 @@ textarea{
   padding:10px;
   direction:ltr;
   color:#556357;
-  background:linear-gradient(135deg, rgba(255,255,255,0.98), rgba(244,248,243,0.95));
+  background:linear-gradient(135deg,rgba(255,255,255,.98),rgba(244,248,243,.95));
   transition:.35s ease;
-  font-size:clamp(0.9rem, 2.5vw, 1.15rem);
-  line-height: 1.45;
-  font-family: Georgia, "Times New Roman", serif;
-  font-weight: 500;
+  font-size:clamp(.9rem,2.5vw,1.15rem);
+  line-height:1.45;
+  font-family:Georgia,"Times New Roman",serif;
+  font-weight:500;
 }
 
 .photo-slot.show img{
@@ -685,9 +632,7 @@ textarea{
   text-align:center;
 }
 
-/* =========================
-   PAGE 6
-========================= */
+/* PAGE 6 */
 
 .wish-page{
   justify-content:flex-start;
@@ -726,17 +671,9 @@ textarea{
   width:126px;
   height:148px;
   border:2px solid rgba(137,163,143,.72);
-  border-radius:25px 25px 34px 34px / 20px 20px 28px 28px;
-  background:linear-gradient(
-    105deg,
-    rgba(255,255,255,.88) 0%,
-    rgba(232,244,234,.35) 24%,
-    rgba(203,222,207,.18) 56%,
-    rgba(255,255,255,.66) 100%
-  );
-  box-shadow:
-    inset 8px 0 12px rgba(255,255,255,.72),
-    inset -8px 0 14px rgba(125,151,130,.10);
+  border-radius:25px 25px 34px 34px/20px 20px 28px 28px;
+  background:linear-gradient(105deg,rgba(255,255,255,.88) 0%,rgba(232,244,234,.35) 24%,rgba(203,222,207,.18) 56%,rgba(255,255,255,.66) 100%);
+  box-shadow:inset 8px 0 12px rgba(255,255,255,.72),inset -8px 0 14px rgba(125,151,130,.1);
   overflow:hidden;
 }
 
@@ -750,12 +687,7 @@ textarea{
   border:2px solid rgba(137,163,143,.72);
   border-bottom:0;
   border-radius:11px 11px 0 0;
-  background:linear-gradient(
-    90deg,
-    rgba(255,255,255,.65),
-    rgba(215,231,218,.20),
-    rgba(255,255,255,.65)
-  );
+  background:linear-gradient(90deg,rgba(255,255,255,.65),rgba(215,231,218,.2),rgba(255,255,255,.65));
 }
 
 .rw-lip{
@@ -778,13 +710,7 @@ textarea{
   width:48px;
   height:24px;
   border-radius:6px 6px 5px 5px;
-  background:repeating-linear-gradient(
-    90deg,
-    #c59d69 0,
-    #c59d69 4px,
-    #b88d59 4px,
-    #b88d59 7px
-  );
+  background:repeating-linear-gradient(90deg,#c59d69 0,#c59d69 4px,#b88d59 4px,#b88d59 7px);
   box-shadow:inset 0 2px 2px rgba(255,255,255,.28);
 }
 
@@ -806,7 +732,7 @@ textarea{
   border-radius:3px;
   background:linear-gradient(180deg,#fff8e9,#ead7b5);
   border:1px solid rgba(166,139,96,.28);
-  box-shadow:0 2px 3px rgba(70,70,50,.10);
+  box-shadow:0 2px 3px rgba(70,70,50,.1);
 }
 
 .rw-note span{
@@ -934,9 +860,7 @@ textarea{
   color:#fbf8f0;
 }
 
-/* =========================
-   WISH MODAL
-========================= */
+/* WISH MODAL */
 
 .wish-modal{
   position:fixed;
@@ -989,9 +913,7 @@ textarea{
   cursor:pointer;
 }
 
-/* =========================
-   PAGE 7: PLAYER CARD
-========================= */
+/* PAGE 7 */
 
 .playlist-container{
   width:min(90%,420px);
@@ -1034,13 +956,8 @@ textarea{
 }
 
 @keyframes spinCover{
-  from{
-    transform:rotate(0deg);
-  }
-
-  to{
-    transform:rotate(360deg);
-  }
+  from{transform:rotate(0deg)}
+  to{transform:rotate(360deg)}
 }
 
 .player-info{
@@ -1108,9 +1025,7 @@ textarea{
   background:var(--sage-dark);
 }
 
-/* =========================
-   PAGE 8
-========================= */
+/* PAGE 8 */
 
 .page8{
   overflow:hidden;
@@ -1144,7 +1059,6 @@ textarea{
     opacity:0;
     transform:translateY(25px) scale(.94);
   }
-
   100%{
     opacity:1;
     transform:translateY(0) scale(1);
@@ -1175,7 +1089,6 @@ textarea{
     opacity:0;
     transform:translateY(15px);
   }
-
   to{
     opacity:1;
     transform:translateY(0);
@@ -1202,16 +1115,13 @@ textarea{
     opacity:0;
     transform:translateY(12px);
   }
-
   to{
     opacity:1;
     transform:translateY(0);
   }
 }
 
-/* =========================
-   TOP BUTTONS (MUSIC & THEME TOGGLE)
-========================= */
+/* TOP BUTTONS */
 
 .top-controls-container{
   position:fixed;
@@ -1221,17 +1131,15 @@ textarea{
   display:flex;
   align-items:center;
   gap:8px;
-
   opacity:0;
   animation:musicReveal .8s ease 2.2s forwards;
 }
 
-/* زر الوضع في أعلى الزاوية الأخرى (اليمنى) */
-.top-theme-container {
-  position: fixed;
-  z-index: 50;
-  top: 15px;
-  right: 15px;
+.top-theme-container{
+  position:fixed;
+  z-index:50;
+  top:15px;
+  right:15px;
 }
 
 @keyframes musicReveal{
@@ -1239,7 +1147,6 @@ textarea{
     opacity:0;
     transform:translateY(-12px);
   }
-
   to{
     opacity:1;
     transform:translateY(0);
@@ -1262,8 +1169,8 @@ textarea{
   -webkit-tap-highlight-color:transparent;
   outline:none;
   user-select:none;
-  display: grid;
-  place-items: center;
+  display:grid;
+  place-items:center;
 }
 
 .top-btn:hover{
@@ -1292,9 +1199,7 @@ textarea{
   transform:translateX(-10px);
 }
 
-/* =========================
-   NAVIGATION
-========================= */
+/* NAVIGATION */
 
 .nav{
   position:fixed;
@@ -1340,9 +1245,7 @@ textarea{
   font-family:Georgia,"Times New Roman",serif;
 }
 
-/* =========================
-   MOBILE
-========================= */
+/* MOBILE */
 
 @media(max-width:600px){
 
@@ -1355,7 +1258,7 @@ textarea{
     padding-top:72px;
   }
 
-  #page3 > .title{
+  #page3>.title{
     margin-bottom:4px;
     font-size:clamp(1.8rem,7vw,2.5rem);
   }
@@ -1394,7 +1297,7 @@ textarea{
   }
 
   .photo-slot::after{
-    font-size: 0.85rem;
+    font-size:.85rem;
   }
 
   .nav{
@@ -1454,28 +1357,15 @@ textarea{
 
 <body>
 
-<!-- =========================
-     CURTAIN OVERLAY
-========================= -->
-
 <div class="curtain-overlay" id="curtainOverlay">
-
   <div class="curtain-panel panel-left"></div>
   <div class="curtain-panel panel-right"></div>
-
 </div>
 
-<!-- =========================
-     OPTIONAL MUSIC
-========================= -->
-
 <audio id="bgMusic" loop onplay="this.volume=0.3">
-
   <source src="music.mp3" type="audio/mpeg">
-
 </audio>
 
-<!-- زر التحكم بالصوت والـ Tooltip في أعلى الزاوية اليسرى -->
 <div class="top-controls-container">
 
   <button
@@ -1493,23 +1383,20 @@ textarea{
 
 </div>
 
-<!-- زر الوضع في أعلى الزاوية اليمنى -->
 <div class="top-theme-container">
-  <button 
-    class="top-btn" 
-    id="themeBtn" 
-    onclick="toggleTheme()" 
+
+  <button
+    class="top-btn"
+    id="themeBtn"
+    onclick="toggleTheme()"
     aria-label="Toggle Theme"
   >
     🌙
   </button>
+
 </div>
 
 <div class="book">
-
-<!-- =========================
-     OPENING SCREEN
-========================= -->
 
 <section class="page opening active" id="opening">
 
@@ -1545,10 +1432,6 @@ textarea{
 
 </section>
 
-<!-- =========================
-     PAGE 1
-========================= -->
-
 <section class="page page1" id="page1">
 
   <h1>
@@ -1556,10 +1439,6 @@ textarea{
   </h1>
 
 </section>
-
-<!-- =========================
-     PAGE 2
-========================= -->
 
 <section class="page" id="page2">
 
@@ -1601,10 +1480,6 @@ textarea{
   </div>
 
 </section>
-
-<!-- =========================
-     PAGE 3
-========================= -->
 
 <section class="page" id="page3">
 
@@ -1666,10 +1541,6 @@ textarea{
 
 </section>
 
-<!-- =========================
-     PAGE 4
-========================= -->
-
 <section class="page" id="page4">
 
   <span class="page-number">
@@ -1710,10 +1581,6 @@ textarea{
 
 </section>
 
-<!-- =========================
-     PAGE 5
-========================= -->
-
 <section class="page" id="page5">
 
   <span class="page-number">
@@ -1753,10 +1620,6 @@ textarea{
   </p>
 
 </section>
-
-<!-- =========================
-     PAGE 6
-========================= -->
 
 <section class="page wish-page" id="page6">
 
@@ -1822,10 +1685,6 @@ textarea{
 
 </section>
 
-<!-- =========================
-     PAGE 7
-========================= -->
-
 <section class="page" id="page7">
 
   <span class="page-number">
@@ -1882,10 +1741,6 @@ textarea{
 
 </section>
 
-<!-- =========================
-     PAGE 8
-========================= -->
-
 <section class="page page8 final" id="page8">
 
   <span class="page-number">
@@ -1920,10 +1775,6 @@ textarea{
 
 </section>
 
-<!-- =========================
-     WISH MODAL
-========================= -->
-
 <div
   class="wish-modal"
   id="wishModal"
@@ -1947,10 +1798,6 @@ textarea{
 
 </div>
 
-<!-- =========================
-     NAVIGATION
-========================= -->
-
 <nav
   class="nav"
   id="navigation"
@@ -1971,34 +1818,28 @@ textarea{
 
 <script>
 
-/* =========================
-   RANDOM TILT FOR POLAROIDS
-========================= */
-
-document.querySelectorAll('.photo-slot').forEach(slot => {
-  slot.style.setProperty('--random', Math.random());
+document.querySelectorAll('.photo-slot').forEach(slot=>{
+  slot.style.setProperty('--random',Math.random());
 });
 
-/* =========================
-   STARRY NIGHT MODE TOGGLE
-========================= */
+function toggleTheme(){
 
-function toggleTheme() {
-  const body = document.body;
-  const themeBtn = document.getElementById("themeBtn");
-  
-  body.classList.toggle("starry-night");
-  
-  if (body.classList.contains("starry-night")) {
-    themeBtn.textContent = "☀️";
-  } else {
-    themeBtn.textContent = "🌙";
-  }
+  requestAnimationFrame(()=>{
+
+    const body=document.body;
+    const themeBtn=document.getElementById("themeBtn");
+
+    body.classList.toggle("starry-night");
+
+    if(body.classList.contains("starry-night")){
+      themeBtn.textContent="☀️";
+    }else{
+      themeBtn.textContent="🌙";
+    }
+
+  });
+
 }
-
-/* =========================
-   TRIGGER CURTAIN ANIMATION
-========================= */
 
 window.addEventListener("DOMContentLoaded",()=>{
 
@@ -2013,146 +1854,158 @@ window.addEventListener("DOMContentLoaded",()=>{
 
 });
 
-/* =========================
-   TOOLTIP AUTO HIDE
-========================= */
-
-const tooltip =
-  document.getElementById("musicTooltip");
+const tooltip=document.getElementById("musicTooltip");
 
 function hideTooltip(){
 
   if(tooltip){
-
     tooltip.classList.add("hidden");
-
   }
 
 }
 
 setTimeout(hideTooltip,5000);
 
-/* =========================
-   CODE & OPEN BOOK
-========================= */
-
 function checkCode(number){
 
-  const error = document.getElementById("passcodeError");
-  const box = document.getElementById("passcodeBox");
+  const error=document.getElementById("passcodeError");
+  const box=document.getElementById("passcodeBox");
 
-  if(number === 2){
+  if(number===2){
 
-    error.textContent = "";
+    error.textContent="";
     hideTooltip();
 
-    // النجوم والحركات المتطايرة عند الإدخال الصحيح
     confetti({
-      particleCount: 40,
-      spread: 60,
-      origin: { y: 0.5 },
-      shapes: ['star'],
-      colors: ['#ffe17d', '#ffffff', '#c9a96b']
+      particleCount:40,
+      spread:60,
+      origin:{y:.5},
+      shapes:["star"],
+      colors:["#ffe17d","#ffffff","#c9a96b"]
     });
 
     document.getElementById("opening").classList.remove("active");
     document.getElementById("page1").classList.add("active");
-    document.getElementById("navigation").style.display = "flex";
+    document.getElementById("navigation").style.display="flex";
 
-    // إخفاء زر النمط Night Mode عند فتح الكتاب لإبقائه متسقاً
-    document.getElementById("themeBtn").style.display = "none";
+    document.getElementById("themeBtn").style.display="none";
 
     updateNav(1);
 
-  } else {
+  }else{
 
-    error.textContent = "BOUCHRAAAAA 🙂💔";
-    box.classList.add('error-shake');
-    setTimeout(() => box.classList.remove('error-shake'), 400);
+    error.textContent="BOUCHRAAAAA 🙂💔";
+
+    box.classList.add("error-shake");
+
+    setTimeout(()=>{
+      box.classList.remove("error-shake");
+    },400);
 
   }
 
 }
 
-/* =========================
-   TYPEWRITER EFFECT (PAGE 3)
-========================= */
+const p1Text="Que cette nouvelle année t'apporte autant de bonheur, de réussite, de joie et de belles surprises que tu en diffuses autour de toi.";
+const p2Text="Avoir une amie comme toi est un magnifique cadeau. Que la vie te gâte comme tu le mérites.";
+const p3Text="Reste toujours aussi brillante! ✨";
 
-const p1Text = "Que cette nouvelle année t'apporte autant de bonheur, de réussite, de joie et de belles surprises que tu en diffuses autour de toi.";
-const p2Text = "Avoir une amie comme toi est un magnifique cadeau. Que la vie te gâte comme tu le mérites.";
-const p3Text = "Reste toujours aussi brillante! ✨";
+let envelopeAlreadyOpened=false;
 
-let envelopeAlreadyOpened = false;
+function typeWriterSequence(){
 
-function typeWriterSequence() {
-  let i = 0;
-  const elem1 = document.getElementById("typewriterText1");
-  const elem2 = document.getElementById("typewriterText2");
-  const elem3 = document.getElementById("typewriterText3");
-  
-  elem1.innerHTML = "";
-  elem2.innerHTML = "";
-  elem3.innerHTML = "";
+  let i=0;
 
-  function type1() {
-    if (i < p1Text.length) {
-      elem1.innerHTML += p1Text.charAt(i);
+  const elem1=document.getElementById("typewriterText1");
+  const elem2=document.getElementById("typewriterText2");
+  const elem3=document.getElementById("typewriterText3");
+
+  elem1.innerHTML="";
+  elem2.innerHTML="";
+  elem3.innerHTML="";
+
+  function type1(){
+
+    if(i<p1Text.length){
+
+      elem1.innerHTML+=p1Text.charAt(i);
       i++;
-      setTimeout(type1, 30);
-    } else {
-      i = 0;
-      setTimeout(type2, 200);
+
+      setTimeout(type1,30);
+
+    }else{
+
+      i=0;
+      setTimeout(type2,200);
+
     }
+
   }
 
-  function type2() {
-    if (i < p2Text.length) {
-      elem2.innerHTML += p2Text.charAt(i);
+  function type2(){
+
+    if(i<p2Text.length){
+
+      elem2.innerHTML+=p2Text.charAt(i);
       i++;
-      setTimeout(type2, 30);
-    } else {
-      i = 0;
-      setTimeout(type3, 200);
+
+      setTimeout(type2,30);
+
+    }else{
+
+      i=0;
+      setTimeout(type3,200);
+
     }
+
   }
 
-  function type3() {
-    if (i < p3Text.length) {
-      elem3.innerHTML += p3Text.charAt(i);
+  function type3(){
+
+    if(i<p3Text.length){
+
+      elem3.innerHTML+=p3Text.charAt(i);
       i++;
-      setTimeout(type3, 30);
+
+      setTimeout(type3,30);
+
     }
+
   }
 
   type1();
+
 }
 
 function openEnvelope(){
 
-  const wrapper = document.getElementById("envelopeWrapper");
+  const wrapper=document.getElementById("envelopeWrapper");
+
   wrapper.classList.add("open");
 
-  if (!envelopeAlreadyOpened) {
-    envelopeAlreadyOpened = true;
-    setTimeout(typeWriterSequence, 400);
+  if(!envelopeAlreadyOpened){
+
+    envelopeAlreadyOpened=true;
+
+    setTimeout(typeWriterSequence,400);
+
   }
 
 }
 
-/* =========================
-   BLOW CAKE CANDLES
-========================= */
-
 function blowCakeCandles(){
 
-  const flames = document.querySelectorAll(".mini-flame");
-  const hint = document.getElementById("cakeHint");
-  let isAnyLit = false;
+  const flames=document.querySelectorAll(".mini-flame");
+  const hint=document.getElementById("cakeHint");
+
+  let isAnyLit=false;
 
   flames.forEach(f=>{
+
     if(!f.classList.contains("out")){
-      isAnyLit = true;
+      isAnyLit=true;
     }
+
   });
 
   if(isAnyLit){
@@ -2165,106 +2018,124 @@ function blowCakeCandles(){
 
     setTimeout(()=>{
 
-      hint.textContent = "إن شاء الله.. ❤️‍🩹";
-      hint.setAttribute("dir", "rtl");
+      hint.textContent="إن شاء الله.. ❤️‍🩹";
+      hint.setAttribute("dir","rtl");
+
       document.body.classList.remove("lights-off");
 
       confetti({
-        particleCount: 45,
-        spread: 60,
-        origin: { y: 0.5 },
-        disableForReducedMotion: true
+        particleCount:45,
+        spread:60,
+        origin:{y:.5},
+        disableForReducedMotion:true
       });
 
-    }, 700);
+    },700);
 
   }
 
 }
 
-/* =========================
-   20 WISHES
-========================= */
+const wishes=[
 
-const wishes = [
   "ما كُتب لكِ سيجد طريقه إليكِ 🌿",
+
   "ربما أجمل أيامكِ سيكون يومًا عاديًا جدًا ✨",
+
   "لا أحد يعرف ما يخبئه الغد... وهذه أجمل مفاجآته 🌙",
+
   "أتمنى أن تحققي أمنية لم تخبري بها أحدًا 🤍",
+
   "أتمنى أن يبقى فيكِ دائمًا شيءٌ لا يكبر 🦋",
+
   "لا تكبري كثيرًا... بعض الأشياء الجميلة تحتاج قليلًا من الطفولة 🙂",
+
   "أتمنى لكِ مالًا لا ينتهي... ولا تعرفين أين تضعينه 😂💸",
+
   "أتمنى لكِ نومًا طويلًا، هادئًا، بلا منبّه 😴🤍",
+
   "WOOOOOY 😂😂",
+
   "أتمنى أن تعرفي أن صديقكِ هنا موجود ليسمعكِ دائما  بكل حماس واهتمام... حتى لو كانت أطول les vocaux في العالم و بسرعة ×1 😅🎧",
+
   "﴿إِنَّ رَبِّي لَطِيفٌ لِّمَا يَشَاءُ﴾ 🤍",
+
   "﴿لَا تَدْرِي لَعَلَّ اللَّهَ يُحْدِثُ بَعْدَ ذَٰلِكَ أَمْرًا﴾ 🌿🤍",
+
   "أتمنى أن تكوني بخير .. جدًا جدًاااااا 🤍",
+
   "يُرسِلُنا الله بَعضَنا لِبَعضٍ رَحمَات 🦋",
+
   "بعض الأشياء لا تحتاج سببًا، يكفي أنها أسعدتكِ ✨",
+
   "أتمنى لكِ أيامًا تشبه قلبكِ الجميل 🤍🌷",
+
   "هذه لأمنياتك التي لم تخبرِي بها أحداً 🥹",
+
   "أتمنى أن يجبركِ الله جبرًا يُنسيكِ كل تعب 🤍",
+
   " أتمنى أن تدركي دائمًا كم أن وجودكِ بين من يحبونكِ يصنع فارقًا كبيرًا 🌸",
+
   "﴿ فَضَحِكَتْ فَبَشَّرْنَاهَا ..﴾ ❤️‍🩹"
+
 ];
 
-/* =========================
-   SHUFFLE & RENDER
-========================= */
+const shuffled=[...wishes].sort(()=>Math.random()-.5);
 
-const shuffled = [...wishes].sort(() => Math.random() - .5);
-const grid = document.getElementById("wishGrid");
-const modal = document.getElementById("wishModal");
-const modalText = document.getElementById("wishModalText");
+const grid=document.getElementById("wishGrid");
+const modal=document.getElementById("wishModal");
+const modalText=document.getElementById("wishModalText");
 
-shuffled.forEach((wish, index)=>{
+shuffled.forEach((wish,index)=>{
 
-  const btn = document.createElement("button");
-  btn.className = "wish-btn";
-  btn.textContent = index + 1;
+  const btn=document.createElement("button");
 
-  btn.onclick = ()=>{
-    modalText.textContent = wish;
+  btn.className="wish-btn";
+  btn.textContent=index+1;
+
+  btn.onclick=()=>{
+
+    modalText.textContent=wish;
     modal.classList.add("open");
     btn.classList.add("opened");
+
   };
 
   grid.appendChild(btn);
 
 });
 
-/* =========================
-   CLOSE MODAL
-========================= */
-
 function closeWish(event){
-  if(event && event.target !== modal){
+
+  if(event && event.target!==modal){
     return;
   }
+
   modal.classList.remove("open");
+
 }
 
-document.addEventListener("keydown", e=>{
-  if(e.key === "Escape"){
+document.addEventListener("keydown",e=>{
+
+  if(e.key==="Escape"){
     modal.classList.remove("open");
   }
-});
 
-/* =========================
-   PAGE NAVIGATION
-========================= */
+});
 
 function goTo(n){
 
   hideTooltip();
 
   document.querySelectorAll(".page").forEach(page=>{
+
     page.classList.remove("active");
     page.classList.remove("final-animation");
+
   });
 
-  const target = document.getElementById("page" + n);
+  const target=document.getElementById("page"+n);
+
   target.classList.add("active");
 
   updateNav(n);
@@ -2274,50 +2145,48 @@ function goTo(n){
     behavior:"smooth"
   });
 
-  if(n === 8){
+  if(n===8){
 
     target.classList.add("final-animation");
 
     setTimeout(()=>{
 
       confetti({
-        particleCount: 65,
-        spread: 70,
-        origin: { y: 0.6 },
-        colors: [
+        particleCount:65,
+        spread:70,
+        origin:{y:.6},
+        colors:[
           "#a8b9a3",
           "#71836d",
           "#c9a96b",
           "#ffffff"
         ],
-        disableForReducedMotion: true
+        disableForReducedMotion:true
       });
 
-    }, 1000);
+    },1000);
 
   }
 
 }
 
-/* =========================
-   NAVIGATION ACTIVE STATE
-========================= */
-
 function updateNav(n){
 
   document.querySelectorAll(".nav button").forEach((button,index)=>{
-    button.classList.toggle("active", index === n - 1);
+
+    button.classList.toggle(
+      "active",
+      index===n-1
+    );
+
   });
 
 }
 
-/* =========================
-   OPTIONAL MUSIC
-========================= */
+const music=document.getElementById("bgMusic");
+const musicBtn=document.getElementById("musicBtn");
 
-const music = document.getElementById("bgMusic");
-const musicBtn = document.getElementById("musicBtn");
-let musicPlaying = false;
+let musicPlaying=false;
 
 function toggleMusic(){
 
@@ -2325,22 +2194,28 @@ function toggleMusic(){
 
   if(!musicPlaying){
 
-    music.volume = .3;
+    music.volume=.3;
 
     music.play()
       .then(()=>{
-        musicPlaying = true;
-        musicBtn.textContent = "🔊";
+
+        musicPlaying=true;
+        musicBtn.textContent="🔊";
+
       })
       .catch(()=>{
-        musicPlaying = false;
+
+        musicPlaying=false;
+
       });
 
-  } else {
+  }else{
 
     music.pause();
-    musicPlaying = false;
-    musicBtn.textContent = "🎧";
+
+    musicPlaying=false;
+
+    musicBtn.textContent="🎧";
 
   }
 
