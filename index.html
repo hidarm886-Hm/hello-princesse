@@ -4123,10 +4123,20 @@ const wishes=[
 
 ];
 
-const shuffled=
-  [...wishes].sort(
-    ()=>Math.random()-.5
-  );
+const fixedWish = "هذه لأمنياتك التي لم تخبرِي بها أحداً 🥹";
+
+const randomWishes = wishes.filter(
+  wish => wish !== fixedWish
+);
+
+randomWishes.sort(
+  ()=>Math.random()-.5
+);
+
+const shuffled = [
+  ...randomWishes,
+  fixedWish
+];
 
 const grid=
   document.getElementById(
